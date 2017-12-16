@@ -1,15 +1,42 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import fetchArticles from '../actions/articles.js';
+import Article from './Article';
 
 class Feed extends React.Component {
-   render() {
-       return (
-         <div className="Feed">
+  // constructor(props) {
+  //   super(props);
+  // }
 
-          <p>This is the feed.</p>
-         
-         </div>
-       );  
-   }
+  componentWillMount() {
+    this.props.fetchArticles();
+  }
+
+  render() {
+    const {articles} = this.props;
+
+    return (
+      <div className="Feed">
+
+        <p>This is the feed.</p>
+
+        {articles !== undefined ? 
+          articles.map(articleObj => <Article articleObj={articleObj}/>) 
+          : <p>LOADING</p>}  
+      </div>
+    );
+  }
 }
 
-export default Feed;
+const mapStateToProps = state => ({
+  articles: state.articles.data,
+  loading: state.articles.loading,
+  error: state.articles.error
+});
+const mapDispatchToProps = dispatch => ({
+  fetchArticles: () => {
+    dispatch(fetchArticles());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);
