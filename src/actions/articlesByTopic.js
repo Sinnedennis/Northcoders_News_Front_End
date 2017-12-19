@@ -22,7 +22,7 @@ export default (topic_id) => {
         dispatch(fetchArticlesByTopicRequest(topic_id));
         return axios.get(`${API_URL}topics/${topic_id}/articles/`)
             .then(res => {
-                dispatch(fetchArticlesByTopicSuccess(res.data.articles));
+                dispatch(fetchArticlesByTopicSuccess(res.data));
             })
             .catch(err => {
                 dispatch(fetchArticlesByTopicFailure(err));

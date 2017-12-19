@@ -23,7 +23,7 @@ class App extends Component {
 
               <Switch>
                 <Route path="/" exact component={Feed} />
-                <Route path="/topic/:topic" exact component={FeedByTopic} />
+                <Route path="/topic/:topic/:id" exact component={FeedByTopic} />
                 <Route path="/*" component={Footer} />
               </Switch>
 

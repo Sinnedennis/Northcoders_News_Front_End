@@ -39,7 +39,7 @@ class Navbar extends React.Component {
               {this.props.topics === undefined ?
                 "LOADING" :
                 this.props.topics.map(topic =>
-                  <Link to={`/topic/${topic.slug}`} key={topic._id}><button className="button" value={topic.slug}>{topic.title}</button></Link>
+                  <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}><button className="button" value={topic.slug}>{topic.title}</button></Link>
                 )}
 
             </ul>

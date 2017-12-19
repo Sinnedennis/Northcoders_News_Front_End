@@ -8,13 +8,9 @@ class Feed extends React.Component {
   constructor(props) {
     super(props);
 
-    const {params} = this.props.match;
-    
     this.state = {
       order: "high",
-      topic: params
     }
-
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -28,14 +24,8 @@ class Feed extends React.Component {
     this.props.fetchArticles();
   }
 
-  componentWillReceiveProps() {
-    console.log(this.props.match);
-  }
-
   render() {
     const { articles } = this.props;
-
-
 
     return (
       <div className="Feed">

@@ -1,37 +1,57 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 // import {Redirect} from 'react-router-dom';
 import fetchArticlesByTopic from '../actions/articlesByTopic';
+import Article from './Article';
+import {orderArticles} from './helpers';
 
 
 class TopicalArtcles extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    const {params} = this.props.match;
-    console.log(params);
-  }
-  componentWillMount(){
-    const topic = this.props.match.params.topic;
-    this.props.fetchArticlesByTopic('5a3144bfb2a0c121973f65e0');
-  }
-  
-  componentWillReceiveProps(nextProps){
-    const {topic} = nextProps.match.params;
 
-    if (this.props.match.params.topic !== topic) {
-        console.log(this.props.match.params.topic, topic)
+    this.state = {
+      order: "high",
     }
+
+    this.handleClick = this.handleClick.bind(this);
   }
-  render () {
-    // const {articles, loading, error, match : {params: {topic}}} = this.props;
-    // const {page} = this.state;
+
+  handleClick(e) {
+    e.preventDefault();
+    this.setState({order: e.target.value})
+  }
+
+  componentWillMount() {
+    const topic_id = this.props.match.params.id;
+
+    this.props.fetchArticlesByTopic(topic_id);
+  }
+
+
+  render() {
+    console.log(this.props.articles);
+    const { articles } = this.props;
 
     return (
+      <div className="Feed">
+
         <div>
-            {/* {this.state.articles ? JSON.stringify(this.state.articles[0]) : <p>LOADING</p>} */}
-            <p>{JSON.stringify(this.props)}</p>
+          <p>Order by:</p>
+          <div className="select">
+            <select onChange={this.handleClick}>
+              <option value="high">Most popular</option>
+              <option value="low">Least popular</option>
+            </select>
+          </div>
         </div>
-        
+
+
+        {articles !== undefined ?
+          orderArticles(articles, this.state.order).map(articleObj => <Article articleObj={articleObj} key={articleObj._id} />)
+          : <p>LOADING</p>}
+      </div>
+
 
     );
   }
@@ -43,7 +63,7 @@ const mapStateToProps = state => ({
   error: state.articlesByTopic.error
 });
 const mapDispatchToProps = dispatch => ({
-    fetchArticlesByTopic: (topic_id) => {
+  fetchArticlesByTopic: (topic_id) => {
     dispatch(fetchArticlesByTopic(topic_id));
   }
 });
