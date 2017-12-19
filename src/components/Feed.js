@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import fetchArticles from '../actions/articles.js';
-import Article from './Article';
+import ArticlePreview from './ArticlePreview';
 import {orderArticles} from './helpers';
 
 class Feed extends React.Component {
@@ -42,7 +42,7 @@ class Feed extends React.Component {
 
 
         {articles !== undefined ?
-          orderArticles(articles, this.state.order).map(articleObj => <Article articleObj={articleObj} key={articleObj._id} />)
+          orderArticles(articles, this.state.order).map(articleObj => <ArticlePreview articleObj={articleObj} key={articleObj._id} />)
           : <p>LOADING</p>}
       </div>
     );

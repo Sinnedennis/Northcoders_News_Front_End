@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import fetchTopics from '../actions/topics.js';

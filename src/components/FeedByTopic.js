@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import {Redirect} from 'react-router-dom';
 import fetchArticlesByTopic from '../actions/articlesByTopic';
-import Article from './Article';
+import ArticlePreview from './ArticlePreview';
 import { orderArticles } from './helpers';
 
 
@@ -57,7 +57,7 @@ class TopicalArtcles extends React.Component {
 
 
         {articles !== undefined ?
-          orderArticles(articles, this.state.order).map(articleObj => <Article articleObj={articleObj} key={articleObj._id} />)
+          orderArticles(articles, this.state.order).map(articleObj => <ArticlePreview articleObj={articleObj} key={articleObj._id} />)
           : <p>LOADING</p>}
       </div>
 
