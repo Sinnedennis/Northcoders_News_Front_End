@@ -1,0 +1,1 @@
+export default 'https://northcoders-news-backend-api.herokuapp.com/api/';

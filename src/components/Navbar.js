@@ -1,40 +1,65 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+
+import { connect } from 'react-redux';
+import fetchTopics from '../actions/topics.js';
+
 import HomeIcon from 'react-icons/lib/fa/home';
 
 const logo = require('./logo.png');
 
 class Navbar extends React.Component {
-    render() {
-        return (
-            <div className="Navbar">
 
-                <div className="Logo">
-                    <img className="LogoImg" src={logo} />
-                </div>
+  componentWillMount() {
+    this.props.fetchTopics();
+  }
 
-                <div className="Home">
-                    <HomeIcon className="HomeIcon" size={70} color="red" />
-                </div>
+  render() {
+    return (
+      
+        <div className="Navbar">
 
+          <div className="Logo">
+            <img className="LogoImg" src={logo} />
+          </div>
 
-                <Link to='/home/1' >
-                    <h1>
-                        Northcoders News
-                    </h1>
-                </Link>
-
-                <div className="TopicList">
-                    <ul>
-                        <button class="button" value="football">Football</button>
-                        <button class="button" value="cooking">Cooking</button>
-                        <button class="button" value="coding">Coding</button>
-                    </ul>
-                </div>
-
+          <Link to="/">
+            <div className="Home">
+              <HomeIcon className="HomeIcon" size={70} color="red" />
             </div>
-        );
-    }
+          </Link>
+
+          <div className="TopicList">
+            <ul>
+              {this.props.topics === undefined ?
+                "LOADING" :
+                this.props.topics.map(topic =>
+                  <Link to={`/topic/${topic.slug}`} key={topic._id}><button className="button" value={topic.slug}>{topic.title}</button></Link>
+                )}
+
+            </ul>
+          </div>
+
+        </div>
+      
+    );
+  }
 }
 
-export default Navbar;
+const mapStateToProps = state => ({
+  topics: state.topics.data,
+  loading: state.topics.loading,
+  error: state.topics.error
+});
+const mapDispatchToProps = dispatch => ({
+  fetchTopics: () => {
+    dispatch(fetchTopics());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
