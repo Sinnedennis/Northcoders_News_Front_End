@@ -19,7 +19,7 @@ export const fetchArticleFailure = (err) => ({
 export default () => {
     return (dispatch) => {
         dispatch(fetchArticleRequest());
-        return axios.get('https://northcoders-news-backend-api.herokuapp.com/api/articles/')
+        return axios.get(`${API_URL}articles/`)
             .then(res => {
                 dispatch(fetchArticleSuccess(res.data.articles));
             })

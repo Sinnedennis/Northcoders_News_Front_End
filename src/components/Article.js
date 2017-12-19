@@ -7,13 +7,13 @@ class Article extends React.Component {
        return (
          <div className="Article">
 
-           <p>This is an Article.</p>
-
            <p>{title}</p>
            <p>{body}</p>
            <p>{created_by}</p>
            <p>{belongs_to}</p>
            <p>{votes}</p>
+           <p>{_id}</p>
+           
          </div>
        );  
    }
