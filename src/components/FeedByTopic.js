@@ -23,9 +23,9 @@ class TopicalArtcles extends React.Component {
   }
 
   componentWillMount() {
-    const topic_id = this.props.match.params.id;
+    const topicId = this.props.match.params.topicId;
 
-    this.props.fetchArticlesByTopic(topic_id);
+    this.props.fetchArticlesByTopic(topicId);
   }
 
   componentWillReceiveProps(nextProps) {
