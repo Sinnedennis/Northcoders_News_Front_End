@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import {Redirect} from 'react-router-dom';
 import fetchArticlesByTopic from '../actions/articlesByTopic';
 import Article from './Article';
-import {orderArticles} from './helpers';
+import { orderArticles } from './helpers';
 
 
 class TopicalArtcles extends React.Component {
@@ -19,7 +19,7 @@ class TopicalArtcles extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.setState({order: e.target.value})
+    this.setState({ order: e.target.value })
   }
 
   componentWillMount() {
@@ -28,9 +28,18 @@ class TopicalArtcles extends React.Component {
     this.props.fetchArticlesByTopic(topic_id);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const NewTopicId = nextProps.match.params.topicId;
+    const currentTopicId = this.props.match.params.topicId;
+
+    if (currentTopicId !== NewTopicId) {
+      this.props.fetchArticlesByTopic(NewTopicId);
+      this.setState();
+    }
+  }
+
 
   render() {
-    console.log(this.props.articles);
     const { articles } = this.props;
 
     return (

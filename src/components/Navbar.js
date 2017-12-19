@@ -21,32 +21,36 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      
-        <div className="Navbar">
 
-          <div className="Logo">
-            <img className="LogoImg" src={logo} />
-          </div>
+      <div className="Navbar">
 
-          <Link to="/">
-            <div className="Home">
-              <HomeIcon className="HomeIcon" size={70} color="red" />
-            </div>
-          </Link>
-
-          <div className="TopicList">
-            <ul>
-              {this.props.topics === undefined ?
-                "LOADING" :
-                this.props.topics.map(topic =>
-                  <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}><button className="button" value={topic.slug}>{topic.title}</button></Link>
-                )}
-
-            </ul>
-          </div>
-
+        <div className="Logo">
+          <img className="LogoImg" src={logo} />
         </div>
-      
+
+        <Link to="/">
+          <div className="Home">
+            <HomeIcon className="HomeIcon" size={70} color="red" />
+          </div>
+        </Link>
+
+        <div className="TopicList">
+          <ul>
+            {this.props.topics === undefined ?
+              "LOADING" :
+              this.props.topics.map(topic =>
+                <Link
+                  to={`/topic/${topic.slug}/${topic._id}`}
+                  key={topic._id}>
+                  <button className="button" value={topic.slug}>{topic.title}</button>
+                </Link>
+              )}
+
+          </ul>
+        </div>
+
+      </div>
+
     );
   }
 }

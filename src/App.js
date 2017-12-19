@@ -22,19 +22,12 @@ class App extends Component {
               <Navbar />
 
               <Switch>
-                <Route path="/" exact component={Feed} />
-                <Route path="/topic/:topic/:id" exact component={FeedByTopic} />
+                <Route exact path="/"  component={Feed} />
+                <Route exact path="/topic/:topic/:topicId"  component={FeedByTopic} />
                 <Route path="/*" component={Footer} />
               </Switch>
 
-              {/* <Switch>
-                <Route exact path='/' component={Feed} />
-                <Route path='/topics/football' component={Footer} />
-                <Route exact path='/404' component={Footer} />
-                <Route path='/*' component={Footer} />
-              </Switch> */}
-
-              {/* <Footer /> */}
+              <Footer />
             </div>
           </Router>
         </div>
