@@ -5,7 +5,7 @@ import fetchArticleById from '../actions/articleById.js';
 class Article extends React.Component {
 
   componentWillMount() {
-    const {articleId} = this.props.match.params;
+    const {articleId} = this.props;
     this.props.fetchArticleById(articleId);
   }
 
