@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import fetchArticleById from '../actions/articleById.js';
+
 
 class Article extends React.Component {
 
@@ -18,8 +20,8 @@ class Article extends React.Component {
 
         <p>{title}</p>
         <p>{body}</p>
-        <p>{created_by}</p>
         <p>{belongs_to}</p>
+        <Link to={`/user/${created_by}`}><p>{created_by}</p></Link>
         <p>{votes}</p>
         <p>{_id}</p>
       </div>

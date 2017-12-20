@@ -4,13 +4,15 @@ import articleByIdReducer  from './articleById.js';
 import topicsReducer from './topics.js';
 import articlesByTopicReducer from './articlesByTopic';
 import commentsReducer from './comments';
+import userReducer from './user';
 
 const reducer = combineReducers({
   articles: articlesReducer,
   article: articleByIdReducer,
   topics: topicsReducer,
   articlesByTopic: articlesByTopicReducer,
-  comments: commentsReducer
+  comments: commentsReducer,
+  user: userReducer
 });
 
 export default reducer;

@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import Feed from './components/Feed';
 import FeedByTopic from './components/FeedByTopic';
 import ArticleAndComments from './components/ArticleAndComments';
+import UserPage from './components/UserPage';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -26,6 +27,7 @@ class App extends Component {
                 <Route exact path="/"  component={Feed} />
                 <Route exact path="/topic/:topic/:topicId"  component={FeedByTopic} />
                 <Route exact path="/article/:articleId"  component={ArticleAndComments} />
+                <Route exact path="/user/:userName"  component={UserPage} />
                 <Route path="/*" component={Footer} />
               </Switch>
 
