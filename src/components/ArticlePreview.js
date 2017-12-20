@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Votes from './Votes';
 
 class ArticlePreview extends React.Component {
   render() {
@@ -13,9 +14,8 @@ class ArticlePreview extends React.Component {
           <p>{body}</p>
           <p>{created_by}</p>
           <p>{belongs_to}</p>
-          <p>{votes}</p>
           <p>{_id}</p>
-
+          <Votes article={this.props.articleObj} voteTarget={'articles'} />
         </div>
       </Link>
     );

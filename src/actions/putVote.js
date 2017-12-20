@@ -23,8 +23,7 @@ export default (id, target, vote) => {
 
         return axios.put(`${API_URL}${target}/${id}?vote=${vote}`)
             .then(res => {
-                console.log('*********************************', res.data);
-                dispatch(putVoteSuccess());
+                dispatch(putVoteSuccess(res.data));
             })
             .catch(err => {
                 dispatch(putVoteFailure(err));
