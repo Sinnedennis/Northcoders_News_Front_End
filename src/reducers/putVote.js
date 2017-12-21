@@ -10,7 +10,7 @@ export default (prevState = getInitialState(), action) => {
   switch (action.type) {
     case types.PUT_VOTE_REQUEST:
       return Object.assign({}, prevState, {
-        loading: true,
+        loading: !prevState.loading,
         error: null,
         data: []
       });

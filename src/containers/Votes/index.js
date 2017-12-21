@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import putVote from '../actions/putVote.js';
+import putVote from '../../actions/putVote.js';
+import VoteUI from '../../components/VotesUI';
+import Error from '../../components/Error';
+import Loading from '../../components/Loading';
 
 class Votes extends Component {
 
@@ -34,11 +37,12 @@ class Votes extends Component {
   }
 
   render() {
+
+    const { error, loading, data } = this.props;
+
     return (
       <div>
-        <button className="button" value="up" onClick={this.clickHandler}>Upvote</button>
-        <button className="button" value="down" onClick={this.clickHandler}>Downvote</button>
-        <p>{this.state.votes}</p>
+          <VoteUI clickHandler={this.clickHandler} votes={this.state.votes} />
       </div>
     );
   }
@@ -55,4 +59,5 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(putVote(id, target, vote));
   }
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(Votes);

@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import fetchArticles from '../actions/articles.js';
-import ArticlePreview from './ArticlePreview';
-import {orderArticles} from './helpers';
+import fetchArticles from '../../actions/articles.js';
+import ArticlePreview from '../../components/ArticlePreview';
+import {orderArticles} from '../../components/helpers';
+import Loading from '../../components/Loading';
+import OrderBy from '../../components/OrderBy';
+import Error from '../../components/Error';
 
 class Feed extends React.Component {
   constructor(props) {
@@ -25,25 +28,18 @@ class Feed extends React.Component {
   }
 
   render() {
-    const { articles } = this.props;
+    const { articles, loading, error } = this.props;
 
     return (
       <div className="Feed">
 
-        <div>
-          <p>Order by:</p>
-          <div className="select">
-            <select onChange={this.handleClick}>
-              <option value="high">Most popular</option>
-              <option value="low">Least popular</option>
-            </select>
-          </div>
-        </div>
+        <OrderBy handleClick={this.handleClick} />
 
-
-        {articles !== undefined ?
-          orderArticles(articles, this.state.order).map(articleObj => <ArticlePreview articleObj={articleObj} key={articleObj._id} />)
-          : <p>LOADING</p>}
+        { 
+          error ? <Error error={error} />
+            : loading ? <Loading loading={true} /> 
+              : orderArticles(articles, this.state.order).map(articleObj => <ArticlePreview article={articleObj} />)
+        }
       </div>
     );
   }

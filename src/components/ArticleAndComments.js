@@ -1,6 +1,6 @@
 import React from 'react';
-import Article from './Article.js';
-import Comments from './Comments.js';
+import Article from '../containers/Article';
+import Comments from '../containers/Comments';
 
 class ArticleAndComments extends React.Component {
 

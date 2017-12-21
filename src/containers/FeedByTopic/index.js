@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import {Redirect} from 'react-router-dom';
-import fetchArticlesByTopic from '../actions/articlesByTopic';
-import ArticlePreview from './ArticlePreview';
-import { orderArticles } from './helpers';
+import fetchArticlesByTopic from '../../actions/articlesByTopic';
+import ArticlePreview from '../../components/ArticlePreview';
+import OrderBy from '../../components/OrderBy';
+import { orderArticles } from '../../components/helpers';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 
 class TopicalArtcles extends React.Component {
@@ -40,25 +42,18 @@ class TopicalArtcles extends React.Component {
 
 
   render() {
-    const { articles } = this.props;
+    const { articles, loading, error } = this.props;
 
     return (
       <div className="Feed">
 
-        <div>
-          <p>Order by:</p>
-          <div className="select">
-            <select onChange={this.handleClick}>
-              <option value="high">Most popular</option>
-              <option value="low">Least popular</option>
-            </select>
-          </div>
-        </div>
-
-
-        {articles !== undefined ?
-          orderArticles(articles, this.state.order).map(articleObj => <ArticlePreview articleObj={articleObj} key={articleObj._id} />)
-          : <p>LOADING</p>}
+        <OrderBy handleClick={this.handleClick} />
+        
+        {
+          error ? <Error error={error} /> 
+            : loading ? <Loading /> 
+              : orderArticles(articles, this.state.order).map(articleObj => <ArticlePreview article={articleObj} />)
+        }
       </div>
 
 

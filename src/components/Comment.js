@@ -1,25 +1,18 @@
 import React from 'react';
-import Votes from './Votes';
+import Votes from '../containers/Votes';
 
-class Comment extends React.Component {
+export default function Comment(comment) {
 
-    render() {
-        const {_id, belongs_to, body, created_at, created_by, votes} = this.props.commentObj;
-        return (
-            <div className="Comment">
-                <p>This is a comment</p>
-                <p>id: {_id}</p>
-                <p>{created_at}</p>
-                <p>{created_by}</p>
-                <p>Belongs to{belongs_to}</p>
-                <p>{body}</p>
-                <Votes parentObj={this.props.commentObj} voteTarget={'comments'}/>
-            </div>
-
-        );
-    }
+  const { _id, belongs_to, body, created_at, created_by, votes } = comment;
+  return (
+    <div className="Comment">
+      <p>This is a comment</p>
+      <p>id: {_id}</p>
+      <p>{created_at}</p>
+      <p>{created_by}</p>
+      <p>Belongs to{belongs_to}</p>
+      <p>{body}</p>
+      <Votes parentObj={comment} voteTarget={'comments'} />
+    </div>
+  );
 }
-
-
-
-export default Comment;
