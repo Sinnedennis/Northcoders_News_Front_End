@@ -12,6 +12,10 @@ class UserPage extends React.Component {
         this.props.fetchArticles();
     }
 
+    addDefaultAvatar(e) {
+        e.target.src = "https://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg";
+    }
+
     render() {
         const { _id, avatar_url, name, username } = this.props.user;
         let articles = this.props.articles;
@@ -23,7 +27,7 @@ class UserPage extends React.Component {
             <div>
                 <p>I am a user page.</p>
                 <p>{_id}</p>
-                <img src={avatar_url} />
+                <img src={avatar_url} onError={this.addDefaultAvatar} alt="User Avatar" />
                 <p>{avatar_url}</p>
                 <p>{name}</p>
                 <p>{username}</p>

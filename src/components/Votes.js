@@ -12,21 +12,19 @@ class Votes extends Component {
     };
 
     this.clickHandler = this.clickHandler.bind(this);
-    // this.props.putVote = this.props.putVote.bind(this);
   }
 
 
   clickHandler(e) {
     e.preventDefault();
     const { voteTarget, putVote, parentObj: {_id: id} } = this.props;
-    console.log('CLICK HANDLER', id, voteTarget, putVote);
+
     putVote(id, voteTarget, e.target.value);
   }
 
 
   componentWillReceiveProps(nextProps) {
-    console.log('UPDATE TO PROPS');
-    console.log(this.props);
+
     if (nextProps.data.wasSuccessful && nextProps.data.votedData._id === this.props.parentObj._id) {
 
       this.setState({

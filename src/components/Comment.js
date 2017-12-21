@@ -14,7 +14,6 @@ class Comment extends React.Component {
                 <p>Belongs to{belongs_to}</p>
                 <p>{body}</p>
                 <Votes parentObj={this.props.commentObj} voteTarget={'comments'}/>
-                <p>{votes}</p>
             </div>
 
         );

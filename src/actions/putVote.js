@@ -20,10 +20,8 @@ export const putVoteFailure = (err) => ({
 export default (id, target, vote) => {
     return (dispatch) => {
         dispatch(putVoteRequest(id, target, vote));
-        console.log('ACTION CREATOR');
         return axios.put(`${API_URL}${target}/${id}?vote=${vote}`)
             .then(res => {
-                console.log('RESPONSE RECEIVED');
                 dispatch(putVoteSuccess(res.data));
             })
             .catch(err => {

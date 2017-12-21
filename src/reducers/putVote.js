@@ -16,16 +16,10 @@ export default (prevState = getInitialState(), action) => {
       });
 
       case types.PUT_VOTE_SUCCESS:
-      console.log('000000000000000000000000000000000000000');
-      console.log(action.payload);
-      console.log(JSON.stringify(action.payload));
-
-      //Maybe because I'm changing everything. Maybe I should only change what's needed
 
       const payload = Object.assign({}, action.payload)
       const votedData = Object.assign({}, action.payload.votedData);
       payload.votedData = votedData;
-      console.log(payload.votedData === action.payload.votedData);
 
       return Object.assign({}, prevState, {
         loading: false,
