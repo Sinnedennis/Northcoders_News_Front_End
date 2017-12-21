@@ -15,7 +15,7 @@ class ArticlePreview extends React.Component {
           <p>{created_by}</p>
           <p>{belongs_to}</p>
           <p>{_id}</p>
-          <Votes article={this.props.articleObj} voteTarget={'articles'} />
+          <Votes parentObj={this.props.articleObj} voteTarget={'articles'} />
         </div>
       </Link>
     );

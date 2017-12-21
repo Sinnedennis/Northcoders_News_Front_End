@@ -8,27 +8,29 @@ class Votes extends Component {
     super(props);
 
     this.state = {
-      votes: this.props.article.votes
+      votes: this.props.parentObj.votes
     };
 
     this.clickHandler = this.clickHandler.bind(this);
+    // this.props.putVote = this.props.putVote.bind(this);
   }
 
 
   clickHandler(e) {
     e.preventDefault();
-    const {article, voteTarget} = this.props;
-    console.log('HELLO',this.props);
-    this.props.putVote(article._id, voteTarget, e.target.value);
+    const { voteTarget, putVote, parentObj: {_id: id} } = this.props;
+    console.log('CLICK HANDLER', id, voteTarget, putVote);
+    putVote(id, voteTarget, e.target.value);
   }
 
 
   componentWillReceiveProps(nextProps) {
-
-    if (nextProps.data.wasSuccessful) {
+    console.log('UPDATE TO PROPS');
+    console.log(this.props);
+    if (nextProps.data.wasSuccessful && nextProps.data.votedData._id === this.props.parentObj._id) {
 
       this.setState({
-        votes: nextProps.data.article.votes
+        votes: nextProps.data.votedData.votes
       });
     }
   }
@@ -39,18 +41,18 @@ class Votes extends Component {
         <button className="button" value="up" onClick={this.clickHandler}>Upvote</button>
         <button className="button" value="down" onClick={this.clickHandler}>Downvote</button>
         <p>{this.state.votes}</p>
-      </div> 
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.voteData.data,
   loading: state.voteData.loading,
   error: state.voteData.error,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   putVote: (id, target, vote) => {
     dispatch(putVote(id, target, vote));
   }

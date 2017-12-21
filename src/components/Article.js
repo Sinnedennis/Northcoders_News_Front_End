@@ -24,7 +24,7 @@ class Article extends React.Component {
         <p>{body}</p>
         <p>{belongs_to}</p>
         <Link to={`/user/${created_by}`}><p>{created_by}</p></Link>
-        <Vote article={this.props.article} voteTarget={'articles'} />
+        <Vote parentObj={this.props.article} voteTarget={'articles'} />
         <p>{_id}</p>
 
       </div>
