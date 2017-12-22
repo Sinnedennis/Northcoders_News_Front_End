@@ -22,7 +22,7 @@ class Comments extends React.Component {
     this.setState({ order: e.target.value })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { articleId } = this.props;
     this.props.fetchCommentsById(articleId);
   }

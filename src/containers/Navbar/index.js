@@ -10,7 +10,7 @@ import Error from '../../components/Error';
 
 class Navbar extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTopics();
   }
 

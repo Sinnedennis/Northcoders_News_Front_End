@@ -23,7 +23,7 @@ class Feed extends React.Component {
     this.setState({order: e.target.value})
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchArticles();
   }
 

@@ -24,7 +24,7 @@ class TopicalArtcles extends React.Component {
     this.setState({ order: e.target.value })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const topicId = this.props.match.params.topicId;
 
     this.props.fetchArticlesByTopic(topicId);

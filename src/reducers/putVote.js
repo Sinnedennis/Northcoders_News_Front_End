@@ -17,14 +17,14 @@ export default (prevState = getInitialState(), action) => {
 
       case types.PUT_VOTE_SUCCESS:
 
-      const payload = Object.assign({}, action.payload)
-      const votedData = Object.assign({}, action.payload.votedData);
-      payload.votedData = votedData;
+      // const payload = Object.assign({}, action.payload)
+      // const votedData = Object.assign({}, action.payload.votedData);
+      // payload.votedData = votedData;
 
       return Object.assign({}, prevState, {
         loading: false,
         error: null,
-        data: payload
+        data: action.payload
       });
 
       case types.PUT_VOTE_FAILURE:

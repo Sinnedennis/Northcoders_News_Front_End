@@ -20,36 +20,35 @@ class Votes extends Component {
 
   clickHandler(e) {
     e.preventDefault();
-    const { voteTarget, putVote, parentObj: {_id: id} } = this.props;
+    const { voteTarget, putVote, parentObj: { _id: id } } = this.props;
 
     putVote(id, voteTarget, e.target.value);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.parentObj._id === nextProps.voteData._id;
+  }
 
   componentWillReceiveProps(nextProps) {
+    const { votes } = nextProps.voteData;
 
-    if (nextProps.data.wasSuccessful && nextProps.data.votedData._id === this.props.parentObj._id) {
-
-      this.setState({
-        votes: nextProps.data.votedData.votes
-      });
-    }
+    this.setState({
+      votes: votes
+    })
   }
 
   render() {
-
-    const { error, loading, data } = this.props;
-
     return (
       <div>
-          <VoteUI clickHandler={this.clickHandler} votes={this.state.votes} />
+        <p>{this.props.votes}</p>
+        <VoteUI clickHandler={this.clickHandler} votes={this.state.votes} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  data: state.voteData.data,
+  voteData: state.voteData.data,
   loading: state.voteData.loading,
   error: state.voteData.error,
 });

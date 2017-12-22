@@ -10,7 +10,7 @@ import Error from '../../components/Error';
 
 class Article extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     const { articleId } = this.props;
     this.props.fetchArticleById(articleId);
   }

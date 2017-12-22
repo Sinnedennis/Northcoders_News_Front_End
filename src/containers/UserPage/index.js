@@ -10,7 +10,7 @@ import UserArticles from '../../components/UserArticles';
 
 class UserPage extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     const { userName } = this.props.match.params;
     this.props.fetchUser(userName);
     this.props.fetchArticles();
