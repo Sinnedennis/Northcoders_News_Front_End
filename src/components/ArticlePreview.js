@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Votes from '../containers/Votes';
+import { textPreview } from './helpers';
 
 class ArticlePreview extends React.Component { 
 
   render() {
     const { _id, title, body, created_by, belongs_to, votes } = this.props.article;
 
-    let bodyPreview;
-    if (body.length >= 300) {
-      bodyPreview = body.slice(0, 300);
-      bodyPreview = bodyPreview + '...';
-    } else bodyPreview = body;
+    const bodyPreview = textPreview(body);
 
     return (
       <div className="Article">

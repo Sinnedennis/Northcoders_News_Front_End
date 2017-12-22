@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import HomeIcon from 'react-icons/lib/fa/home';
-const logo = require('./logo.png');
+import logo from './logo.png';
 
 export default function NavbarUI({ topics }) {
 

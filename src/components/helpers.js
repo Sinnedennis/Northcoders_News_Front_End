@@ -1,5 +1,6 @@
+import { articlePreviewLength } from '../config';
 
-function orderArticles(articles, order) {
+export function orderArticles(articles, order) {
   let x = 1;
   let y = -1;
 
@@ -15,8 +16,16 @@ function orderArticles(articles, order) {
 
 }
 
-function addDefaultAvatar(e) {
+export function addDefaultAvatar(e) {
   e.target.src = "https://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg";
 }
 
-module.exports = { orderArticles, addDefaultAvatar };
+export function textPreview (text) {
+  let textPreview;
+    if (text.length >= articlePreviewLength) {
+      textPreview = text.slice(0, articlePreviewLength);
+      textPreview = textPreview + '...';
+    } else textPreview = text;
+
+    return textPreview;
+}

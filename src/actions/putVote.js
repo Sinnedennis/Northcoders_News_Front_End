@@ -1,6 +1,6 @@
 import * as types from './types';
 import axios from 'axios';
-import API_URL from './API_URL';
+import { API_URL } from '../config';
 
 export const putVoteRequest = (id, target, vote) => ({
     type: types.PUT_VOTE_REQUEST,

@@ -1,18 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import fetchArticles from '../../actions/articles.js';
 import ArticlePreview from '../../components/ArticlePreview';
-import { orderArticles } from '../../components/helpers';
 import PageNumUI from '../../components/PageNumUI';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 import OrderBy from '../../components/OrderBy';
 
+import { orderArticles } from '../../components/helpers';
+import { articlePerPage } from '../../config';
+
 class Feed extends React.Component {
   constructor(props) {
     super(props);
 
-    this.pageLength = 10;
+    this.pageLength = articlePerPage;
 
     this.state = {
       order: "high",
@@ -59,6 +62,7 @@ class Feed extends React.Component {
                   this.state.page * this.pageLength + this.pageLength)
                 .map((articleObj, i) => <ArticlePreview article={articleObj} index={i + 1 + (this.state.page * this.pageLength)} key={i} />)
         }
+        
       </div>
     );
   }

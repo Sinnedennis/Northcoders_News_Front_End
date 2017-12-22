@@ -1,19 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import fetchCommentsById from '../../actions/comments.js';
+
 import Comment from '../../components/Comment';
 import OrderBy from '../../components/OrderBy';
 import PageNumUI from '../../components/PageNumUI';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
+
 import { orderArticles } from '../../components/helpers';
+import { commentsPerPage } from '../../config';
 
 class Comments extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.pageLength = 5;
+    this.pageLength = commentsPerPage;
 
     this.state = {
       order: "high",
