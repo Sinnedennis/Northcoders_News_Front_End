@@ -62,7 +62,12 @@ class Feed extends React.Component {
                   this.state.page * this.pageLength + this.pageLength)
                 .map((articleObj, i) => <ArticlePreview article={articleObj} index={i + 1 + (this.state.page * this.pageLength)} key={i} />)
         }
-        
+
+        {
+          articles.length > this.pageLength 
+          ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
+          : null
+        }
       </div>
     );
   }

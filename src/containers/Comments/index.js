@@ -63,6 +63,12 @@ class Comments extends React.Component {
                 this.state.page * this.pageLength + this.pageLength)
               .map((commentObj, i) => <Comment commentObj={commentObj} key={i} />)
         }
+
+        {
+          comments.length > this.pageLength 
+          ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(comments.length / this.pageLength)} />
+          : null
+        }
       </div >
     );
   }

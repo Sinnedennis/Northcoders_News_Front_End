@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Votes from '../containers/Votes';
 
-export default function Article(article) {
+export default function Article({ article }) {
   const { title, body, belongs_to, created_by, _id } = article;
 
   return (
