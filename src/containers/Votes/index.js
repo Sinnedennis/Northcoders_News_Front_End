@@ -40,7 +40,6 @@ class Votes extends Component {
   render() {
     return (
       <div>
-        <p>{this.props.votes}</p>
         <VoteUI clickHandler={this.clickHandler} votes={this.state.votes} />
       </div>
     );
