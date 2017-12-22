@@ -26,18 +26,26 @@ class Votes extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return this.props.parentObj._id === nextProps.voteData._id;
+    if (this.props.parentObj._id === nextProps.voteData._id) return true;       //Update when vote changes
+    else if (nextProps.parentObj._id !== this.props.parentObj._id) return true; //Update when re-ordered
+    else return false;
   }
 
   componentWillReceiveProps(nextProps) {
-    const { votes } = nextProps.voteData;
+
+    let newVotes;
+
+    if (nextProps.parentObj._id !== this.props.parentObj._id) {
+      newVotes = nextProps.parentObj.votes
+    } else newVotes = nextProps.voteData.votes;
 
     this.setState({
-      votes: votes
+      votes: newVotes
     })
   }
 
   render() {
+    console.log('VOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDERED')
     return (
       <div>
         <VoteUI clickHandler={this.clickHandler} votes={this.state.votes} />

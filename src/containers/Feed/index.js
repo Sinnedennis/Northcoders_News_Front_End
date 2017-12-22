@@ -54,7 +54,7 @@ class Feed extends React.Component {
               : orderArticles(articles, this.state.order)
               .slice(this.state.page * this.pageLength,
                 this.state.page * this.pageLength + this.pageLength)
-              .map((articleObj, i) => <ArticlePreview article={articleObj} index={i} key={i} />)
+              .map((articleObj, i) => <ArticlePreview article={articleObj} index={i + 1 + (this.state.page * this.pageLength)} key={i} />)
         }
       </div>
     );
