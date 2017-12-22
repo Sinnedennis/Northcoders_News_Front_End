@@ -45,7 +45,6 @@ class Votes extends Component {
   }
 
   render() {
-    console.log('VOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDEREDVOTESRERENDERED')
     return (
       <div>
         <VoteUI clickHandler={this.clickHandler} votes={this.state.votes} />

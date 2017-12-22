@@ -29,7 +29,7 @@ class App extends Component {
                 <Route exact path="/topic/:topic/:topicId"  component={FeedByTopic} />
                 <Route exact path="/article/:articleId"  component={ArticleAndComments} />
                 <Route exact path="/user/:userName"  component={UserPage} />
-                <Route path="/*" component={Error} />
+                <Route path="/*" component={Error} error={'123123'} />
               </Switch>
 
               <Footer />

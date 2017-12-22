@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import fetchCommentsById from '../../actions/comments.js';
 import Comment from '../../components/Comment';
 import OrderBy from '../../components/OrderBy';
+import PageNumUI from '../../components/PageNumUI';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 import { orderArticles } from '../../components/helpers';
 
 class Comments extends React.Component {
@@ -10,16 +13,25 @@ class Comments extends React.Component {
   constructor(props) {
     super(props);
 
+    this.pageLength = 5;
+
     this.state = {
       order: "high",
+      page: 0
     }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleOrderClick = this.handleOrderClick.bind(this);
+    this.handlePageClick = this.handlePageClick.bind(this);
   }
 
-  handleClick(e) {
+  handleOrderClick(e) {
     e.preventDefault();
-    this.setState({ order: e.target.value })
+    this.setState({ order: e.target.value });
+  }
+
+  handlePageClick(e) {
+    e.preventDefault();
+    this.setState({ page: Number(e.target.value) });
   }
 
   componentDidMount() {
@@ -28,15 +40,24 @@ class Comments extends React.Component {
   }
 
   render() {
-    const { comments } = this.props;
+    const { comments, loading, error } = this.props;
+
     return (
       <div>
-        {OrderBy(this.handleClick)}
-
+        <OrderBy handleClick={this.handleOrderClick} />
         {
-          comments.length !== 0 ?
-            orderArticles(comments, this.state.order).map(commentObj => Comment(commentObj))
-            : <p>LOADING</p>
+          comments.length > this.pageLength 
+          ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(comments.length / this.pageLength)} />
+          : null
+        }
+        
+        {
+          error ? <Error error={error}/>
+            : loading ? <Loading />
+              : orderArticles(comments, this.state.order)
+              .slice(this.state.page * this.pageLength,
+                this.state.page * this.pageLength + this.pageLength)
+              .map((commentObj, i) => <Comment commentObj={commentObj} key={i} />)
         }
       </div >
     );

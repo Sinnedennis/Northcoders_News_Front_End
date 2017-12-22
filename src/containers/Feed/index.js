@@ -5,8 +5,8 @@ import ArticlePreview from '../../components/ArticlePreview';
 import { orderArticles } from '../../components/helpers';
 import PageNumUI from '../../components/PageNumUI';
 import Loading from '../../components/Loading';
-import OrderBy from '../../components/OrderBy';
 import Error from '../../components/Error';
+import OrderBy from '../../components/OrderBy';
 
 class Feed extends React.Component {
   constructor(props) {
@@ -19,13 +19,12 @@ class Feed extends React.Component {
       page: 0
     }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleOrderClick = this.handleOrderClick.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
-  handleClick(e) {
+  handleOrderClick(e) {
     e.preventDefault();
-    console.log(this.state.order);
     this.setState({ order: e.target.value });
   }
 
@@ -44,17 +43,21 @@ class Feed extends React.Component {
     return (
       <div className="Feed">
 
-        <OrderBy handleClick={this.handleClick} />
+        <OrderBy handleClick={this.handleOrderClick} />
 
-        <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
-
+        {
+          articles.length > this.pageLength 
+          ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
+          : null
+        }
+       
         {
           error ? <Error error={error} />
             : loading ? <Loading loading={true} />
               : orderArticles(articles, this.state.order)
-              .slice(this.state.page * this.pageLength,
-                this.state.page * this.pageLength + this.pageLength)
-              .map((articleObj, i) => <ArticlePreview article={articleObj} index={i + 1 + (this.state.page * this.pageLength)} key={i} />)
+                .slice(this.state.page * this.pageLength,
+                  this.state.page * this.pageLength + this.pageLength)
+                .map((articleObj, i) => <ArticlePreview article={articleObj} index={i + 1 + (this.state.page * this.pageLength)} key={i} />)
         }
       </div>
     );

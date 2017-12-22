@@ -6,12 +6,13 @@ export default function Error({error}) {
   return (
     <div>
       <p>Oh no, it looks like something went wrong!</p>
-      <p>{error.message}</p>
+      {error ? <p>{error.message}</p> : null}
       <Link to="/">Click here to go home</Link>
     </div>
 
   );
 }
+
 
 
 

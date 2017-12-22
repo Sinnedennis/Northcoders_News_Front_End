@@ -1,9 +1,9 @@
 import React from 'react';
 import Votes from '../containers/Votes';
 
-export default function Comment(comment) {
+export default function Comment({commentObj}) {
 
-  const { _id, belongs_to, body, created_at, created_by, votes } = comment;
+  const { _id, belongs_to, body, created_at, created_by, votes } = commentObj;
   return (
     <div className="Comment">
       <p>This is a comment</p>
@@ -12,7 +12,7 @@ export default function Comment(comment) {
       <p>{created_by}</p>
       <p>Belongs to{belongs_to}</p>
       <p>{body}</p>
-      <Votes parentObj={comment} voteTarget={'comments'} />
+      <Votes parentObj={commentObj} voteTarget={'comments'} />
     </div>
   );
 }
