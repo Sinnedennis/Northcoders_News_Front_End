@@ -48,5 +48,5 @@ export function getTime(epochTime) {
   else if (dayDiff >= 1) return `${dayDiff} ${dayDiff === 1 ? 'day' : 'days'} ago.`;
   else if (hourDiff >= 1) return `${hourDiff} ${hourDiff === 1 ? 'hour' : 'hours'} ago.`;
   else if (secondDiff >= 1) return `${secondDiff} ${secondDiff === 1 ? 'second' : 'seconds'} ago.`;
-  else return 'just now.'
+  else return ' just now.'
 }
