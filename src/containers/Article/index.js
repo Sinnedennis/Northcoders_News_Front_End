@@ -25,7 +25,7 @@ class Article extends React.Component {
       return (
         <div>
           < ArticleUI article={article} />
-          < PostComment />
+          < PostComment articleId={article._id} />
         </div>
       );
     }

@@ -6,6 +6,7 @@ import articlesByTopicReducer from './articlesByTopic';
 import commentsReducer from './comments';
 import userReducer from './user';
 import voteReducer from './putVote';
+import postCommentReducer from './postComment';
 
 const reducer = combineReducers({
   articles: articlesReducer,
@@ -14,7 +15,8 @@ const reducer = combineReducers({
   articlesByTopic: articlesByTopicReducer,
   comments: commentsReducer,
   user: userReducer,
-  voteData: voteReducer
+  voteData: voteReducer,
+  postComment: postCommentReducer
 });
 
 export default reducer;

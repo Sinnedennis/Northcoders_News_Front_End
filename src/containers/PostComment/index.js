@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import postComment from '../../actions/postComment.js';
 import PostCommentUI from '../../components/PostCommentUI';
 
 class PostComment extends React.Component {
@@ -32,10 +33,15 @@ class PostComment extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('Submitted: ', this.state.text);
-    //Gram form value
-    //Post comment action
-    //Set form.value to ''
+
+    const newComment = {
+      commentText: this.state.text,
+      belongs_to: this.props.articleId
+    }
+
+    this.props.postComment(newComment);
+
+    this.setState({ active: false });
   }
 
   render() {
@@ -56,12 +62,16 @@ class PostComment extends React.Component {
   }
 }
 
-// const mapStateToProps = state => ({
+const mapStateToProps = state => ({
+  data: state.postComment.data,
+  loading: state.postComment.loading,
+  error: state.postComment.error
+});
+const mapDispatchToProps = dispatch => ({
+  postComment: (commentObj) => {
+    dispatch(postComment(commentObj));
+  }
+});
 
-// });
-// const mapDispatchToProps = dispatch => ({
-
-// });
-
-export default PostComment;
-// export default connect(mapStateToProps, mapDispatchToProps)(PostComment);
+// export default PostComment;
+export default connect(mapStateToProps, mapDispatchToProps)(PostComment);
