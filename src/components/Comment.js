@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Votes from '../containers/Votes';
 import { getTime } from './helpers';
 
-export default function Comment({ commentObj }) {
+export default function Comment({ commentObj, deleteable, deleteCommentHandler }) {
 
   const { _id, belongs_to, body, created_at, created_by, votes } = commentObj;
   const created_at_text = getTime(created_at);
@@ -16,6 +16,7 @@ export default function Comment({ commentObj }) {
       <Link to={`/user/${created_by}`}><p>{created_by}</p></Link>
       <p>Belongs to article: {belongs_to}</p>
       <p>{body}</p>
+      {deleteable && <button className='button' value={_id} onClick={deleteCommentHandler}>Delete</button>}
       <Votes parentObj={commentObj} voteTarget={'comments'} />
     </div>
   );

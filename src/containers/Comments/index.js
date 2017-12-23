@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import fetchCommentsById from '../../actions/comments.js';
+import deleteComment from '../../actions/deleteComment.js';
 
 import Comment from '../../components/Comment';
 import OrderByComments from '../../components/OrderByComments';
@@ -26,6 +27,7 @@ class Comments extends React.Component {
 
     this.handleOrderClick = this.handleOrderClick.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
+    this.handleCommentDelete = this.handleCommentDelete.bind(this);
   }
 
   handleOrderClick(e) {
@@ -36,6 +38,11 @@ class Comments extends React.Component {
   handlePageClick(e) {
     e.preventDefault();
     this.setState({ page: Number(e.target.value) });
+  }
+
+  handleCommentDelete(e) {
+    e.preventDefault();
+    this.props.deleteComment(e.target.value);
   }
 
   componentDidMount() {
@@ -61,7 +68,7 @@ class Comments extends React.Component {
               : orderArticles(comments, this.state.order)
               .slice(this.state.page * this.pageLength,
                 this.state.page * this.pageLength + this.pageLength)
-              .map((commentObj, i) => <Comment commentObj={commentObj} key={i} />)
+              .map((commentObj, i) => <Comment commentObj={commentObj} deleteCommentHandler={this.handleCommentDelete} deleteable={commentObj.created_by === 'northcoder'} key={i} />)
         }
 
         {
@@ -82,6 +89,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchCommentsById: (articleId) => {
     dispatch(fetchCommentsById(articleId));
+  },
+  deleteComment: (commentId) => {
+    dispatch(deleteComment(commentId));
   }
 });
 
