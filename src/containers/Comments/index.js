@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import fetchCommentsById from '../../actions/comments.js';
 
 import Comment from '../../components/Comment';
-import OrderBy from '../../components/OrderBy';
+import OrderByComments from '../../components/OrderByComments';
 import PageNumUI from '../../components/PageNumUI';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
@@ -48,7 +48,7 @@ class Comments extends React.Component {
 
     return (
       <div>
-        <OrderBy handleClick={this.handleOrderClick} />
+        <OrderByComments handleClick={this.handleOrderClick} />
         {
           comments.length > this.pageLength 
           ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(comments.length / this.pageLength)} />

@@ -1,17 +1,20 @@
 import { articlePreviewLength } from '../config';
 
-export function orderArticles(articles, order) {
+export function orderArticles(data, order) {
+
+  let propName = order === 'high' || 'low' ? 'votes' : 'created_at';
+
   let x = 1;
   let y = -1;
 
-  if (order === "low") {
+  if (order === "low" || order === 'new') {
     x = -1;
     y = 1;
   }
 
-  return articles.sort((a, b) => {
-    if (a.votes === b.votes) return 0;
-    return a.votes < b.votes ? x : y;
+  return data.sort((a, b) => {
+    if (a[propName] === b[propName]) return 0;
+    return a[propName] < b[propName] ? x : y;
   })
 
 }
@@ -45,5 +48,5 @@ export function getTime(epochTime) {
   else if (dayDiff >= 1) return `${dayDiff} ${dayDiff === 1 ? 'day' : 'days'} ago.`;
   else if (hourDiff >= 1) return `${hourDiff} ${hourDiff === 1 ? 'hour' : 'hours'} ago.`;
   else if (secondDiff >= 1) return `${secondDiff} ${secondDiff === 1 ? 'second' : 'seconds'} ago.`;
-  else return 'some time ago.'
+  else return 'just now.'
 }
