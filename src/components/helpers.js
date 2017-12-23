@@ -29,3 +29,21 @@ export function textPreview (text) {
 
     return textPreview;
 }
+
+export function getTime(epochTime) {
+  const currentTime = new Date();
+  const postDate = new Date(epochTime);
+
+  const yearDiff = Math.floor(currentTime.getFullYear() - postDate.getFullYear());
+  const monthDiff = Math.floor(currentTime.getMonth() - postDate.getMonth());
+  const dayDiff = Math.floor(currentTime.getDate() - postDate.getDate());
+  const hourDiff = Math.floor(currentTime.getHours() - postDate.getHours());
+  const secondDiff = Math.floor(currentTime.getSeconds() - postDate.getSeconds());
+
+  if (yearDiff >= 1) return `${yearDiff} ${yearDiff === 1 ? 'year' : 'years'} ago.`;
+  else if (monthDiff >= 1) return `${monthDiff} ${monthDiff === 1 ? 'month' : 'months'} ago.`;
+  else if (dayDiff >= 1) return `${dayDiff} ${dayDiff === 1 ? 'day' : 'days'} ago.`;
+  else if (hourDiff >= 1) return `${hourDiff} ${hourDiff === 1 ? 'hour' : 'hours'} ago.`;
+  else if (secondDiff >= 1) return `${secondDiff} ${secondDiff === 1 ? 'second' : 'seconds'} ago.`;
+  else return 'some time ago.'
+}
