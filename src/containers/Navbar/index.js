@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import fetchTopics from '../../actions/topics.js';
 
 import NavbarUI from '../../components/NavbarUI';
-import Loading from '../../components/Loading';
-import Error from '../../components/Error';
-
 
 class Navbar extends React.Component {
 
@@ -20,9 +17,7 @@ class Navbar extends React.Component {
     return (
       <div>
         {
-          error ? <Error error={error} />
-            : loading ? <Loading />
-              : <NavbarUI topics={topics} />
+          <NavbarUI topics={topics} error={error} loading={loading} />
         }
       </div>
     );

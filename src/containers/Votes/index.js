@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import putVote from '../../actions/putVote.js';
 import VoteUI from '../../components/VotesUI';
-import Error from '../../components/Error';
-import Loading from '../../components/Loading';
 
 class Votes extends Component {
 

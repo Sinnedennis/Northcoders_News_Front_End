@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import fetchUser from '../../actions/user';
 import fetchArticles from '../../actions/articles';
-import ArticlePreview from '../../components/ArticlePreview';
+
 import UserPageUI from '../../components/UserPageUI';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
@@ -37,7 +38,7 @@ class UserPage extends React.Component {
         {
           errorArticles || errorUser ? <Error error={errorArticles} />
             : loadingArticles || loadingUser ? <Loading />
-              : <UserArticles articles={filteredArticles} username={user.username}/>
+              : filteredArticles.length > 0 && <UserArticles articles={filteredArticles} username={user.username}/>
         }
       </div>
     );

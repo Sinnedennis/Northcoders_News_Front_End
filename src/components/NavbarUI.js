@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Loading from './Loading';
+import Error from './Error';
+
 import HomeIcon from 'react-icons/lib/fa/home';
 import logo from './logo.png';
 
-export default function NavbarUI({ topics }) {
+export default function NavbarUI({ topics, error, loading }) {
 
   return (
     <div className="Navbar">
 
       <div className="Logo">
-        <img className="LogoImg" src={logo} />
+        <img className="LogoImg" src={logo} alt='logo'/>
       </div>
 
       <Link to="/">
@@ -19,14 +22,24 @@ export default function NavbarUI({ topics }) {
         </div>
       </Link>
 
-      <div className="TopicList">
-        {topics.map(topic =>
-          <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}>
-            <button className="button" value={topic.slug}>{topic.title}</button>
-          </Link>
-        )}
-      </div>
-      
+      {
+        error ? <Error error={error} />
+          : loading ? <Loading />
+            : topicDivs(topics)
+      }
+
+    </div>
+  );
+}
+
+function topicDivs(topics) {
+  return (
+    <div className="TopicList">
+      {topics.map(topic =>
+        <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}>
+          <button className="button" value={topic.slug}>{topic.title}</button>
+        </Link>
+      )}
     </div>
   );
 }

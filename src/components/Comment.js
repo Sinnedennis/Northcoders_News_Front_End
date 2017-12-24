@@ -5,7 +5,7 @@ import { getTime } from './helpers';
 
 export default function Comment({ commentObj, deleteable, deleteCommentHandler }) {
 
-  const { _id, belongs_to, body, created_at, created_by, votes } = commentObj;
+  const { _id, belongs_to, body, created_at, created_by } = commentObj;
   const created_at_text = getTime(created_at);
   
   return (

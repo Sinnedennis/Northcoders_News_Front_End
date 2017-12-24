@@ -6,7 +6,7 @@ import { textPreview } from './helpers';
 class ArticlePreview extends React.Component { 
 
   render() {
-    const { _id, title, body, created_by, belongs_to, votes } = this.props.article;
+    const { _id, title, body, created_by, belongs_to } = this.props.article;
 
     const bodyPreview = textPreview(body);
 

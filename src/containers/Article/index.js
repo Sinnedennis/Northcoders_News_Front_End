@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import fetchArticleById from '../../actions/articleById.js';
 
 import ArticleUI from '../../components/Article';

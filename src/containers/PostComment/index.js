@@ -53,7 +53,7 @@ class PostComment extends React.Component {
         <PostCommentUI text={text} 
           replyClickHandler={this.replyClickHandler} 
           keyHandler={this.keyHandler} 
-          active={this.state.active}
+          active={active}
           placeholder='Type here'
           handleSubmit={this.handleSubmit}
         />

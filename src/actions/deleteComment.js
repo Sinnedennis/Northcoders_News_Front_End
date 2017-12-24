@@ -26,8 +26,8 @@ export default (commentId) => {
 
     return axios.delete(`${API_URL}comments/${commentId}`)
       .then(res => {
-        dispatch(fetchComments(res.data.deletedComment.belongs_to));
         dispatch(deleteCommentSuccess(res.data));
+        dispatch(fetchComments(res.data.deletedComment.belongs_to));
       })
       .catch(err => {
         dispatch(deleteCommentFailure(err));
