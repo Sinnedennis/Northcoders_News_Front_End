@@ -7,7 +7,11 @@ export const getInitialState = () => ({
 });
 
 export default (prevState = getInitialState(), action) => {
+
+  console.log();
+
   switch (action.type) {
+
     case types.FETCH_COMMENTS_REQUEST:
       return Object.assign({}, prevState, {
         loading: !prevState.loading,
@@ -16,10 +20,15 @@ export default (prevState = getInitialState(), action) => {
       });
 
       case types.FETCH_COMMENTS_SUCCESS:
+
+      const commentCopies = action.payload.map((commentObj) => {
+        return Object.assign({}, commentObj);
+      })
+
       return Object.assign({}, prevState, {
         loading: false,
         error: null,
-        data: action.payload
+        data: commentCopies
       });
 
       case types.FETCH_COMMENTS_FAILURE:

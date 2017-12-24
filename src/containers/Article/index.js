@@ -21,6 +21,7 @@ class Article extends React.Component {
 
     if (error) return <Error error={error.message} />;
     else if (loading) return  <Loading />;
+    
     else {
       return (
         <div>

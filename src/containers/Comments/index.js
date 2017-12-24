@@ -22,7 +22,7 @@ class Comments extends React.Component {
 
     this.state = {
       order: "high",
-      page: 0
+      pageNum: 0
     }
 
     this.handleOrderClick = this.handleOrderClick.bind(this);
@@ -37,7 +37,7 @@ class Comments extends React.Component {
 
   handlePageClick(e) {
     e.preventDefault();
-    this.setState({ page: Number(e.target.value) });
+    this.setState({ pageNum: Number(e.target.value) });
   }
 
   handleCommentDelete(e) {
@@ -50,31 +50,58 @@ class Comments extends React.Component {
     this.props.fetchCommentsById(articleId);
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (this.props.comments.length > 0 && nextProps.comments.length === 0) return false;
+    else return true;
+  }
+
   render() {
     const { comments, loading, error } = this.props;
+    const { pageNum } = this.state;
+
+    const minPageIndex = pageNum * this.pageLength;
+    const maxPageIndex = pageNum * this.pageLength + this.pageLength;
+
+    const cardsPerPage = [minPageIndex, maxPageIndex];
+
+    if (error) return <Error error={error} />;
+    if (loading) return <Loading />;
+
 
     return (
       <div>
+
         <OrderByComments handleClick={this.handleOrderClick} />
+
         {
-          comments.length > this.pageLength 
-          ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(comments.length / this.pageLength)} />
-          : null
-        }
-        
-        {
-          error ? <Error error={error}/>
-            : loading ? <Loading />
-              : orderArticles(comments, this.state.order)
-              .slice(this.state.page * this.pageLength,
-                this.state.page * this.pageLength + this.pageLength)
-              .map((commentObj, i) => <Comment commentObj={commentObj} deleteCommentHandler={this.handleCommentDelete} deleteable={commentObj.created_by === 'northcoder'} key={i} />)
+          comments.length > this.pageLength && 
+          <PageNumUI 
+            handlePageClick={this.handlePageClick} 
+            activePage={pageNum} 
+            pageTotal={Math.ceil(comments.length / this.pageLength)} 
+          />
         }
 
         {
-          comments.length > this.pageLength 
-          ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(comments.length / this.pageLength)} />
-          : null
+          orderArticles(comments, this.state.order)
+            .slice(...cardsPerPage)
+            .map((commentObj, i) =>
+              <Comment 
+                commentObj={commentObj} 
+                deleteCommentHandler={this.handleCommentDelete} 
+                deleteable={commentObj.created_by === 'northcoder'}
+                key={i} 
+              />
+            )
+        }
+
+        {
+          comments.length > this.pageLength &&
+            <PageNumUI 
+              handlePageClick={this.handlePageClick} 
+              activePage={pageNum} 
+              pageTotal={Math.ceil(comments.length / this.pageLength)} 
+            />
         }
       </div >
     );
