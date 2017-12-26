@@ -1,28 +1,5 @@
 import { articlePreviewLength } from '../config';
 
-export function orderArticles(data, order) {
-
-  let propName = order === 'high' || 'low' ? 'votes' : 'created_at';
-
-  let x = 1;
-  let y = -1;
-
-  if (order === "low" || order === 'new') {
-    x = -1;
-    y = 1;
-  }
-
-  return data.sort((a, b) => {
-    if (a[propName] === b[propName]) return 0;
-    return a[propName] < b[propName] ? x : y;
-  })
-
-}
-
-export function addDefaultAvatar(e) {
-  e.target.src = "https://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg";
-}
-
 export function textPreview (text) {
   let textPreview;
     if (text.length >= articlePreviewLength) {
@@ -32,6 +9,35 @@ export function textPreview (text) {
 
     return textPreview;
 }
+
+
+export function orderArticles(list, order) {
+
+  list = list.slice();
+
+  let propName = order === ('high' || 'low') ? 'votes' : 'created_at';
+
+  let x = 1;
+  let y = -1;
+
+  if (order === "low" || order === 'old') {
+    x = -1;
+    y = 1;
+  }
+
+  const sortedList = list.sort((a, b) => {
+    if (a[propName] === b[propName]) return 0;
+    return a[propName] < b[propName] ? x : y;
+  })
+
+  return sortedList;
+}
+
+
+export function addDefaultAvatar(e) {
+  e.target.src = "https://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg";
+}
+
 
 export function getTime(epochTime) {
   const currentTime = new Date();

@@ -13,6 +13,7 @@ export default function Comment({ commentObj, deleteable, deleteCommentHandler }
       <p>This is a comment</p>
       <p>id: {_id}</p>
       <p>Posted {created_at_text}</p>
+      <p>{created_at}</p>
       <Link to={`/user/${created_by}`}><p>{created_by}</p></Link>
       <p>Belongs to article: {belongs_to}</p>
       <p>{body}</p>
