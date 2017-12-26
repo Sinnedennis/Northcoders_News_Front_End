@@ -43,16 +43,42 @@ export function getTime(epochTime) {
   const currentTime = new Date();
   const postDate = new Date(epochTime);
 
-  const yearDiff = Math.floor(currentTime.getFullYear() - postDate.getFullYear());
-  const monthDiff = Math.floor(currentTime.getMonth() - postDate.getMonth());
-  const dayDiff = Math.floor(currentTime.getDate() - postDate.getDate());
-  const hourDiff = Math.floor(currentTime.getHours() - postDate.getHours());
-  const secondDiff = Math.floor(currentTime.getSeconds() - postDate.getSeconds());
+  const secondsDifference = Math.floor((currentTime.getTime() - epochTime) / 1000);
 
-  if (yearDiff >= 1) return `${yearDiff} ${yearDiff === 1 ? 'year' : 'years'} ago.`;
-  else if (monthDiff >= 1) return `${monthDiff} ${monthDiff === 1 ? 'month' : 'months'} ago.`;
-  else if (dayDiff >= 1) return `${dayDiff} ${dayDiff === 1 ? 'day' : 'days'} ago.`;
-  else if (hourDiff >= 1) return `${hourDiff} ${hourDiff === 1 ? 'hour' : 'hours'} ago.`;
-  else if (secondDiff >= 1) return `${secondDiff} ${secondDiff === 1 ? 'second' : 'seconds'} ago.`;
-  else return ' just now.'
+  const timeObj = {
+    year:   31556952,
+    month:  2592000,
+    day:    86400,
+    hour:   3600,
+    minute: 60
+  };
+
+  const timeAgo = {
+    num: 0,
+    name: ''
+  };
+
+  if (secondsDifference >= timeObj.year) {
+    return ' over a year ago.'
+
+  } else if (secondsDifference >= timeObj.month) {
+    timeAgo.num = Math.floor(secondsDifference / timeObj.month);
+    timeAgo.name = 'month';
+
+  } else if (secondsDifference >= timeObj.day) {
+    timeAgo.num = Math.floor(secondsDifference / timeObj.day);
+    timeAgo.name = 'day';
+
+  } else if (secondsDifference >= timeObj.hour) {
+    timeAgo.num = Math.floor(secondsDifference / timeObj.hour);
+    timeAgo.name = 'hour';
+
+  } else if (secondsDifference >= timeObj.minute) {
+    timeAgo.num = Math.floor(secondsDifference / timeObj.minute);
+    timeAgo.name = 'minute';
+
+  } else return ' less than a minute ago.';
+
+  timeAgo.name = timeAgo.num > 1 ? timeAgo.name + 's' : timeAgo.name;
+  return ` ${timeAgo.num} ${timeAgo.name} ago.`;
 }

@@ -41,7 +41,10 @@ class PostComment extends React.Component {
 
     this.props.postComment(newComment);
 
-    this.setState({ active: false });
+    this.setState({
+      active: false,
+      text: ''
+    });
   }
 
   render() {
@@ -50,9 +53,9 @@ class PostComment extends React.Component {
 
     return (
       <div>
-        <PostCommentUI text={text} 
-          replyClickHandler={this.replyClickHandler} 
-          keyHandler={this.keyHandler} 
+        <PostCommentUI text={text}
+          replyClickHandler={this.replyClickHandler}
+          keyHandler={this.keyHandler}
           active={active}
           placeholder='Type here'
           handleSubmit={this.handleSubmit}
@@ -73,5 +76,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-// export default PostComment;
 export default connect(mapStateToProps, mapDispatchToProps)(PostComment);
