@@ -2,12 +2,12 @@ import { articlePreviewLength } from '../config';
 
 export function textPreview (text) {
   let textPreview;
-    if (text.length >= articlePreviewLength) {
-      textPreview = text.slice(0, articlePreviewLength);
-      textPreview = textPreview + '...';
-    } else textPreview = text;
+  if (text.length >= articlePreviewLength) {
+    textPreview = text.slice(0, articlePreviewLength);
+    textPreview = textPreview + '...';
+  } else textPreview = text;
 
-    return textPreview;
+  return textPreview;
 }
 
 
@@ -20,7 +20,7 @@ export function orderArticles(list, order) {
   let x = 1;
   let y = -1;
 
-  if (order === "low" || order === 'old') {
+  if (order === 'low' || order === 'old') {
     x = -1;
     y = 1;
   }
@@ -28,14 +28,14 @@ export function orderArticles(list, order) {
   const sortedList = list.sort((a, b) => {
     if (a[propName] === b[propName]) return 0;
     return a[propName] < b[propName] ? x : y;
-  })
+  });
 
   return sortedList;
 }
 
 
 export function addDefaultAvatar(e) {
-  e.target.src = "https://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg";
+  e.target.src = 'https://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg';
 }
 
 
@@ -59,7 +59,7 @@ export function getTime(epochTime) {
   };
 
   if (secondsDifference >= timeObj.year) {
-    return ' over a year ago.'
+    return ' over a year ago.';
 
   } else if (secondsDifference >= timeObj.month) {
     timeAgo.num = Math.floor(secondsDifference / timeObj.month);

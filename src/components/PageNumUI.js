@@ -14,8 +14,8 @@ export default function PageNumUI({ handlePageClick, pageTotal, activePage }) {
 
       {
         loopArray.map((i) => {
-          if (activePage === i) return <button className="button" onClick={handlePageClick} value={i} key={i}>{i + 1}A</button>
-          else return <button value={i} onClick={handlePageClick} key={i}>{i + 1}</button>
+          if (activePage === i) return <button className="button" onClick={handlePageClick} value={i} key={i}>{i + 1}A</button>;
+          else return <button value={i} onClick={handlePageClick} key={i}>{i + 1}</button>;
         })
       }
     </div>

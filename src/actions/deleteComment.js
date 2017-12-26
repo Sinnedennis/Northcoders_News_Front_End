@@ -31,6 +31,6 @@ export default (commentId) => {
       })
       .catch(err => {
         dispatch(deleteCommentFailure(err));
-      })
+      });
   };
 };

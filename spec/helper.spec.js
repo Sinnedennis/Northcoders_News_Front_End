@@ -2,7 +2,7 @@ const { expect } = require('chai');
 
 const { orderArticles, getTime } = require('../src/components/helpers');
 
-describe.only('#orderArticles', () => {
+describe('#orderArticles', () => {
   it('should order a list based on prop "created_at"', () => {
     const d = new Date();
     const input = [
@@ -19,7 +19,7 @@ describe.only('#orderArticles', () => {
 
     expect(newest[0].created_at).to.be.greaterThan(newest[1].created_at);
     expect(newest[2].created_at).to.be.lessThan(newest[1].created_at);
-  })
+  });
 
   it('should order a list based on the prop "votes"', () => {
 
@@ -38,7 +38,7 @@ describe.only('#orderArticles', () => {
     expect(lowest[0].votes).to.be.lessThan(lowest[1].votes);
     expect(lowest[2].votes).to.be.greaterThan(lowest[1].votes);
   });
-})
+});
 
 describe('#getTime', () => {
     

@@ -12,7 +12,7 @@ class PostComment extends React.Component {
     this.state = {
       active: false,
       text: ''
-    }
+    };
 
     this.replyClickHandler = this.replyClickHandler.bind(this);
     this.keyHandler = this.keyHandler.bind(this);
@@ -37,7 +37,7 @@ class PostComment extends React.Component {
     const newComment = {
       commentText: this.state.text,
       belongs_to: this.props.articleId
-    }
+    };
 
     this.props.postComment(newComment);
 

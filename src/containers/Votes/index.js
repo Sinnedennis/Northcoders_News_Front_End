@@ -34,12 +34,12 @@ class Votes extends Component {
     let newVotes;
 
     if (nextProps.parentObj._id !== this.props.parentObj._id) {
-      newVotes = nextProps.parentObj.votes
+      newVotes = nextProps.parentObj.votes;
     } else newVotes = nextProps.voteData.votes;
 
     this.setState({
       votes: newVotes
-    })
+    });
   }
 
   render() {

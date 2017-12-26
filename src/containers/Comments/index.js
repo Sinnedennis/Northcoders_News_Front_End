@@ -21,9 +21,9 @@ class Comments extends React.Component {
     this.pageLength = commentsPerPage;
 
     this.state = {
-      order: "high",
+      order: 'high',
       pageNum: 0
-    }
+    };
 
     this.handleOrderClick = this.handleOrderClick.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);

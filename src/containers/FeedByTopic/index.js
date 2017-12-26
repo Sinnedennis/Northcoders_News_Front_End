@@ -16,9 +16,9 @@ class TopicalArtcles extends React.Component {
     this.pageLength = 10;
 
     this.state = {
-      order: "high",
+      order: 'high',
       page: 0
-    }
+    };
 
     this.handleOrderClick = this.handleOrderClick.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
@@ -61,8 +61,8 @@ class TopicalArtcles extends React.Component {
 
         {
           articles.length > this.pageLength 
-          ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
-          : null
+            ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
+            : null
         }
         
         {
@@ -76,8 +76,8 @@ class TopicalArtcles extends React.Component {
 
         {
           articles.length > this.pageLength 
-          ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
-          : null
+            ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
+            : null
         }
       </div>
     );

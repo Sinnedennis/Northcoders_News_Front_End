@@ -4,16 +4,16 @@ import Comments from '../containers/Comments';
 
 class ArticleAndComments extends React.Component {
 
-    render() {
-        const { articleId } = this.props.match.params;
-        return (
-            <div>
-                <Article articleId={articleId} />
-                <Comments articleId={articleId} />
-            </div>
+  render() {
+    const { articleId } = this.props.match.params;
+    return (
+      <div>
+        <Article articleId={articleId} />
+        <Comments articleId={articleId} />
+      </div>
 
-        );
-    }
+    );
+  }
 }
 
 

@@ -25,7 +25,7 @@ export default (commentObj) => {
 
     const { commentText, belongs_to } = commentObj;
     return axios.post(`${API_URL}articles/${belongs_to}/comments`, { commentText })
-    .then(res => {
+      .then(res => {
         dispatch(postCommentSuccess(res.data));
       })
       .then (() => {
@@ -33,6 +33,6 @@ export default (commentObj) => {
       })
       .catch(err => {
         dispatch(postCommentFailure(err));
-      })
+      });
   };
 };
