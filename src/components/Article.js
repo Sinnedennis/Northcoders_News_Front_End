@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PT from 'prop-types';
 
 import Votes from '../containers/Votes';
 
@@ -20,3 +21,7 @@ export default function Article({ article }) {
     </div>
   );
 }
+
+Article.propTypes = {
+  article: PT.object.isRequired
+};

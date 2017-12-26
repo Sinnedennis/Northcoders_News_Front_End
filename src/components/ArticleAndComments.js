@@ -1,4 +1,6 @@
 import React from 'react';
+import PT from 'prop-types';
+
 import Article from '../containers/Article';
 import Comments from '../containers/Comments';
 
@@ -15,6 +17,10 @@ class ArticleAndComments extends React.Component {
     );
   }
 }
+
+ArticleAndComments.propTypes = {
+  match: PT.object.isRequired
+};
 
 
 export default ArticleAndComments;

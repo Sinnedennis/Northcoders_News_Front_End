@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 
 export default function OrderBy({ handleClick }) {
   return (
@@ -14,3 +15,6 @@ export default function OrderBy({ handleClick }) {
   );
 }
 
+OrderBy.propTypes = {
+  handleClick: PT.func.isRequired
+};

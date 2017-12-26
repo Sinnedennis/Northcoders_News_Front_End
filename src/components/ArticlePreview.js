@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PT from 'prop-types';
+
 import Votes from '../containers/Votes';
 import { textPreview } from './helpers';
 
@@ -16,8 +18,10 @@ class ArticlePreview extends React.Component {
 
           <p>{title}</p>
           <p>{bodyPreview}</p>
-          <p>Article Index: {this.props.index}</p>
-          <Link to={`/user/${created_by}`}><p>{created_by}</p></Link>
+          {this.props.index && <p>Article Index: {this.props.index}</p>}
+        </Link>
+        <Link to={`/user/${created_by}`}><p>{created_by}</p></Link>
+        <Link to={`/article/${_id}`}>
           <p>{belongs_to}</p>
           <p>{_id}</p>
         </Link>
@@ -26,5 +30,10 @@ class ArticlePreview extends React.Component {
     );
   }
 }
+
+ArticlePreview.propTypes = {
+  article: PT.object.isRequired,
+  index: PT.number
+};
 
 export default ArticlePreview;

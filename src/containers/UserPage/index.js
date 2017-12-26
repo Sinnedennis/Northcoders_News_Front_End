@@ -26,7 +26,7 @@ class UserPage extends React.Component {
     if (loadingArticles === false && loadingUser === false) {
       filteredArticles = articles.filter(article => article.created_by === user.username);
     }
-
+    console.log('loadingArt', loadingArticles, 'loadingUser', loadingUser);
     return (
       <div>
         {
@@ -38,7 +38,7 @@ class UserPage extends React.Component {
         {
           errorArticles || errorUser ? <Error error={errorArticles} />
             : loadingArticles || loadingUser ? <Loading />
-              : filteredArticles.length > 0 && <UserArticles articles={filteredArticles} username={user.username}/>
+              : filteredArticles.length > 0 && <UserArticles articles={filteredArticles} userName={user.username}/>
         }
       </div>
     );

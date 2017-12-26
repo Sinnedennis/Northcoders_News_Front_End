@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 
 export default function OrderByComments({ handleClick }) {
   return (
@@ -16,3 +17,6 @@ export default function OrderByComments({ handleClick }) {
   );
 }
 
+OrderByComments.propTypes = {
+  handleClick: PT.func.isRequired
+};

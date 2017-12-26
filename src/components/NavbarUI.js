@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PT from 'prop-types';
 
 import Loading from './Loading';
 import Error from './Error';
@@ -43,3 +44,9 @@ function topicDivs(topics) {
     </div>
   );
 }
+
+NavbarUI.propTypes = {
+  topics: PT.array.isRequired,
+  error: PT.object,
+  loading: PT.bool
+};

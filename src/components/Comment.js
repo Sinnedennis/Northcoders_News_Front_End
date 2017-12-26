@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PT from 'prop-types';
+
 import Votes from '../containers/Votes';
 import { getTime } from './helpers';
 
@@ -22,3 +24,9 @@ export default function Comment({ commentObj, deleteable, deleteCommentHandler }
     </div>
   );
 }
+
+Comment.propTypes = {
+  commentObj: PT.object.isRequired,
+  deleteable: PT.bool.isRequired,
+  deleteCommentHandler: PT.func.isRequired
+};

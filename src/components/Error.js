@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PT from 'prop-types';
 
 export default function Error({error}) {
 
@@ -14,5 +15,6 @@ export default function Error({error}) {
 }
 
 
-
-
+Error.propTypes = {
+  error: PT.object
+};

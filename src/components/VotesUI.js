@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 
 export default function VotesUI({ clickHandler, votes }) {
 
@@ -11,3 +12,7 @@ export default function VotesUI({ clickHandler, votes }) {
   );
 }
 
+VotesUI.propTypes = {
+  clickHandler: PT.func.isRequired,
+  votes: PT.number.isRequired
+};

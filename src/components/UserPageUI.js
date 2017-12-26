@@ -1,10 +1,10 @@
 import React from 'react';
+import PT from 'prop-types';
 
 import { addDefaultAvatar } from './helpers';
 
 export default function UserPageUI({ user }) {
-
-  const {_id, avatar_url, name, username} = user;
+  const { _id, avatar_url, name, username } = user;
 
   return (
     <div>
@@ -16,3 +16,7 @@ export default function UserPageUI({ user }) {
     </div>
   );
 }
+
+UserPageUI.propTypes = {
+  user: PT.object.isRequired,
+};

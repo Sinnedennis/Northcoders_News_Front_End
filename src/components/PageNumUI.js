@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 
 export default function PageNumUI({ handlePageClick, pageTotal, activePage }) {
 
@@ -22,3 +23,8 @@ export default function PageNumUI({ handlePageClick, pageTotal, activePage }) {
   );
 }
 
+PageNumUI.propTypes = {
+  handlePageClick: PT.func.isRequired,
+  pageTotal: PT.number.isRequired,
+  activePage: PT.number.isRequired
+};

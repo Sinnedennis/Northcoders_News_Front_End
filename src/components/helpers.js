@@ -41,7 +41,6 @@ export function addDefaultAvatar(e) {
 
 export function getTime(epochTime) {
   const currentTime = new Date();
-  const postDate = new Date(epochTime);
 
   const secondsDifference = Math.floor((currentTime.getTime() - epochTime) / 1000);
 
