@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PT from 'prop-types';
+
 import putVote from '../../actions/putVote.js';
 import VoteUI from '../../components/VotesUI';
 
@@ -62,5 +64,16 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(putVote(id, target, vote));
   }
 });
+
+Votes.propTypes = {
+  voteData: PT.array.isRequired,
+  loading: PT.bool.isRequired,
+  error: PT.object,
+
+  parentObj: PT.object.isRequired,
+  voteTarget: PT.string.isRequired,
+
+  putVote: PT.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Votes);

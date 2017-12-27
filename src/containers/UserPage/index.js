@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PT from 'prop-types';
 
 import fetchUser from '../../actions/user';
 import fetchArticles from '../../actions/articles';
@@ -62,5 +63,20 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchArticles());
   }
 });
+
+UserPage.propTypes = {
+  user: PT.any.isRequired,
+  loadingUser: PT.bool.isRequired,
+  errorUser: PT.object,
+
+  articles: PT.any.isRequired,
+  loadingArticles: PT.bool.isRequired,
+  errorArticles: PT.object,
+
+  match: PT.object.isRequired,
+  
+  fetchUser: PT.func.isRequired,
+  fetchArticles: PT.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

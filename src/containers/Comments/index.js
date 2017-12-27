@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PT from 'prop-types';
 
 import fetchCommentsById from '../../actions/comments.js';
 import deleteComment from '../../actions/deleteComment.js';
@@ -121,5 +122,16 @@ const mapDispatchToProps = dispatch => ({
     dispatch(deleteComment(commentId));
   }
 });
+
+Comments.propTypes = {
+  comments: PT.any,
+  loading: PT.bool.isRequired,
+  error: PT.object,
+
+  articleId: PT.string.isRequired,
+
+  fetchCommentsById: PT.func.isRequired,
+  deleteComment: PT.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);

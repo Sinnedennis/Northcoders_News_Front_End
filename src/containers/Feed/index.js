@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PT from 'prop-types';
 
 import fetchArticles from '../../actions/articles.js';
 import ArticlePreview from '../../components/ArticlePreview';
@@ -83,5 +84,13 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchArticles());
   }
 });
+
+Feed.propTypes = {
+  articles: PT.any,
+  loading: PT.bool.isRequired,
+  error: PT.object,
+
+  fetchArticles: PT.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);

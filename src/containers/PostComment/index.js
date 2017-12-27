@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PT from 'prop-types';
 
 import postComment from '../../actions/postComment.js';
 import PostCommentUI from '../../components/PostCommentUI';
@@ -75,5 +76,15 @@ const mapDispatchToProps = dispatch => ({
     dispatch(postComment(commentObj));
   }
 });
+
+PostComment.propTypes = {
+  data: PT.array.isRequired,
+  loading: PT.bool.isRequired,
+  error: PT.object,
+
+  articleId: PT.string.isRequired,
+
+  postComment: PT.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostComment);

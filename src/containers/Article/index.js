@@ -47,6 +47,11 @@ const mapDispatchToProps = dispatch => ({
 
 Article.propTypes = {
   articleId: PT.string.isRequired,
+  loading: PT.bool.isRequired,
+  error: PT.object,
+  article: PT.any.isRequired,
+
+  fetchArticleById: PT.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

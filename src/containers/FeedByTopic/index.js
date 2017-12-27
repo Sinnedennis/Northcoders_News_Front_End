@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PT from 'prop-types';
+
 import fetchArticlesByTopic from '../../actions/articlesByTopic';
+
 import ArticlePreview from '../../components/ArticlePreview';
 import OrderBy from '../../components/OrderBy';
 import PageNumUI from '../../components/PageNumUI';
-import { orderArticles } from '../../components/helpers';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
+import { orderArticles } from '../../components/helpers';
 
 
 class TopicalArtcles extends React.Component {
@@ -94,5 +97,14 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchArticlesByTopic(topic_id));
   }
 });
+
+TopicalArtcles.propTypes = {
+  articles: PT.any,
+  loading: PT.bool.isRequired,
+  error: PT.object,
+
+  match: PT.object.isRequired,
+  fetchArticlesByTopic: PT.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicalArtcles);
