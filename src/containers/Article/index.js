@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PT from 'prop-types';
 
 import fetchArticleById from '../../actions/articleById.js';
 
@@ -11,7 +12,7 @@ import PostComment from '../PostComment';
 
 class Article extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     const { articleId } = this.props;
     this.props.fetchArticleById(articleId);
   }
@@ -43,5 +44,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchArticleById(articleId));
   }
 });
+
+Article.propTypes = {
+  articleId: PT.string.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

@@ -26,7 +26,7 @@ class UserPage extends React.Component {
     if (loadingArticles === false && loadingUser === false) {
       filteredArticles = articles.filter(article => article.created_by === user.username);
     }
-    console.log('loadingArt', loadingArticles, 'loadingUser', loadingUser);
+
     return (
       <div>
         {
