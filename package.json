@@ -40,6 +40,8 @@
     "chai": "^4.1.2",
     "eslint": "^4.14.0",
     "mocha": "^4.0.1",
-    "prop-types": "^15.6.0"
+    "nock": "^9.1.5",
+    "prop-types": "^15.6.0",
+    "redux-mock-store": "^1.4.0"
   }
 }

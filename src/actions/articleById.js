@@ -20,7 +20,7 @@ export const fetchArticleFailure = (err) => ({
 export default (articleId) => {
   return (dispatch) => {
     dispatch(fetchArticleRequest(articleId));
-    return axios.get(`${API_URL}articles/${articleId}`)
+    return axios.get(`${API_URL}articles/${articleId}/`)
       .then(res => {
         dispatch(fetchArticleSuccess(res.data.article));
       })
