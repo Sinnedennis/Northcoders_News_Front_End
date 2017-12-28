@@ -20,12 +20,12 @@ export const getCommentsFailure = (err) => ({
 export default (articleId) => {
   return (dispatch) => {
     dispatch(getCommentsRequest(articleId));
-    return axios.get(`${API_URL}articles/${articleId}/comments`)
+    return axios.get(`${API_URL}articles/${articleId}/comments/`)
       .then(res => {
         dispatch(getCommentsSuccess(res.data.comments));
       })
       .catch(err => {
-        dispatch(getCommentsFailure(err));
+        dispatch(getCommentsFailure(err.message));
       });
   };
 };
