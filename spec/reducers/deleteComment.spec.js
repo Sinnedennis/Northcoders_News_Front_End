@@ -6,7 +6,7 @@ import {
   deleteCommentFailure
 } from '../../src/actions/deleteComment';
 
-describe.only('#deleteComment reducer', () => {
+describe('#deleteComment reducer', () => {
   it('returns the previous state if passed unknown action type', () => {
 
     const badAction = { type: 'banana' };
