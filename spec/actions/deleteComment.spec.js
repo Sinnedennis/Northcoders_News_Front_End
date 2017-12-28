@@ -52,4 +52,26 @@ describe('#deleteComment', () => {
       });
   });
 
+  it('dispatches DELETE_COMMENT_FAILURE when receiving an error', () => {
+
+    const error = 'message deletion failed';
+    const commentId = '12345';
+
+    nock(API_URL)
+      .delete(`/comments/${commentId}/`)
+      .replyWithError({ message: error });
+
+    const expectedActions = [
+      deleteCommentRequest(commentId),
+      deleteCommentFailure(error)
+    ];
+
+    const store = mockStore({});
+
+    return store.dispatch(deleteComment(commentId))
+      .then(() => {
+        expect(store.getActions()).to.eql(expectedActions);
+      });
+  });
+
 });

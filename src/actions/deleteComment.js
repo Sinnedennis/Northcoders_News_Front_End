@@ -30,7 +30,7 @@ export default (commentId) => {
         dispatch(getComments(res.data.deletedComment.belongs_to));
       })
       .catch(err => {
-        dispatch(deleteCommentFailure(err));
+        dispatch(deleteCommentFailure(err.message));
       });
   };
 };
