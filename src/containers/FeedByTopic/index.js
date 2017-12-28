@@ -9,7 +9,8 @@ import OrderBy from '../../components/OrderBy';
 import PageNumUI from '../../components/PageNumUI';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
-import { orderArticles } from '../../components/helpers';
+
+import { orderArticles } from '../../utils';
 
 
 class TopicalArtcles extends React.Component {

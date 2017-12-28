@@ -10,7 +10,7 @@ import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 import OrderBy from '../../components/OrderBy';
 
-import { orderArticles } from '../../components/helpers';
+import { orderArticles } from '../../utils';
 import { articlePerPage } from '../../config';
 
 class Feed extends React.Component {

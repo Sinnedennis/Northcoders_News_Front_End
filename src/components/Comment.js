@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PT from 'prop-types';
 
 import Votes from '../containers/Votes';
-import { getTime } from './helpers';
+import { getTime } from '../utils';
 
 export default function Comment({ commentObj, deleteable, deleteCommentHandler }) {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { addDefaultAvatar } from './helpers';
+import { addDefaultAvatar } from '../utils';
 
 export default function UserPageUI({ user }) {
   const { _id, avatar_url, name, username } = user;

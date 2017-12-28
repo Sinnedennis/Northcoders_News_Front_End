@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const { orderArticles, getTime } = require('../src/components/helpers');
+const { orderArticles, getTime } = require('../src/utils');
 
 describe('#orderArticles', () => {
   it('should order a list based on prop "created_at"', () => {

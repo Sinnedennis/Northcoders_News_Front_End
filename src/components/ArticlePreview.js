@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PT from 'prop-types';
 
 import Votes from '../containers/Votes';
-import { textPreview } from './helpers';
+import { textPreview } from '../utils';
 
 class ArticlePreview extends React.Component { 
 
