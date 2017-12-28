@@ -6,7 +6,7 @@ import {
   getAllArticlesFailure
 } from '../../src/actions/getAllArticles';
 
-describe.only('#getAllArticles reducer', () => {
+describe('#getAllArticles reducer', () => {
   it('returns the previous state if passed unknown action type', () => {
 
     const badAction = { type: 'banana' };
