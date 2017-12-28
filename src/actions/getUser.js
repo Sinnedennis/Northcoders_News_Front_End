@@ -20,12 +20,12 @@ export const getUserFailure = (err) => ({
 export default (userName) => {
   return (dispatch) => {
     dispatch(getUserRequest(userName));
-    return axios.get(`${API_URL}users/${userName}`)
+    return axios.get(`${API_URL}users/${userName}/`)
       .then(res => {
         dispatch(getUserSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getUserFailure(err));
+        dispatch(getUserFailure(err.message));
       });
   };
 };

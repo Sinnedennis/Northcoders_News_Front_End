@@ -45,7 +45,7 @@ describe('#getAllArticles', () => {
 
   it('dispatches GET_ALL_ARTICLES_FAILURE when receiving error', () => {
 
-    const error = 'failed message request';
+    const error = 'failed to get articles';
 
     nock(API_URL)
       .get('/articles/')

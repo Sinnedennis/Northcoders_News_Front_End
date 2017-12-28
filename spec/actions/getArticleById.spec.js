@@ -13,7 +13,7 @@ import { API_URL } from '../../src/config';
 
 const mockStore = configureMockStore([thunk]);
 
-describe('#articleById', () => {
+describe('#getArticlesById', () => {
 
   afterEach(() => {
     nock.cleanAll();
@@ -47,7 +47,7 @@ describe('#articleById', () => {
   it('dispatches GET_ARTICLE_BY_ID_FAILURE when given bad ID data', () => {
 
     const articleId = 'banana';
-    const error = 'failed message request';
+    const error = 'failed to get article by id';
 
     nock(API_URL)
       .get(`/articles/${articleId}/`)

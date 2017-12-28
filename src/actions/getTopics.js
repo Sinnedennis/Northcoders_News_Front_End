@@ -24,7 +24,7 @@ export default () => {
         dispatch(getTopicsSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getTopicsFailure(err));
+        dispatch(getTopicsFailure(err.message));
       });
   };
 };

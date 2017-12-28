@@ -13,13 +13,13 @@ import { API_URL } from '../../src/config';
 
 const mockStore = configureMockStore([thunk]);
 
-describe('#articlesByTopic', () => {
+describe('#getComments', () => {
 
   afterEach(() => {
     nock.cleanAll();
   });
 
-  it('dispatches GET_ARTICLE_BY_TOPIC_SUCCESS when receiving data', () => {
+  it('dispatches GET_COMMENTS_SUCCESS when receiving data', () => {
 
     const articleId = '123';
 
@@ -46,10 +46,10 @@ describe('#articlesByTopic', () => {
       });
   });
 
-  it('dispatches GET_ARTICLE_BY_TOPIC_FAILURE when given bad ID data', () => {
+  it('dispatches GET_COMMENTS_FAILURE when given bad ID data', () => {
 
     const articleId = '123';
-    const error = 'failed message request';
+    const error = 'failed to get comments';
 
     nock(API_URL)
       .get(`/articles/${articleId}/comments/`)
