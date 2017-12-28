@@ -28,14 +28,14 @@ describe('#getComments reducer', () => {
 
     const action = getCommentsRequest();
     const newState = getCommentsReducer(undefined, action);
-    
+
     expect(newState.loading).to.be.true;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
 
   it('returns the appropriate state for GET_COMMENTS_SUCCESS action', () => {
-    const data = [1,2,3,4]
+    const data = [1, 2, 3, 4];
     const action = getCommentsSuccess(data);
     const newState = getCommentsReducer(undefined, action);
 

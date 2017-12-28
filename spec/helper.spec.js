@@ -45,7 +45,7 @@ describe('#orderArticles', () => {
 
 
 describe('#getTime', () => {
-    
+
   let pastTime = new Date();
   pastTime = pastTime.getTime();
 
@@ -82,7 +82,7 @@ describe('#getTime', () => {
     expect(getTime(pastTime - (5184000 * 1000))).to.equal(' 2 months ago.');
   });
 
-  
+
   it('should return "over a year ago" when passed a difference of 1+ years', () => {
 
     expect(getTime(pastTime - (31556952 * 1000))).to.equal(' over a year ago.');

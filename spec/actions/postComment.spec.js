@@ -41,7 +41,7 @@ describe('#postComment', () => {
 
     const expectedActions = [
       postCommentRequest(commentObj),
-      postCommentSuccess({message}),
+      postCommentSuccess({ message }),
       getCommentsRequest(commentObj.belongs_to)
     ];
     const store = mockStore();

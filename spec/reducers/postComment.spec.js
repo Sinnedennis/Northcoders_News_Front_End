@@ -28,14 +28,14 @@ describe('#postComment reducer', () => {
 
     const action = postCommentRequest('example comment body');
     const newState = postCommentReducer(undefined, action);
-    
+
     expect(newState.loading).to.be.true;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
 
   it('returns the appropriate state for POST_COMMENT_SUCCESS action', () => {
-    const data = [1,2,3,4]
+    const data = [1, 2, 3, 4];
     const action = postCommentSuccess(data);
     const newState = postCommentReducer(undefined, action);
 

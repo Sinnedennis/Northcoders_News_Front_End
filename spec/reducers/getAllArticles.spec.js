@@ -35,7 +35,7 @@ describe('#getAllArticles reducer', () => {
   });
 
   it('returns the appropriate state for GET_ALL_ARTICLES_SUCCESS action', () => {
-    const data = [1,2,3,4]
+    const data = [1, 2, 3, 4];
     const action = getAllArticlesSuccess(data);
     const newState = getAllArticlesReducer(undefined, action);
 

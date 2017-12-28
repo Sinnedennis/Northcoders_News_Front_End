@@ -28,14 +28,14 @@ describe('#getArticlesByTopic reducer', () => {
 
     const action = getArticlesByTopicRequest('example topic');
     const newState = getArticlesByTopicReducer(undefined, action);
-    
+
     expect(newState.loading).to.be.true;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
 
   it('returns the appropriate state for GET_ARTICLE_BY_TOPIC_SUCCESS action', () => {
-    const data = [1,2,3,4]
+    const data = [1, 2, 3, 4];
     const action = getArticlesByTopicSuccess(data);
     const newState = getArticlesByTopicReducer(undefined, action);
 

@@ -28,14 +28,14 @@ describe('#getArticleById reducer', () => {
 
     const action = getArticleByIdRequest('id: 1234');
     const newState = getArticleByIdReducer(undefined, action);
-    
+
     expect(newState.loading).to.be.true;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
 
   it('returns the appropriate state for GET_ARTICLE_BY_ID_SUCCESS action', () => {
-    const data = [1,2,3,4]
+    const data = [1, 2, 3, 4];
     const action = getArticleByIdSuccess(data);
     const newState = getArticleByIdReducer(undefined, action);
 

@@ -28,14 +28,14 @@ describe('#getUser reducer', () => {
 
     const action = getUserRequest('example username');
     const newState = getUserReducer(undefined, action);
-    
+
     expect(newState.loading).to.be.true;
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
 
   it('returns the appropriate state for GET_USER_SUCCESS action', () => {
-    const data = [1,2,3,4]
+    const data = [1, 2, 3, 4];
     const action = getUserSuccess(data);
     const newState = getUserReducer(undefined, action);
 
