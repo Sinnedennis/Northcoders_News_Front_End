@@ -31,7 +31,7 @@ describe('#putVote', () => {
     };
 
     nock(API_URL)
-      .put(`/${target}/${id}?vote=${vote}/`)
+      .put(`/${target}/${id}?vote=${vote}`)
       .reply(200, { votedData });
 
 
@@ -55,7 +55,7 @@ describe('#putVote', () => {
     const error = 'Voting failed.';
 
     nock(API_URL)
-      .put(`/${target}/${id}?vote=${vote}/`)
+      .put(`/${target}/${id}?vote=${vote}`)
       .replyWithError({ message: error });
 
     const expectedActions = [

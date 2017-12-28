@@ -1,17 +1,17 @@
 import { expect } from 'chai';
-import getArticleByIdReducer, { getInitialState } from '../../src/reducers/getArticleById';
+import getCommentsReducer, { getInitialState } from '../../src/reducers/getComments';
 import {
-  getArticleByIdRequest,
-  getArticleByIdSuccess,
-  getArticleByIdFailure
-} from '../../src/actions/getArticleById';
+  getCommentsRequest,
+  getCommentsSuccess,
+  getCommentsFailure
+} from '../../src/actions/getComments';
 
-describe('#getArticleById reducer', () => {
+describe('#getComments reducer', () => {
   it('returns the previous state if passed unknown action type', () => {
 
     const badAction = { type: 'banana' };
     const initialState = getInitialState();
-    const previouState = getArticleByIdReducer(initialState, badAction);
+    const previouState = getCommentsReducer(initialState, badAction);
 
     expect(previouState).to.eql(initialState);
   });
@@ -20,14 +20,14 @@ describe('#getArticleById reducer', () => {
 
     const action = { type: 'action' };
     const initialState = getInitialState();
-    const testState = getArticleByIdReducer(undefined, action);
+    const testState = getCommentsReducer(undefined, action);
     expect(testState).to.eql(initialState);
   });
 
-  it('returns the appropriate state for GET_ARTICLE_BY_ID_REQUEST action', () => {
+  it('returns the appropriate state for GET_COMMENTS_REQUEST action', () => {
 
-    const action = getArticleByIdRequest('id: 1234');
-    const newState = getArticleByIdReducer(undefined, action);
+    const action = getCommentsRequest();
+    const newState = getCommentsReducer(undefined, action);
     
     expect(newState.loading).to.be.true;
     expect(newState.error).to.be.null;
@@ -36,8 +36,8 @@ describe('#getArticleById reducer', () => {
 
   it('returns the appropriate state for GET_ARTICLE_BY_ID_SUCCESS action', () => {
     const data = [1,2,3,4]
-    const action = getArticleByIdSuccess(data);
-    const newState = getArticleByIdReducer(undefined, action);
+    const action = getCommentsSuccess(data);
+    const newState = getCommentsReducer(undefined, action);
 
     expect(newState.loading).to.be.false;
     expect(newState.error).to.be.null;
@@ -46,8 +46,8 @@ describe('#getArticleById reducer', () => {
 
   it('returns the appropriate state for GET_ARTICLE_BY_ID_FAILURE action', () => {
     const error = '404 page not found';
-    const action = getArticleByIdFailure(error);
-    const newState = getArticleByIdReducer(undefined, action);
+    const action = getCommentsFailure(error);
+    const newState = getCommentsReducer(undefined, action);
 
     expect(newState.loading).to.be.false;
     expect(newState.error).to.eql(error);

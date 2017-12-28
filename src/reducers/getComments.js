@@ -26,7 +26,7 @@ export default (prevState = getInitialState(), action) => {
     return Object.assign({}, prevState, {
       loading: false,
       error: null,
-      data: commentCopies
+      data: action.payload
     });
 
   case types.GET_COMMENTS_FAILURE:
