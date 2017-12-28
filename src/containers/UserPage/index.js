@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 
-import fetchUser from '../../actions/user';
-import fetchArticles from '../../actions/articles';
+import getUser from '../../actions/getUser';
+import getAllArticles from '../../actions/getAllArticles';
 
 import UserPageUI from '../../components/UserPageUI';
 import Loading from '../../components/Loading';
@@ -14,8 +14,8 @@ class UserPage extends React.Component {
 
   componentDidMount() {
     const { userName } = this.props.match.params;
-    this.props.fetchUser(userName);
-    this.props.fetchArticles();
+    this.props.getUser(userName);
+    this.props.getAllArticles();
   }
 
   render() {
@@ -56,11 +56,11 @@ const mapStateToProps = state => ({
   errorArticles: state.articles.error
 });
 const mapDispatchToProps = dispatch => ({
-  fetchUser: (userName) => {
-    dispatch(fetchUser(userName));
+  getUser: (userName) => {
+    dispatch(getUser(userName));
   },
-  fetchArticles: () => {
-    dispatch(fetchArticles());
+  getAllArticles: () => {
+    dispatch(getAllArticles());
   }
 });
 
@@ -75,8 +75,8 @@ UserPage.propTypes = {
 
   match: PT.object.isRequired,
   
-  fetchUser: PT.func.isRequired,
-  fetchArticles: PT.func.isRequired
+  getUser: PT.func.isRequired,
+  getAllArticles: PT.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

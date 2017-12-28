@@ -1,24 +1,25 @@
 import {combineReducers} from 'redux';
-import articlesReducer  from './articles.js';
-import articleByIdReducer  from './articleById.js';
-import topicsReducer from './topics.js';
-import articlesByTopicReducer from './articlesByTopic';
-import commentsReducer from './comments';
-import userReducer from './user';
-import voteReducer from './putVote';
-import postCommentReducer from './postComment';
-import deleteCommentReducer from './deleteComment';
+
+import getAllArticles  from './getAllArticles.js';
+import getArticleById  from './getArticleById.js';
+import getTopics from './getTopics.js';
+import getArticlesByTopic from './getArticlesByTopic';
+import getComments from './getComments';
+import getUser from './getUser';
+import putVote from './putVote';
+import postComment from './postComment';
+import deleteComment from './deleteComment';
 
 const reducer = combineReducers({
-  articles: articlesReducer,
-  article: articleByIdReducer,
-  topics: topicsReducer,
-  articlesByTopic: articlesByTopicReducer,
-  comments: commentsReducer,
-  user: userReducer,
-  voteData: voteReducer,
-  postComment: postCommentReducer,
-  deleteComment: deleteCommentReducer
+  articles: getAllArticles,
+  article: getArticleById,
+  topics: getTopics,
+  articlesByTopic: getArticlesByTopic,
+  comments: getComments,
+  user: getUser,
+  voteData: putVote,
+  postComment: postComment,
+  deleteComment: deleteComment
 });
 
 export default reducer;

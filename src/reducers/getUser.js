@@ -1,7 +1,7 @@
 import * as types from '../actions/types';
 
 export const getInitialState = () => ({
-  loading: false,
+  loading: true,
   error: null,
   data: []
 });
@@ -9,27 +9,21 @@ export const getInitialState = () => ({
 export default (prevState = getInitialState(), action) => {
 
   switch (action.type) {
-
-  case types.FETCH_COMMENTS_REQUEST:
+  case types.GET_USER_REQUEST:
     return Object.assign({}, prevState, {
-      loading: !prevState.loading,
+      loading: true,
       error: null,
       data: []
     });
 
-  case types.FETCH_COMMENTS_SUCCESS:
-
-    var commentCopies = action.payload.map((commentObj) => {
-      return Object.assign({}, commentObj);
-    });
-
+  case types.GET_USER_SUCCESS:
     return Object.assign({}, prevState, {
       loading: false,
       error: null,
-      data: commentCopies
+      data: action.payload
     });
 
-  case types.FETCH_COMMENTS_FAILURE:
+  case types.GET_USER_FAILURE:
     return Object.assign({}, prevState, {
       loading: false,
       error: action.payload,

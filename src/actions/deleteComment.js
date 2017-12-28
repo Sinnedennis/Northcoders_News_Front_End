@@ -2,7 +2,7 @@ import * as types from './types';
 import axios from 'axios';
 import { API_URL } from '../config';
 
-import fetchComments from './comments';
+import getComments from './getComments';
 
 export const deleteCommentRequest = (commentId) => ({
   type: types.DELETE_COMMENT_REQUEST,
@@ -27,7 +27,7 @@ export default (commentId) => {
     return axios.delete(`${API_URL}comments/${commentId}`)
       .then(res => {
         dispatch(deleteCommentSuccess(res.data));
-        dispatch(fetchComments(res.data.deletedComment.belongs_to));
+        dispatch(getComments(res.data.deletedComment.belongs_to));
       })
       .catch(err => {
         dispatch(deleteCommentFailure(err));

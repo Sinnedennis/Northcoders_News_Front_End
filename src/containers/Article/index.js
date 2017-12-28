@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 
-import fetchArticleById from '../../actions/articleById.js';
+import getArticleById from '../../actions/getArticleById.js';
 
 import ArticleUI from '../../components/Article';
 import Loading from '../../components/Loading';
@@ -14,7 +14,7 @@ class Article extends React.Component {
 
   componentWillMount() {
     const { articleId } = this.props;
-    this.props.fetchArticleById(articleId);
+    this.props.getArticleById(articleId);
   }
 
   render() {
@@ -40,8 +40,8 @@ const mapStateToProps = state => ({
   error: state.article.error
 });
 const mapDispatchToProps = dispatch => ({
-  fetchArticleById: (articleId) => {
-    dispatch(fetchArticleById(articleId));
+  getArticleById: (articleId) => {
+    dispatch(getArticleById(articleId));
   }
 });
 
@@ -51,7 +51,7 @@ Article.propTypes = {
   error: PT.object,
   article: PT.any.isRequired,
 
-  fetchArticleById: PT.func.isRequired
+  getArticleById: PT.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

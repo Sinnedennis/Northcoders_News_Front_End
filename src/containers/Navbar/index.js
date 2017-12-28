@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 
-import fetchTopics from '../../actions/topics.js';
+import getTopics from '../../actions/getTopics.js';
 
 import NavbarUI from '../../components/NavbarUI';
 
 class Navbar extends React.Component {
 
   componentDidMount() {
-    this.props.fetchTopics();
+    this.props.getTopics();
   }
 
   render() {
@@ -31,8 +31,8 @@ const mapStateToProps = state => ({
   error: state.topics.error
 });
 const mapDispatchToProps = dispatch => ({
-  fetchTopics: () => {
-    dispatch(fetchTopics());
+  getTopics: () => {
+    dispatch(getTopics());
   }
 });
 
@@ -41,7 +41,7 @@ Navbar.propTypes = {
   loading: PT.bool.isRequired,
   error: PT.object,
 
-  fetchTopics: PT.func.isRequired
+  getTopics: PT.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

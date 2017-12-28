@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 
-import fetchCommentsById from '../../actions/comments.js';
+import getComments from '../../actions/getComments.js';
 import deleteComment from '../../actions/deleteComment.js';
 
 import Comment from '../../components/Comment';
@@ -48,7 +48,7 @@ class Comments extends React.Component {
 
   componentDidMount() {
     const { articleId } = this.props;
-    this.props.fetchCommentsById(articleId);
+    this.props.getComments(articleId);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -115,8 +115,8 @@ const mapStateToProps = state => ({
   error: state.comments.error
 });
 const mapDispatchToProps = dispatch => ({
-  fetchCommentsById: (articleId) => {
-    dispatch(fetchCommentsById(articleId));
+  getComments: (articleId) => {
+    dispatch(getComments(articleId));
   },
   deleteComment: (commentId) => {
     dispatch(deleteComment(commentId));
@@ -130,7 +130,7 @@ Comments.propTypes = {
 
   articleId: PT.string.isRequired,
 
-  fetchCommentsById: PT.func.isRequired,
+  getComments: PT.func.isRequired,
   deleteComment: PT.func.isRequired
 };
 

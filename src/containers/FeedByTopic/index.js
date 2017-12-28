@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 
-import fetchArticlesByTopic from '../../actions/articlesByTopic';
+import getArticlesByTopic from '../../actions/getArticlesByTopic';
 
 import ArticlePreview from '../../components/ArticlePreview';
 import OrderBy from '../../components/OrderBy';
@@ -40,7 +40,7 @@ class TopicalArtcles extends React.Component {
   componentDidMount() {
     const topicId = this.props.match.params.topicId;
 
-    this.props.fetchArticlesByTopic(topicId);
+    this.props.getArticlesByTopic(topicId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,7 +48,7 @@ class TopicalArtcles extends React.Component {
     const currentTopicId = this.props.match.params.topicId;
 
     if (currentTopicId !== NewTopicId) {
-      this.props.fetchArticlesByTopic(NewTopicId);
+      this.props.getArticlesByTopic(NewTopicId);
       this.setState();
     }
   }
@@ -93,8 +93,8 @@ const mapStateToProps = state => ({
   error: state.articlesByTopic.error
 });
 const mapDispatchToProps = dispatch => ({
-  fetchArticlesByTopic: (topic_id) => {
-    dispatch(fetchArticlesByTopic(topic_id));
+  getArticlesByTopic: (topic_id) => {
+    dispatch(getArticlesByTopic(topic_id));
   }
 });
 
@@ -104,7 +104,7 @@ TopicalArtcles.propTypes = {
   error: PT.object,
 
   match: PT.object.isRequired,
-  fetchArticlesByTopic: PT.func.isRequired
+  getArticlesByTopic: PT.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicalArtcles);

@@ -2,7 +2,7 @@ import * as types from './types';
 import axios from 'axios';
 import { API_URL } from '../config';
 
-import getComments from './comments';
+import getComments from './getComments';
 
 export const postCommentRequest = (commentObj) => ({
   type: types.POST_COMMENT_REQUEST,

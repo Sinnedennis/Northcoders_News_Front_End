@@ -7,23 +7,22 @@ export const getInitialState = () => ({
 });
 
 export default (prevState = getInitialState(), action) => {
-
   switch (action.type) {
-  case types.FETCH_USER_REQUEST:
+  case types.GET_ARTICLE_BY_ID_REQUEST:
     return Object.assign({}, prevState, {
       loading: true,
       error: null,
       data: []
     });
 
-  case types.FETCH_USER_SUCCESS:
+  case types.GET_ARTICLE_BY_ID_SUCCESS:
     return Object.assign({}, prevState, {
       loading: false,
       error: null,
       data: action.payload
     });
 
-  case types.FETCH_USER_FAILURE:
+  case types.GET_ARTICLE_BY_ID_FAILURE:
     return Object.assign({}, prevState, {
       loading: false,
       error: action.payload,

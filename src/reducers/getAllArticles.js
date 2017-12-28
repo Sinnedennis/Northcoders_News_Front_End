@@ -1,28 +1,28 @@
 import * as types from '../actions/types';
 
 export const getInitialState = () => ({
-  loading: true,
+  loading: false,
   error: null,
   data: []
 });
 
 export default (prevState = getInitialState(), action) => {
   switch (action.type) {
-  case types.FETCH_ARTICLE_REQUEST:
+  case types.GET_ALL_ARTICLES_REQUEST:
     return Object.assign({}, prevState, {
-      loading: true,
+      loading: !prevState.loading,
       error: null,
       data: []
     });
 
-  case types.FETCH_ARTICLE_SUCCESS:
+  case types.GET_ALL_ARTICLES_SUCCESS:
     return Object.assign({}, prevState, {
       loading: false,
       error: null,
       data: action.payload
     });
 
-  case types.FETCH_ARTICLE_FAILURE:
+  case types.GET_ALL_ARTICLES_FAILURE:
     return Object.assign({}, prevState, {
       loading: false,
       error: action.payload,

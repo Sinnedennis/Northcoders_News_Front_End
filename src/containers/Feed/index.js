@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 
-import fetchArticles from '../../actions/articles.js';
+import getAllArticles from '../../actions/getAllArticles.js';
+
 import ArticlePreview from '../../components/ArticlePreview';
 import PageNumUI from '../../components/PageNumUI';
 import Loading from '../../components/Loading';
@@ -38,7 +39,7 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArticles();
+    this.props.getAllArticles();
   }
 
   render() {
@@ -80,8 +81,8 @@ const mapStateToProps = state => ({
   error: state.articles.error
 });
 const mapDispatchToProps = dispatch => ({
-  fetchArticles: () => {
-    dispatch(fetchArticles());
+  getAllArticles: () => {
+    dispatch(getAllArticles());
   }
 });
 
@@ -90,7 +91,7 @@ Feed.propTypes = {
   loading: PT.bool.isRequired,
   error: PT.object,
 
-  fetchArticles: PT.func.isRequired
+  getAllArticles: PT.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);
