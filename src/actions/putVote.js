@@ -20,13 +20,13 @@ export const putVoteFailure = (err) => ({
 export default (id, target, vote) => {
   return (dispatch) => {
     dispatch(putVoteRequest(id, target, vote));
-    return axios.put(`${API_URL}${target}/${id}?vote=${vote}`)
+    return axios.put(`${API_URL}${target}/${id}?vote=${vote}/`)
       .then(res => {
         const { votes, _id } = res.data.votedData;
         dispatch(putVoteSuccess( { votes, _id } ));
       })
       .catch(err => {
-        dispatch(putVoteFailure(err));
+        dispatch(putVoteFailure(err.message));
       });
   };
 };

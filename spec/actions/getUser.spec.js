@@ -47,7 +47,7 @@ describe('#getUser', () => {
     const error = 'failed to get topics';
 
     nock(API_URL)
-    .get(`/users/${userName}/`)
+      .get(`/users/${userName}/`)
       .replyWithError({ message: error });
 
     const expectedActions = [

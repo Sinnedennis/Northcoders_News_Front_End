@@ -28,11 +28,11 @@ describe('#deleteComment', () => {
     const message = 'Comment was deleted';
     const deletedComment = {
       belongs_to: 'northcoder'
-    }
+    };
 
     nock(API_URL)
       .delete(`/comments/${commentId}/`)
-      .reply(200, { message, deletedComment })
+      .reply(200, { message, deletedComment });
 
     nock(API_URL)
       .get(`articles/${articleId}/comments/`)

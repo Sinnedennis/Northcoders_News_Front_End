@@ -28,7 +28,7 @@ describe('#getTopics', () => {
     ];
 
     nock(API_URL)
-      .get(`/topics/`)
+      .get('/topics/')
       .reply(200, topics);
 
 
@@ -49,7 +49,7 @@ describe('#getTopics', () => {
     const error = 'failed to get topics';
 
     nock(API_URL)
-      .get(`/topics/`)
+      .get('/topics/')
       .replyWithError({ message: error });
 
     const expectedActions = [
