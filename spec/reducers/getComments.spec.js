@@ -34,7 +34,7 @@ describe('#getComments reducer', () => {
     expect(newState.data).to.eql([]);
   });
 
-  it('returns the appropriate state for GET_ARTICLE_BY_ID_SUCCESS action', () => {
+  it('returns the appropriate state for GET_COMMENTS_SUCCESS action', () => {
     const data = [1,2,3,4]
     const action = getCommentsSuccess(data);
     const newState = getCommentsReducer(undefined, action);
@@ -44,7 +44,7 @@ describe('#getComments reducer', () => {
     expect(newState.data).to.eql(data);
   });
 
-  it('returns the appropriate state for GET_ARTICLE_BY_ID_FAILURE action', () => {
+  it('returns the appropriate state for GET_COMMENTS_FAILURE action', () => {
     const error = '404 page not found';
     const action = getCommentsFailure(error);
     const newState = getCommentsReducer(undefined, action);
