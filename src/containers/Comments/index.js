@@ -68,10 +68,8 @@ class Comments extends React.Component {
     if (error) return <Error error={error} />;
     if (loading) return <Loading />;
 
-
     return (
       <div>
-
         <OrderByComments handleClick={this.handleOrderClick} />
 
         {
@@ -112,7 +110,7 @@ class Comments extends React.Component {
 const mapStateToProps = state => ({
   comments: state.comments.data,
   loading: state.comments.loading,
-  error: state.comments.error
+  error: state.comments.error,
 });
 const mapDispatchToProps = dispatch => ({
   getComments: (articleId) => {

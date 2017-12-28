@@ -19,7 +19,7 @@ describe('#articleById', () => {
     nock.cleanAll();
   });
 
-  it('dispatches FETCH_ARTICLE_SUCCESS when receiving data', () => {
+  it('dispatches GET_ARTICLE_BY_ID_SUCCESS when receiving data', () => {
 
     const articleId = '5a3144bfb2a0c121973f65ed';
 
@@ -44,7 +44,7 @@ describe('#articleById', () => {
       });
   });
 
-  it('dispatches FETCH_ARTICLE_FAILURE when given bad ID data', () => {
+  it('dispatches GET_ARTICLE_BY_ID_FAILURE when given bad ID data', () => {
 
     const articleId = 'banana';
     const error = 'failed message request';

@@ -19,7 +19,7 @@ describe('#getAllArticles', () => {
     nock.cleanAll();
   });
 
-  it('dispatches GET_ARTICLE_SUCCESS when receiving data', () => {
+  it('dispatches GET_ALL_ARTICLES_SUCCESS when receiving data', () => {
 
     const articles = [
       { title: 'article 1' },
@@ -43,7 +43,7 @@ describe('#getAllArticles', () => {
       });
   });
 
-  it('dispatches GET_ARTICLE_FAILURE when receiving error', () => {
+  it('dispatches GET_ALL_ARTICLES_FAILURE when receiving error', () => {
 
     const error = 'failed message request';
 
