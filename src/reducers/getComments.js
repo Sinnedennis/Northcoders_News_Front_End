@@ -19,9 +19,9 @@ export default (prevState = getInitialState(), action) => {
 
   case types.GET_COMMENTS_SUCCESS:
 
-    var commentCopies = action.payload.map((commentObj) => {
-      return Object.assign({}, commentObj);
-    });
+    // var commentCopies = action.payload.map((commentObj) => {
+    //   return Object.assign({}, commentObj);
+    // });
 
     return Object.assign({}, prevState, {
       loading: false,
