@@ -4,3 +4,12 @@
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.PageNumbers {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Feed button {
+  min-width: 50px;
+}

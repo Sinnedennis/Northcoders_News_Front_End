@@ -1,12 +1,16 @@
 import React from 'react';
 import PT from 'prop-types';
 
+import '../styling/Votes.css';
+
 export default function VotesUI({ clickHandler, votes }) {
 
   return (
     <div>
-      <button className="button" value="up" onClick={clickHandler}>Upvote</button>
-      <button className="button" value="down" onClick={clickHandler}>Downvote</button>
+      <div class="buttons has-addons is-centered">
+        <button className="VoteButtons button" value="up" onClick={clickHandler}>Upvote</button>
+        <button className="VoteButtons button" value="down" onClick={clickHandler}>Downvote</button>
+      </div>
       <p>{votes}</p>
     </div>
   );
