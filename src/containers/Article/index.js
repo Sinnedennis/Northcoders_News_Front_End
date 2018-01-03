@@ -10,6 +10,8 @@ import Error from '../../components/Error';
 import PostComment from '../PostComment';
 
 
+import '../../styling/Article.css';
+
 class Article extends React.Component {
 
   componentWillMount() {
@@ -25,7 +27,7 @@ class Article extends React.Component {
     
     else {
       return (
-        <div>
+        <div className="Article">
           < ArticleUI article={article} />
           < PostComment articleId={article._id} />
         </div>

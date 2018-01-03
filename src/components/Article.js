@@ -4,11 +4,12 @@ import PT from 'prop-types';
 
 import Votes from '../containers/Votes';
 
+
 export default function Article({ article }) {
   const { title, body, belongs_to, created_by } = article;
 
   return (
-    <div>
+    <div className="">
       <h3>{title}</h3>
       <p>{body}</p>
       <p>Topic: {belongs_to}</p>

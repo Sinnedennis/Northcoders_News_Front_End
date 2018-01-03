@@ -5,6 +5,8 @@ import PT from 'prop-types';
 import Votes from '../containers/Votes';
 import { getTime } from '../utils';
 
+import '../styling/Comment.css';
+
 export default function Comment({ commentObj, deleteable, deleteCommentHandler }) {
 
   const { _id, body, created_at, created_by } = commentObj;

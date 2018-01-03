@@ -13,6 +13,8 @@ import OrderBy from '../../components/OrderBy';
 import { orderArticles } from '../../utils';
 import { articlePerPage } from '../../config';
 
+import '../../styling/Feed.css';
+
 class Feed extends React.Component {
   constructor(props) {
     super(props);

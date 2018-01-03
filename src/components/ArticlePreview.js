@@ -4,6 +4,9 @@ import PT from 'prop-types';
 
 import Votes from '../containers/Votes';
 import { textPreview } from '../utils';
+import { articlePreviewLength } from '../config';
+
+import '../styling/Article.css';
 
 class ArticlePreview extends React.Component {
 
@@ -16,13 +19,13 @@ class ArticlePreview extends React.Component {
       <div className="Article">
 
         <Link to={`/article/${_id}`}>
-          {this.props.index && <p>Index: {this.props.index}</p>}
-          <h3>{title}</h3>
-          <p>{bodyPreview}</p>
-          <p>Topic: {belongs_to}</p>
+          {/* {this.props.index && <p>Index: {this.props.index}</p>} */}
+          <h2 className="title">{title}</h2>
+          <h3 className="subtitle">Topic: {belongs_to}</h3>
+          <p>{bodyPreview} {bodyPreview.length > articlePreviewLength && <a>Click here to read more</a>}</p>
         </Link>
-
-        <Link to={`/user/${created_by}`}><p>Posted by: {created_by}</p></Link>
+        <br />
+        <p>Posted by:  <Link to={`/user/${created_by}`} className="Author">{created_by}</Link></p>
 
         <Votes parentObj={this.props.article} voteTarget={'articles'} />
       </div>

@@ -14,31 +14,34 @@ import ArticleAndComments from './components/ArticleAndComments';
 import Error from './components/Error';
 import Footer from './components/Footer';
 
-import './App.css';
+import './styling/App.css';
+import 'bulma/css/bulma.css'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="Container">
-          <Router>
-            <div>
+        <Router>
+          <div>
 
-              <Navbar />
+            <Navbar />
+            <div className="Container">
+
 
               <Switch>
-                <Route exact path="/"                       component={Feed} />
-                <Route exact path="/topic/:topic/:topicId"  component={FeedByTopic} />
-                <Route exact path="/article/:articleId"     component={ArticleAndComments} />
-                <Route exact path="/user/:userName"         component={UserPage} />
-                <Route path="/*"                            component={Error} />
+                <Route exact path="/" component={Feed} />
+                <Route exact path="/topic/:topic/:topicId" component={FeedByTopic} />
+                <Route exact path="/article/:articleId" component={ArticleAndComments} />
+                <Route exact path="/user/:userName" component={UserPage} />
+                <Route path="/*" component={Error} />
               </Switch>
 
-              <Footer />
 
             </div>
-          </Router>
-        </div>
+            <Footer />
+            
+          </div>
+        </Router>
       </div>
     );
   }

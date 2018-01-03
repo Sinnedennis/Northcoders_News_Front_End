@@ -1,0 +1,22 @@
+
+.NavbarBackground{
+  background-color: black;
+  min-height: 60px;
+  margin-bottom: 15px;
+}
+
+.NavbarContainer {
+  width: 80%;
+  margin: auto;
+}
+
+
+.LogoImg {
+  max-width: 250px;
+}
+
+
+.Home {
+  text-align: center;
+  width: 200px;
+}

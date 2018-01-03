@@ -1,0 +1,26 @@
+
+.Article {
+  background-color: rgb(223, 223, 223);
+  margin: 20px;
+  padding: 20px 20px;
+  box-shadow: 2px 2px;
+}
+
+
+.Article p {
+  color: #4a4a4a; /* blue colors for links too */
+  text-decoration: none; /* no underline */
+ 
+} hover {
+  background-color: inherit;
+}
+
+
+.title {
+  padding-bottom: 10px;
+}
+
+
+.subtitle {
+  margin-bottom: 0px;
+}
