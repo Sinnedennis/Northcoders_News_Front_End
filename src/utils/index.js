@@ -15,7 +15,8 @@ export function orderArticles(list, order) {
 
   list = list.slice();
 
-  let propName = order === ('high' || 'low') ? 'votes' : 'created_at';
+  let propName = 'created_at';
+  if (order === 'high' || order === 'low') propName = 'votes';
 
   let x = 1;
   let y = -1;

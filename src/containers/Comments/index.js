@@ -73,11 +73,11 @@ class Comments extends React.Component {
         <OrderByComments handleClick={this.handleOrderClick} />
 
         {
-          comments.length > this.pageLength && 
-          <PageNumUI 
-            handlePageClick={this.handlePageClick} 
-            activePage={pageNum} 
-            pageTotal={Math.ceil(comments.length / this.pageLength)} 
+          comments.length > this.pageLength &&
+          <PageNumUI
+            handlePageClick={this.handlePageClick}
+            activePage={pageNum}
+            pageTotal={Math.ceil(comments.length / this.pageLength)}
           />
         }
 
@@ -85,22 +85,22 @@ class Comments extends React.Component {
           orderArticles(comments, this.state.order)
             .slice(...cardsPerPage)
             .map((commentObj, i) =>
-              <Comment 
-                commentObj={commentObj} 
-                deleteCommentHandler={this.handleCommentDelete} 
+              <Comment
+                commentObj={commentObj}
+                deleteCommentHandler={this.handleCommentDelete}
                 deleteable={commentObj.created_by === 'northcoder'}
-                key={i} 
+                key={i}
               />
             )
         }
 
         {
           comments.length > this.pageLength &&
-            <PageNumUI 
-              handlePageClick={this.handlePageClick} 
-              activePage={pageNum} 
-              pageTotal={Math.ceil(comments.length / this.pageLength)} 
-            />
+          <PageNumUI
+            handlePageClick={this.handlePageClick}
+            activePage={pageNum}
+            pageTotal={Math.ceil(comments.length / this.pageLength)}
+          />
         }
       </div >
     );
