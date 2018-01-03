@@ -14,7 +14,7 @@ export default function NavbarUI({ topics, error, loading }) {
     <div className="Navbar">
 
       <div className="Logo">
-        <img className="LogoImg" src={logo} alt='logo'/>
+        <img className="LogoImg" src={logo} alt='logo' />
       </div>
 
       <Link to="/">
@@ -36,11 +36,13 @@ export default function NavbarUI({ topics, error, loading }) {
 function topicDivs(topics) {
   return (
     <div className="TopicList">
-      {topics.map(topic =>
-        <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}>
-          <button className="button" value={topic.slug}>{topic.title}</button>
-        </Link>
-      )}
+      {
+        topics.map(topic =>
+          <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}>
+            <button className="button" value={topic.slug}>{topic.title}</button>
+          </Link>
+        )
+      }
     </div>
   );
 }

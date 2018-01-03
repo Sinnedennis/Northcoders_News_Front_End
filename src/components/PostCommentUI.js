@@ -12,7 +12,6 @@ class PostCommentUI extends React.Component {
       <div>
         <button className='button' onClick={replyClickHandler}>{buttonText}</button>
         {active && inputForm(placeHolder, keyHandler, text, handleSubmit)}
-
       </div>
     );
   }
