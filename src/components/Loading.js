@@ -15,7 +15,7 @@ class Loading extends React.Component {
   }
 
   componentDidMount() {
-    let timer = setInterval(this.updateLoadingMessage, 100);
+    let timer = setInterval(this.updateLoadingMessage, 500);
     this.setState({timer});
   }
 
