@@ -22,13 +22,11 @@ class PostComment extends React.Component {
 
   replyClickHandler(e) {
     e.preventDefault();
-
     this.setState({ active: !this.state.active });
   }
 
   keyHandler(e) {
     e.preventDefault();
-
     this.setState({ text: e.target.value });
   }
 
@@ -67,9 +65,9 @@ class PostComment extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.postComment.data,
-  loading: state.postComment.loading,
-  error: state.postComment.error
+  data: state.comments.data,
+  loading: state.comments.loading,
+  error: state.comments.error
 });
 const mapDispatchToProps = dispatch => ({
   postComment: (commentObj) => {

@@ -5,6 +5,7 @@ import {combineReducers} from 'redux';
 // import getArticlesByTopic from './getArticlesByTopic';
 
 import articles from './articles';
+import comments from './comments';
 
 import getTopics from './getTopics.js';
 import getComments from './getComments';
@@ -17,13 +18,16 @@ const reducer = combineReducers({
   // articles: getAllArticles,
   // article: getArticleById,
   // articlesByTopic: getArticlesByTopic,
+  // comments: getComments,
+  // postComment: postComment,
+  // deleteComment: deleteComment,
+  
   articles: articles,
   topics: getTopics,
-  comments: getComments,
+  comments: comments,
+
   user: getUser,
-  voteData: putVote,
-  postComment: postComment,
-  deleteComment: deleteComment
+  voteData: putVote
 });
 
 export default reducer;
