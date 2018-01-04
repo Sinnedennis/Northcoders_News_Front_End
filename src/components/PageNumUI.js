@@ -12,13 +12,13 @@ export default function PageNumUI({ handlePageClick, pageTotal, activePage }) {
   return (
     <div className="PageNumbers">
       <p>Page:</p>
-      <div class="buttons has-addons is-centered">
-      {
-        loopArray.map((i) => {
-          if (activePage === i) return <button className="button is-focused" onClick={handlePageClick} value={i} key={i}>{i + 1}</button>;
-          else return <button className="button" value={i} onClick={handlePageClick} key={i}>{i + 1}</button>;
-        })
-      }
+      <div className="buttons has-addons is-centered">
+        {
+          loopArray.map((i) => {
+            if (activePage === i) return <button className="button is-focused" onClick={handlePageClick} value={i} key={i}>{i + 1}</button>;
+            else return <button className="button" value={i} onClick={handlePageClick} key={i}>{i + 1}</button>;
+          })
+        }
       </div>
     </div>
   );

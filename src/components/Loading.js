@@ -8,7 +8,7 @@ class Loading extends React.Component {
     this.state = {
       message: 'Loading, just one sec',
       timer: null
-    }
+    };
 
     this.maxLength = this.state.message.length + 3;
     this.updateLoadingMessage = this.updateLoadingMessage.bind(this);
@@ -33,14 +33,14 @@ class Loading extends React.Component {
 
   updateLoadingMessage() {
 
-    let newMessage = this.state.message
+    let newMessage = this.state.message;
 
     if (newMessage.length >= this.maxLength) newMessage = newMessage.slice(0, -3);
     else newMessage = newMessage + '.';
 
     this.setState({
       message: newMessage
-    })
+    });
   }
 }
 

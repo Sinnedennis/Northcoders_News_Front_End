@@ -7,7 +7,7 @@ export default function VotesUI({ clickHandler, votes }) {
 
   return (
     <div>
-      <div class="buttons has-addons is-centered">
+      <div className="buttons has-addons is-centered">
         <button className="VoteButtons button" value="up" onClick={clickHandler}>Upvote</button>
         <button className="VoteButtons button" value="down" onClick={clickHandler}>Downvote</button>
       </div>

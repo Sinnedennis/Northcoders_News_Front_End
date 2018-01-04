@@ -7,4 +7,10 @@
 5. Animated loading bar (this will be upgraded to a spinner with time)
 
 ### To-do list:
-Basic styling has been applied to the main feed, but some more time needs to be spent on the userpage, article and comments, and loading/error components.
+* Styling for:
+  * Article and comments
+  * User Page
+  * Loading and Error components
+* Remove elements that aren't needed (less is more) for example: index numbers for articles
+* Style voting buttons into arrows
+* Readme and intallation instructions

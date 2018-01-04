@@ -15,7 +15,7 @@ import Error from './components/Error';
 import Footer from './components/Footer';
 
 import './styling/App.css';
-import 'bulma/css/bulma.css'
+import 'bulma/css/bulma.css';
 
 class App extends Component {
   render() {
