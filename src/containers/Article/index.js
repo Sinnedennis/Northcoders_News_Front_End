@@ -37,9 +37,9 @@ class Article extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  article: state.article.data,
-  loading: state.article.loading,
-  error: state.article.error
+  article: state.articles.data,
+  loading: state.articles.loading,
+  error: state.articles.error
 });
 const mapDispatchToProps = dispatch => ({
   getArticleById: (articleId) => {

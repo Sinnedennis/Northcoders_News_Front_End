@@ -10,7 +10,7 @@ export default function Article({ article }) {
 
   return (
     <div className="">
-      <h3>{title}</h3>
+      <h3 className="title">{title}</h3>
       <p>{body}</p>
       <p>Topic: {belongs_to}</p>
       <Link to={`/user/${created_by}`}><p>Posted by: {created_by}</p></Link>
