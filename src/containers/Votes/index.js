@@ -66,7 +66,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Votes.propTypes = {
-  voteData: PT.array.isRequired,
+  voteData: PT.any,
   loading: PT.bool.isRequired,
   error: PT.object,
 

@@ -78,7 +78,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 PostComment.propTypes = {
-  data: PT.array.isRequired,
+  data: PT.any,
   loading: PT.bool.isRequired,
   error: PT.object,
 
