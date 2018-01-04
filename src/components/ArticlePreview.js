@@ -22,8 +22,8 @@ class ArticlePreview extends React.Component {
           {/* {this.props.index && <p>Index: {this.props.index}</p>} */}
           <h2 className="title">{title}</h2>
           <h3 className="subtitle">Topic: {belongs_to}</h3>
-          <p>{bodyPreview} {bodyPreview.length > articlePreviewLength && <a>Click here to read more</a>}</p>
         </Link>
+        <p>{bodyPreview} {bodyPreview.length > articlePreviewLength && <a>Click here to read more</a>}</p>
         <br />
         <p>Posted by:  <Link to={`/user/${created_by}`} className="Author">{created_by}</Link></p>
 
