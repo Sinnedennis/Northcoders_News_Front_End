@@ -18,11 +18,11 @@ class Votes extends Component {
   }
 
 
-  clickHandler(e) {
+  clickHandler(e, vote) {
     e.preventDefault();
     const { voteTarget, putVote, parentObj: { _id: id } } = this.props;
 
-    putVote(id, voteTarget, e.target.value);
+    putVote(id, voteTarget, vote);
   }
 
   shouldComponentUpdate(nextProps) {

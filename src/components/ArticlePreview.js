@@ -11,8 +11,9 @@ import '../styling/Article.css';
 class ArticlePreview extends React.Component {
 
   render() {
-    const { _id, title, body, created_by, belongs_to } = this.props.article;
-
+    const { _id, title, body, created_by } = this.props.article;
+    let { belongs_to } = this.props.article;
+    belongs_to = belongs_to[0].toUpperCase() + belongs_to.slice(1);
     const bodyPreview = textPreview(body);
 
     return (

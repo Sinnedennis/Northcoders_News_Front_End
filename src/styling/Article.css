@@ -15,6 +15,9 @@
   background-color: inherit;
 }
 
+.body {
+  text-align: left;
+}
 
 .title {
   padding-bottom: 10px;
@@ -23,4 +26,8 @@
 
 .subtitle {
   margin-bottom: 0px;
+}
+
+.ArticleBody {
+
 }

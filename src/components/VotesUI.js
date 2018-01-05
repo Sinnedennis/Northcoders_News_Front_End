@@ -1,17 +1,20 @@
 import React from 'react';
 import PT from 'prop-types';
 
+import UpArrow from 'react-icons/lib/fa/angle-up';
+import DownArrow from 'react-icons/lib/fa/angle-down';
+
 import '../styling/Votes.css';
 
 export default function VotesUI({ clickHandler, votes }) {
 
   return (
-    <div>
-      <div className="buttons has-addons is-centered">
-        <button className="VoteButtons button" value="up" onClick={clickHandler}>Upvote</button>
-        <button className="VoteButtons button" value="down" onClick={clickHandler}>Downvote</button>
-      </div>
-      <p>{votes}</p>
+
+    <div className="">
+      <UpArrow className="UpArrow" size={70} color="dark" onClick={(e) => clickHandler(e, 'up')} />
+      <p className="VoteNumber">{votes}</p>
+      <DownArrow className="DownArrow" size={70} color="dark" onClick={(e) => clickHandler(e, 'down')} />
+
     </div>
   );
 }
