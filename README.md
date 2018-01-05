@@ -28,7 +28,8 @@ In order to run the application run the following command
 ```
 npm start
 ```
-Then the application should be accessible at http://localhost:3090.
+Then the application should be accessible at http://localhost:3000.
+
 ## Running the tests
 
 To run the tests run the following command
