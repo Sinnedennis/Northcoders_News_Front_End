@@ -3,16 +3,16 @@ import {combineReducers} from 'redux';
 // import getAllArticles  from './getAllArticles.js';
 // import getArticleById  from './getArticleById.js';
 // import getArticlesByTopic from './getArticlesByTopic';
+// import getComments from './getComments';
+// import postComment from './postComment';
+// import deleteComment from './deleteComment';
 
 import articles from './articles';
 import comments from './comments';
 
 import getTopics from './getTopics.js';
-import getComments from './getComments';
 import getUser from './getUser';
 import putVote from './putVote';
-import postComment from './postComment';
-import deleteComment from './deleteComment';
 
 const reducer = combineReducers({
   // articles: getAllArticles,
@@ -21,7 +21,7 @@ const reducer = combineReducers({
   // comments: getComments,
   // postComment: postComment,
   // deleteComment: deleteComment,
-  
+
   articles: articles,
   topics: getTopics,
   comments: comments,
