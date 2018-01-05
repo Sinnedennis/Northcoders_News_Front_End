@@ -48,6 +48,6 @@ All the reducers and actions have been tested using nock, mocha and chai.
 * [mocha](https://mochajs.org/)
 * [chai](http://chaijs.com/)
 
-## Author
+## Authors
 
 [Dennis Foster](https://github.com/Sinnedennis)
