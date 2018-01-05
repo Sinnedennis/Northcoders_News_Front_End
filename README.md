@@ -1,16 +1,52 @@
+# Front-end for Northcoders News
 
-### Neat features:
-1. Make use of the component tree diagram in the root
-2. Default avatar on userpage (many in seed data are kaput)
-3. Ordered articles/comments by oldest, newest, highest and lowest rated
-4. Pagination
-5. Animated loading bar (this will be upgraded to a spinner with time)
+This project is a reddit-style responsive front-end which uses the back-end API from my other project found [here](https://github.com/Sinnedennis/Northcoders_News_Back_End). A deployed link is coming very soon. 
 
-### To-do list:
-* Styling for:
-  * Article and comments
-  * User Page
-  * Loading and Error components
-* Remove elements that aren't needed (less is more) for example: index numbers for articles
-* Style voting buttons into arrows
-* Readme and intallation instructions
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+
+### Prerequisites
+
+You will first need to install [the API](https://github.com/Sinnedennis/Northcoders_News_Back_End) and follow all the instructions. 
+
+### Installing
+
+In order to install please run the following commands
+
+```
+git clone https://github.com/Sinnedennis/Northcoders_News_Front_End
+```
+then navigate inside the folder and run 
+```
+npm install
+```
+
+## Starting the application
+
+In order to run the application run the following command
+```
+npm start
+```
+Then the application should be accessible at http://localhost:3090.
+## Running the tests
+
+To run the tests run the following command
+```
+npm t
+```
+All the reducers and actions have been tested using nock, mocha and chai.
+
+## Built With
+* [react](https://reactjs.org/)
+* [redux](https://redux.js.org/docs/introduction/)
+* [babel](https://babeljs.io/)
+* [webpack](https://webpack.js.org/)
+* [bulma](https://bulma.io/)
+* [nock](https://github.com/node-nock/nock)
+* [mocha](https://mochajs.org/)
+* [chai](http://chaijs.com/)
+
+## Authors
+
+[Dennis Foster](https://github.com/Sinnedennis)
