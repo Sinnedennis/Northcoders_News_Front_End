@@ -11,7 +11,7 @@ export default function PageNumUI({ handlePageClick, pageTotal, activePage }) {
 
   return (
     <div className="PageNumbers">
-      <p>Page:</p>
+      <p><strong className="has-text-grey-lighter">Page:</strong></p>
       <div className="buttons has-addons is-centered">
         {
           loopArray.map((i) => {

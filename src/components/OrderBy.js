@@ -4,7 +4,7 @@ import PT from 'prop-types';
 export default function OrderBy({ handleClick }) {
   return (
     <div>
-      <p>Order by:</p>
+      <p><strong className="has-text-grey-lighter">Order by:</strong></p>
       <div className="select">
         <select onChange={handleClick}>
           <option value="high">Most popular</option>

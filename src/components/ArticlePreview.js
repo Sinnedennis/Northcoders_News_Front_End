@@ -11,24 +11,30 @@ import '../styling/Article.css';
 class ArticlePreview extends React.Component {
 
   render() {
+
     const { _id, title, body, created_by } = this.props.article;
+    const bodyPreview = textPreview(body);
+
     let { belongs_to } = this.props.article;
     belongs_to = belongs_to[0].toUpperCase() + belongs_to.slice(1);
-    const bodyPreview = textPreview(body);
 
     return (
       <div className="Article">
+        <div className="columns level">
+          <div className="column is-1 level-left">
+            <Votes parentObj={this.props.article} voteTarget={'articles'} />
+          </div>
 
-        <Link to={`/article/${_id}`}>
-          {/* {this.props.index && <p>Index: {this.props.index}</p>} */}
-          <h2 className="title">{title}</h2>
-          <h3 className="subtitle">Topic: {belongs_to}</h3>
-        </Link>
-        <p>{bodyPreview} {bodyPreview.length > articlePreviewLength && <a>Click here to read more</a>}</p>
-        <br />
-        <p>Posted by:  <Link to={`/user/${created_by}`} className="Author">{created_by}</Link></p>
+          <div className="column level-right">
+            <Link to={`/article/${_id}`}>
+              <h2 className="title">{title}</h2>
+              <h3 className="subtitle">Topic: {belongs_to}</h3>
+            </Link>
+            <p className="body">{bodyPreview} {bodyPreview.length > articlePreviewLength && <a>Click here to read more</a>}</p>
 
-        <Votes parentObj={this.props.article} voteTarget={'articles'} />
+            <p>Posted by:  <Link to={`/user/${created_by}`} className="Author"><strong>{created_by}</strong></Link></p>
+          </div>
+        </div>
       </div>
     );
   }
