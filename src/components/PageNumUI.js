@@ -15,7 +15,7 @@ export default function PageNumUI({ handlePageClick, pageTotal, activePage }) {
       <div className="buttons has-addons is-centered">
         {
           loopArray.map((i) => {
-            if (activePage === i) return <button className="button is-focused" onClick={handlePageClick} value={i} key={i}>{i + 1}</button>;
+            if (activePage === i) return <button className="button is-dark" onClick={handlePageClick} value={i} key={i}>{i + 1}</button>;
             else return <button className="button" value={i} onClick={handlePageClick} key={i}>{i + 1}</button>;
           })
         }

@@ -28,8 +28,7 @@ export default function NavbarUI({ topics, error, loading }) {
           <div className='column is-two-fifths level-item'>
             {
               error ? <Error error={error} />
-                : loading ? <Loading />
-                  : topicDivs(topics)
+                : topicDivs(topics, loading)
             }
           </div>
         </div>
@@ -38,14 +37,26 @@ export default function NavbarUI({ topics, error, loading }) {
   );
 }
 
-function topicDivs(topics) {
+function topicDivs(topics, loading) {
+
+  let buttonClass = 'button is-dark';
+  if (loading !== false) buttonClass = buttonClass + ' is-loading';
+
   return (
-    <div className="buttons is-right">
+    <div className="buttons has-addons is-right">
       {
         topics.map(topic =>
-          <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}>
-            <span className="button is-dark" value={topic.slug}>{topic.title}</span>
+
+          <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id} className={buttonClass}>
+            {topic.title}
           </Link>
+
+
+          // <span className="button is-dark" value={topic.slug}>
+          //   <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}>
+          //     {topic.title}
+          //   </Link>
+          // </span>
         )
       }
     </div>
