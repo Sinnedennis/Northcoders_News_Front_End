@@ -8,7 +8,7 @@ import '../styling/Error.css';
 
 export default function Error({ error }) {
 
- return (
+  return (
     <div className="ErrorContainer">
       <h3 className="subtitle">Oh no, it looks like something went wrong!</h3>
       {error && <p>{error}</p>}

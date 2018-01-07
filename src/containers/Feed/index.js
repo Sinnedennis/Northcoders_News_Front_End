@@ -48,7 +48,7 @@ class Feed extends React.Component {
     let { articles, loading, error } = this.props;
     
     if (loading) return <Loading />;
-    if (error) return <Error error={error} />
+    if (error) return <Error error={error} />;
 
     return (
       <div className="Feed">

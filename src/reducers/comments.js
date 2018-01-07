@@ -12,79 +12,79 @@ export default (prevState = getInitialState(), action) => {
 
   switch (action.type) {
 
-    case types.GET_COMMENTS_REQUEST:
-      return Object.assign({}, prevState, {
-        loading: true,
-        error: null,
-        comments: []
-      });
+  case types.GET_COMMENTS_REQUEST:
+    return Object.assign({}, prevState, {
+      loading: true,
+      error: null,
+      comments: []
+    });
 
 
-    case types.DELETE_COMMENT_REQUEST:
-      const undeletedComments = prevState.comments.reduce((acc, comment) => {
-        if (String(comment._id) !== String(action.payload)) acc.push(Object.assign({}, comment));
-        return acc;
-      }, []);
+  case types.DELETE_COMMENT_REQUEST:
+    var undeletedComments = prevState.comments.reduce((acc, comment) => {
+      if (String(comment._id) !== String(action.payload)) acc.push(Object.assign({}, comment));
+      return acc;
+    }, []);
 
-      return Object.assign({}, prevState, {
-        loading: false,
-        error: null,
-        comments: undeletedComments
-      });
-
-
-    case types.POST_COMMENT_REQUEST:
-      const commentsPlusOne = prevState.comments.map(comment => {
-        return Object.assign({}, comment);
-      })
-
-      const { commentText, belongs_to } = action.payload;
-
-      const newComment = {
-        belongs_to,
-        body: commentText,
-        created_at: Date.now(),
-        _id: Date.now(),
-        created_by: 'northcoder',
-        votes: 1
-      }
-
-      commentsPlusOne.push(newComment);
-
-      return Object.assign({}, prevState, {
-        loading: false,
-        error: null,
-        comments: commentsPlusOne
-      });
+    return Object.assign({}, prevState, {
+      loading: false,
+      error: null,
+      comments: undeletedComments
+    });
 
 
-    case types.GET_COMMENTS_SUCCESS:
-      return Object.assign({}, prevState, {
-        loading: false,
-        error: null,
-        comments: action.payload
-      });
+  case types.POST_COMMENT_REQUEST:
+    var commentsPlusOne = prevState.comments.map(comment => {
+      return Object.assign({}, comment);
+    });
+
+    var { commentText, belongs_to } = action.payload;
+
+    var newComment = {
+      belongs_to,
+      body: commentText,
+      created_at: Date.now(),
+      _id: Date.now(),
+      created_by: 'northcoder',
+      votes: 1
+    };
+
+    commentsPlusOne.push(newComment);
+
+    return Object.assign({}, prevState, {
+      loading: false,
+      error: null,
+      comments: commentsPlusOne
+    });
 
 
-    case types.GET_COMMENTS_FAILURE:
-      return Object.assign({}, prevState, {
-        loading: false,
-        error: action.payload,
-        comments: []
-      });
+  case types.GET_COMMENTS_SUCCESS:
+    return Object.assign({}, prevState, {
+      loading: false,
+      error: null,
+      comments: action.payload
+    });
 
-    case types.PUT_VOTE_REQUEST:
-      const { id, target, vote } = action.payload;
 
-      if (target !== 'comments') return prevState;
+  case types.GET_COMMENTS_FAILURE:
+    return Object.assign({}, prevState, {
+      loading: false,
+      error: action.payload,
+      comments: []
+    });
 
-      const allCommentsUpdated = updateListVotes(prevState.comments, id, vote);
+  case types.PUT_VOTE_REQUEST:
+    var { id, target, vote } = action.payload;
 
-      return Object.assign({}, prevState, {
-        comments: allCommentsUpdated
-      });
+    if (target !== 'comments') return prevState;
 
-    default:
-      return prevState;
+    var allCommentsUpdated = updateListVotes(prevState.comments, id, vote);
+
+    return Object.assign({}, prevState, {
+      comments: allCommentsUpdated
+    });
+
+  default:
+    return prevState;
   }
 };
