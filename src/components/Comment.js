@@ -14,13 +14,13 @@ export default function Comment({ commentObj, deleteable, deleteCommentHandler }
 
   return (
     <div className="Comment">
-    <div className="columns">
-      <div className="column is-one-fifth">
+    <div className="columns level">
+      <div className="column is-1 level-left">
         <Votes parentObj={commentObj} voteTarget={'comments'} />
       </div>
-      <div className="column">
+      <div className="column level-right">
         <p className="Body">{body}</p>
-        <p className="Author">Author: <Link to={`/user/${created_by}`}>{created_by}</Link></p>
+        <p className="Author">Author: <Link to={`/user/${created_by}`}><strong>{created_by}</strong></Link></p>
         <p>Posted {created_at_text}</p>
         {deleteable && <button className='button' value={_id} onClick={deleteCommentHandler}>Delete</button>}
       </div>

@@ -23,8 +23,14 @@
   padding-bottom: 10px;
 }
 
+#ArticleSubtitle.subtitle {
+  /* margin-bottom: 10px; */
+}
 
-.subtitle {
+#BodyAndVotes.columns.level {
   margin-bottom: 0px;
 }
 
+.PostComment {
+  margin-top: 10px;
+}

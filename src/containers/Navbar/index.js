@@ -15,13 +15,7 @@ class Navbar extends React.Component {
   render() {
     const { topics, loading, error } = this.props;
 
-    return (
-      <div>
-        {
-          <NavbarUI topics={topics} error={error} loading={loading} />
-        }
-      </div>
-    );
+    return <NavbarUI topics={topics} error={error} loading={loading} />;
   }
 }
 

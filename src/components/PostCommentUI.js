@@ -9,7 +9,7 @@ class PostCommentUI extends React.Component {
     const buttonText = active ? 'Cancel' : 'Reply';
 
     return (
-      <div>
+      <div className="PostComment">
         <button className='button' onClick={replyClickHandler}>{buttonText}</button>
         {active && inputForm(placeHolder, keyHandler, text, handleSubmit)}
       </div>
@@ -20,7 +20,6 @@ class PostCommentUI extends React.Component {
 function inputForm(placeHolder, keyHandler, text, handleSubmit) {
   return (
     <div>
-      <p>Type your comment here</p>
 
       <form onSubmit={handleSubmit}>
         <label>

@@ -10,10 +10,10 @@ export default function VotesUI({ clickHandler, votes }) {
 
   return (
 
-    <div className="">
-      <UpArrow className="UpArrow" size={50} color="dark" onClick={(e) => clickHandler(e, 'up')} />
+    <div className="VoteButtons">
+      <UpArrow className="UpArrow Arrow" size={50} color="dark" onClick={(e) => clickHandler(e, 'up')} />
       <p className="VoteNumber is-large">{votes}</p>
-      <DownArrow className="DownArrow" size={50} color="dark" onClick={(e) => clickHandler(e, 'down')} />
+      <DownArrow className="DownArrow Arrow" size={50} color="dark" onClick={(e) => clickHandler(e, 'down')} />
 
     </div>
   );

@@ -20,6 +20,7 @@ import 'bulma/css/bulma.css';
 class App extends Component {
   render() {
     return (
+      <div>
       <div className="App">
         <Router>
           <div>
@@ -38,10 +39,12 @@ class App extends Component {
 
 
             </div>
-            <Footer />
+            
             
           </div>
         </Router>
+      </div>
+      <Footer />
       </div>
     );
   }

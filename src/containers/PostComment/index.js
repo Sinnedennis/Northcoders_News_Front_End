@@ -56,7 +56,7 @@ class PostComment extends React.Component {
           replyClickHandler={this.replyClickHandler}
           keyHandler={this.keyHandler}
           active={active}
-          placeHolder='Type here'
+          placeHolder='Add comment'
           handleSubmit={this.handleSubmit}
         />
       </div>

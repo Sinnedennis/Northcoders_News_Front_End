@@ -9,7 +9,6 @@ import logo from './logo.png';
 import '../styling/NavbarUI.css';
 
 export default function NavbarUI({ topics, error, loading }) {
-
   return (
     <div className="NavbarBackground">
       <div className="NavbarContainer">
@@ -20,11 +19,12 @@ export default function NavbarUI({ topics, error, loading }) {
 
           <Link to="/">
             <div className="Home column level-item">
-              <HomeIcon className="HomeIcon" size={70} color="red" />
+              <HomeIcon className="HomeIcon" size={70} />
             </div>
           </Link>
 
           <div className='column is-two-fifths level-item'>
+
             {
               error ? <Error error={error} />
                 : topicDivs(topics, loading)

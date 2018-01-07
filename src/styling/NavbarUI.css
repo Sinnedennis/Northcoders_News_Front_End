@@ -21,6 +21,12 @@
   width: 200px;
 }
 
+.HomeIcon {
+  color: rgb(183, 3, 3);
+} .HomeIcon:hover {
+  color: rgb(237, 0, 0);
+}
+
 .button a {
   text-decoration: inherit;
 }
