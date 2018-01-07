@@ -9,10 +9,10 @@ export const getInitialState = () => ({
 export default (prevState = getInitialState(), action) => {
   switch (action.type) {
   case types.GET_TOPICS_REQUEST:
+  var requiresLoad = prevState.data.length > 0 ? false : true;
     return Object.assign({}, prevState, {
-      loading: true,
+      loading: requiresLoad,
       error: null,
-      data: []
     });
 
   case types.GET_TOPICS_SUCCESS:
