@@ -4,6 +4,7 @@
   margin: 20px;
   padding: 20px 20px;
   box-shadow: 2px 2px;
+  border-radius: 3px;
 }
 
 
@@ -15,21 +16,21 @@
   background-color: inherit;
 }
 
+
 .body {
   text-align: left;
 }
+
 
 .title {
   padding-bottom: 10px;
 }
 
-#ArticleSubtitle.subtitle {
-  /* margin-bottom: 10px; */
-}
 
 #BodyAndVotes.columns.level {
   margin-bottom: 0px;
 }
+
 
 .PostComment {
   margin-top: 10px;
