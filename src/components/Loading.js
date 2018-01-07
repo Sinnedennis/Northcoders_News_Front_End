@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../styling/Loading.css';
+
 class Loading extends React.Component {
 
   constructor(props) {
@@ -25,8 +27,8 @@ class Loading extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>{this.state.message}</p>
+      <div className="LoadingContainer">
+        <p className="LoadingMessage">{this.state.message}</p>
       </div>
     );
   }
