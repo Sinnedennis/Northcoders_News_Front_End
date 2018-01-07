@@ -2,17 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PT from 'prop-types';
 
+import MehFace from 'react-icons/lib/fa/meh-o';
+
 import '../styling/Error.css';
 
 export default function Error({ error }) {
 
-  return (
+ return (
     <div className="ErrorContainer">
-      <p>Oh no, it looks like something went wrong!</p>
-      {error ? <p>{error}</p> : null}
+      <h3 className="subtitle">Oh no, it looks like something went wrong!</h3>
+      {error && <p>{error}</p>}
+      <p><MehFace className="MehFace" size="80" /></p>
       <Link to="/">Click here to go home</Link>
     </div>
-
   );
 }
 
