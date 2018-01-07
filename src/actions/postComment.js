@@ -2,8 +2,6 @@ import * as types from './types';
 import axios from 'axios';
 import { API_URL } from '../config';
 
-import getComments from './getComments';
-
 export const postCommentRequest = (commentObj) => ({
   type: types.POST_COMMENT_REQUEST,
   payload: commentObj
@@ -27,9 +25,6 @@ export default (commentObj) => {
     return axios.post(`${API_URL}articles/${belongs_to}/comments/`, { commentText })
       .then(res => {
         dispatch(postCommentSuccess(res.data));
-      })
-      .then (() => {
-        dispatch(getComments(belongs_to));
       })
       .catch(err => {
         dispatch(postCommentFailure(err.message));

@@ -42,7 +42,6 @@ describe('#deleteComment', () => {
     const expectedActions = [
       deleteCommentRequest(commentId),
       deleteCommentSuccess(message),
-      getCommentsRequest(deletedComment.belongs_to)
     ];
     const store = mockStore();
 

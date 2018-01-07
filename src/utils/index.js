@@ -12,9 +12,8 @@ export function textPreview (text) {
 
 
 export function orderArticles(list, order) {
-
   list = list.slice();
-
+  
   let propName = 'created_at';
   if (order === 'high' || order === 'low') propName = 'votes';
 
@@ -81,4 +80,15 @@ export function getTime(epochTime) {
 
   timeAgo.name = timeAgo.num > 1 ? timeAgo.name + 's' : timeAgo.name;
   return ` ${timeAgo.num} ${timeAgo.name} ago.`;
+}
+
+
+export function updateListVotes (list, id, vote) {
+  return list.map(article => {
+    const articleCopy = Object.assign({}, article)
+    if (id === articleCopy._id) {
+      articleCopy.votes += vote === 'up' ? 1 : -1;
+    }
+    return articleCopy;
+  });
 }

@@ -1,11 +1,9 @@
 import * as types from './types';
 import axios from 'axios';
-
 import { API_URL } from '../config';
 
 export const getArticleByIdRequest = (articleId) => ({
   type: types.GET_ARTICLE_BY_ID_REQUEST,
-  payload: articleId
 });
 
 export const getArticleByIdSuccess = (data) => ({

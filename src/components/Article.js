@@ -16,7 +16,7 @@ export default function Article({ article }) {
       <h3 className="title">{title}</h3>
       <h2 className="subtitle">Topic: {belongs_to}</h2>
       <p className="body">{body}</p>
-      <br/>
+
       <p>Posted by: <Link to={`/user/${created_by}`}>{created_by}</Link></p>
       <Votes parentObj={article} voteTarget={'articles'} />
     </div>
@@ -24,5 +24,5 @@ export default function Article({ article }) {
 }
 
 Article.propTypes = {
-  article: PT.object.isRequired
+  article: PT.any.isRequired
 };

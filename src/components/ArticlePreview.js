@@ -30,7 +30,7 @@ class ArticlePreview extends React.Component {
               <h2 className="title">{title}</h2>
               <h3 className="subtitle">Topic: {belongs_to}</h3>
             </Link>
-            <p className="body">{bodyPreview} {bodyPreview.length > articlePreviewLength && <a>Click here to read more</a>}</p>
+            <p className="body">{bodyPreview} {bodyPreview.length > articlePreviewLength && <Link to={`/article/${_id}`}>Click here to read more</Link>}</p>
 
             <p>Posted by:  <Link to={`/user/${created_by}`} className="Author"><strong>{created_by}</strong></Link></p>
           </div>

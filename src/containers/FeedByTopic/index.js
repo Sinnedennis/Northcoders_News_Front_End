@@ -89,9 +89,9 @@ class TopicalArtcles extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  articles: state.articlesByTopic.data,
-  loading: state.articlesByTopic.loading,
-  error: state.articlesByTopic.error
+  articles: state.articles.articlesByTopic,
+  loading: state.articles.loadingByTopic,
+  error: state.articles.error
 });
 const mapDispatchToProps = dispatch => ({
   getArticlesByTopic: (topic_id) => {
@@ -102,7 +102,7 @@ const mapDispatchToProps = dispatch => ({
 TopicalArtcles.propTypes = {
   articles: PT.any,
   loading: PT.bool.isRequired,
-  error: PT.object,
+  error: PT.string,
 
   match: PT.object.isRequired,
   getArticlesByTopic: PT.func.isRequired

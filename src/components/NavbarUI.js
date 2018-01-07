@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PT from 'prop-types';
 
-import Loading from './Loading';
 import Error from './Error';
 
 import HomeIcon from 'react-icons/lib/fa/home';
@@ -50,13 +49,6 @@ function topicDivs(topics, loading) {
           <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id} className={buttonClass}>
             {topic.title}
           </Link>
-
-
-          // <span className="button is-dark" value={topic.slug}>
-          //   <Link to={`/topic/${topic.slug}/${topic._id}`} key={topic._id}>
-          //     {topic.title}
-          //   </Link>
-          // </span>
         )
       }
     </div>
@@ -65,6 +57,6 @@ function topicDivs(topics, loading) {
 
 NavbarUI.propTypes = {
   topics: PT.array.isRequired,
-  error: PT.object,
+  error: PT.string,
   loading: PT.bool
 };

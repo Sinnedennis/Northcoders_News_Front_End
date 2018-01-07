@@ -40,27 +40,26 @@ class Feed extends React.Component {
     this.setState({ page: Number(e.target.value) });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getAllArticles();
   }
 
   render() {
     const { articles, loading, error } = this.props;
-    
+
     return (
       <div className="Feed">
 
         <OrderBy handleClick={this.handleOrderClick} />
 
         {
-          articles.length > this.pageLength 
-            ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
-            : null
+          articles.length > this.pageLength &&
+            <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
         }
        
         {
           error ? <Error error={error} />
-            : loading ? <Loading loading={true} />
+            : loading ? <Loading />
               : orderArticles(articles, this.state.order)
                 .slice(this.state.page * this.pageLength,
                   this.state.page * this.pageLength + this.pageLength)
@@ -68,9 +67,8 @@ class Feed extends React.Component {
         }
 
         {
-          articles.length > this.pageLength 
-            ? <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
-            : null
+          articles.length > this.pageLength &&
+            <PageNumUI handlePageClick={this.handlePageClick} activePage={this.state.page} pageTotal={Math.ceil(articles.length / this.pageLength)} />
         }
       </div>
     );
@@ -78,20 +76,20 @@ class Feed extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  articles: state.articles.data,
-  loading: state.articles.loading,
+  articles: state.articles.allArticles,
+  loading: state.articles.loadingAll,
   error: state.articles.error
 });
 const mapDispatchToProps = dispatch => ({
   getAllArticles: () => {
     dispatch(getAllArticles());
-  }
+  },
 });
 
 Feed.propTypes = {
   articles: PT.any,
   loading: PT.bool.isRequired,
-  error: PT.object,
+  error: PT.string,
 
   getAllArticles: PT.func.isRequired
 };

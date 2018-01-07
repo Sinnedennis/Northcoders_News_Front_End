@@ -46,14 +46,9 @@ class Comments extends React.Component {
     this.props.deleteComment(e.target.value);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { articleId } = this.props;
     this.props.getComments(articleId);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    if (this.props.comments.length > 0 && nextProps.comments.length === 0) return false;
-    else return true;
   }
 
   render() {
@@ -108,7 +103,7 @@ class Comments extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  comments: state.comments.data,
+  comments: state.comments.comments,
   loading: state.comments.loading,
   error: state.comments.error,
 });
@@ -124,7 +119,7 @@ const mapDispatchToProps = dispatch => ({
 Comments.propTypes = {
   comments: PT.any,
   loading: PT.bool.isRequired,
-  error: PT.object,
+  error: PT.string,
 
   articleId: PT.string.isRequired,
 

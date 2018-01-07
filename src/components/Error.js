@@ -16,5 +16,5 @@ export default function Error({ error }) {
 
 
 Error.propTypes = {
-  error: PT.object
+  error: PT.string
 };

@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => ({
 Navbar.propTypes = {
   topics: PT.array.isRequired,
   loading: PT.bool.isRequired,
-  error: PT.object,
+  error: PT.string,
 
   getTopics: PT.func.isRequired
 };

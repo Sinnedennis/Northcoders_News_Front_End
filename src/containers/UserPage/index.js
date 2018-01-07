@@ -51,8 +51,8 @@ const mapStateToProps = state => ({
   loadingUser: state.user.loading,
   errorUser: state.user.error,
 
-  articles: state.articles.data,
-  loadingArticles: state.articles.loading,
+  articles: state.articles.allArticles,
+  loadingArticles: state.articles.loadingAll,
   errorArticles: state.articles.error
 });
 const mapDispatchToProps = dispatch => ({

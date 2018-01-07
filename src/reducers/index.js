@@ -1,25 +1,17 @@
 import {combineReducers} from 'redux';
 
-import getAllArticles  from './getAllArticles.js';
-import getArticleById  from './getArticleById.js';
+import articles from './articles';
+import comments from './comments';
 import getTopics from './getTopics.js';
-import getArticlesByTopic from './getArticlesByTopic';
-import getComments from './getComments';
-import getUser from './getUser';
 import putVote from './putVote';
-import postComment from './postComment';
-import deleteComment from './deleteComment';
+import getUser from './getUser';
 
 const reducer = combineReducers({
-  articles: getAllArticles,
-  article: getArticleById,
+  articles: articles,
   topics: getTopics,
-  articlesByTopic: getArticlesByTopic,
-  comments: getComments,
+  comments: comments,
   user: getUser,
-  voteData: putVote,
-  postComment: postComment,
-  deleteComment: deleteComment
+  voteData: putVote
 });
 
 export default reducer;

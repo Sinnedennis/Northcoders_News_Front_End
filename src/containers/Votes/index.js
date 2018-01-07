@@ -25,29 +25,29 @@ class Votes extends Component {
     putVote(id, voteTarget, vote);
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (this.props.parentObj._id === nextProps.voteData._id) return true;       //Update when vote changes
-    else if (nextProps.parentObj._id !== this.props.parentObj._id) return true; //Update when re-ordered
-    else return false;
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   if (this.props.parentObj._id === nextProps.voteData._id) return true;       //Update when vote changes
+  //   else if (nextProps.parentObj._id !== this.props.parentObj._id) return true; //Update when re-ordered
+  //   else return false;
+  // }
 
-  componentWillReceiveProps(nextProps) {
+  // componentWillReceiveProps(nextProps) {
 
-    let newVotes;
+  //   let newVotes;
 
-    if (nextProps.parentObj._id !== this.props.parentObj._id) {
-      newVotes = nextProps.parentObj.votes;
-    } else newVotes = nextProps.voteData.votes;
+  //   if (nextProps.parentObj._id !== this.props.parentObj._id) {
+  //     newVotes = nextProps.parentObj.votes;
+  //   } else newVotes = nextProps.voteData.votes;
 
-    this.setState({
-      votes: newVotes
-    });
-  }
+  //   this.setState({
+  //     votes: newVotes
+  //   });
+  // }
 
   render() {
     return (
       <div>
-        <VoteUI clickHandler={this.clickHandler} votes={this.state.votes} />
+        <VoteUI clickHandler={this.clickHandler} votes={this.props.parentObj.votes} />
       </div>
     );
   }
@@ -68,7 +68,7 @@ const mapDispatchToProps = (dispatch) => ({
 Votes.propTypes = {
   voteData: PT.any,
   loading: PT.bool.isRequired,
-  error: PT.object,
+  error: PT.string,
 
   parentObj: PT.object.isRequired,
   voteTarget: PT.string.isRequired,
