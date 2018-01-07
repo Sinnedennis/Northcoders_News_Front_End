@@ -1,53 +1,55 @@
-# Front-end for Northcoders News
+# Northcoders News Front-end
 
-This project is a reddit-style responsive front-end which uses the back-end API from my other project found [here](https://github.com/Sinnedennis/Northcoders_News_Back_End). A deployed link is coming very soon. 
+A reddit-style (community voted content) responsive front-end to demonstate a solid understanding of *React*, *Redux*, *CSS*, and other technologies. This project retrieves data using a back-end API written to support this project found [here](https://github.com/Sinnedennis/Northcoders_News_Back_End). A deployed version of this website can be viewed live by clicking [here](https://north-coding-news.herokuapp.com/).
+___
 
-## Getting Started
+## Table of contents
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+* [Setup](https://github.com/Sinnedennis/Northcoders_News_Front_End#setup)
+* [Installation](https://github.com/Sinnedennis/Northcoders_News_Front_End#installation)
+* [Usage](https://github.com/Sinnedennis/Northcoders_News_Front_End#usage)
+* [Depenencies](https://github.com/Sinnedennis/Northcoders_News_Front_End#depenencies)
+___
 
-### Prerequisites
+## Setup
 
-You will first need to install [the API](https://github.com/Sinnedennis/Northcoders_News_Back_End) and follow all the instructions. 
+Follow the instructions below to get the project up and running on your local machine. To begin, please install [the API repo](https://github.com/Sinnedennis/Northcoders_News_Back_End) and follow all instructions. 
+___
 
-### Installing
+## Installation
 
-In order to install please run the following commands
+1. Open a terminal window, navigate to the directory where you wish to install this repository, and run the following command:
+  ```
+  git clone https://github.com/Sinnedennis/Northcoders_News_Front_End
+  ```
+2. Navigate into the freshly-cloned directory and run:
+  ```
+  npm install
+  ```
+___
 
-```
-git clone https://github.com/Sinnedennis/Northcoders_News_Front_End
-```
-then navigate inside the folder and run 
-```
-npm install
-```
-
-## Starting the application
+## Useage
 
 In order to run the application run the following command
 ```
 npm start
 ```
-Then the application should be accessible at http://localhost:3000.
+Then the application will open in your default browser at http://localhost:3000.
 
-## Running the tests
-
-To run the tests run the following command
+To run the testing suite, type the following terminal command:
 ```
 npm t
 ```
-All the reducers and actions have been tested using nock, mocha and chai.
+___
+## Dependencies
+|    Package    | Use          |
+|:-------------:|:-------------|
+| [react](https://reactjs.org/)                     | Single-page-application library |
+| [redux](https://redux.js.org/docs/introduction/)  | State management library        |
+| [babel](https://babeljs.io/)                      | Transcompiler                   |
+| [webpack](https://webpack.js.org/)                | Module bundler                  |
+| [bulma](https://bulma.io/)                        | Front-end framework             |
+| [nock](https://github.com/node-nock/nock)         | HTTP mocking library            |
+| [mocha](https://mochajs.org/)                     | Testing environment             |
+| [chai](http://chaijs.com/)                        | Assertion library               |
 
-## Built With
-* [react](https://reactjs.org/)
-* [redux](https://redux.js.org/docs/introduction/)
-* [babel](https://babeljs.io/)
-* [webpack](https://webpack.js.org/)
-* [bulma](https://bulma.io/)
-* [nock](https://github.com/node-nock/nock)
-* [mocha](https://mochajs.org/)
-* [chai](http://chaijs.com/)
-
-## Author
-
-[Dennis Foster](https://github.com/Sinnedennis)
