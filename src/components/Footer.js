@@ -11,7 +11,7 @@ class Footer extends React.Component {
 
     return (
       <div className="Footer level">
-        <p className="level-item"><Github size="40" /><a href="https://github.com/Sinnedennis">Github profile</a></p> 
+        <p className="level-item"><Github size="40" /><a href="https://github.com/Sinnedennis" target="_blank" rel="noopener noreferrer">Github profile</a></p> 
         <p className="level-item">Made by Dennis Foster </p>
         <p className="level-item">Copyright © {currentYear}</p>
       </div>

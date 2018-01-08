@@ -9,8 +9,6 @@ import deleteComment, {
   deleteCommentFailure
 } from '../../src/actions/deleteComment';
 
-import { getCommentsRequest } from '../../src/actions/getComments';
-
 import { API_URL } from '../../src/config';
 
 const mockStore = configureMockStore([thunk]);

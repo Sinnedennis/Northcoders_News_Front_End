@@ -39,7 +39,7 @@ describe('#articles reducer', () => {
       const testState = articleReducer(undefined, action);
       expect(testState).to.eql(initialState);
     });
-  })
+  });
 
 
   describe('#getAllArticles', () => {
@@ -84,7 +84,7 @@ describe('#articles reducer', () => {
       expect(newState.error).to.eql(error);
       expect(newState.allArticles).to.eql([]);
     });
-  })
+  });
 
 
   describe('#getArticlesById', () => {
@@ -181,13 +181,13 @@ describe('#articles reducer', () => {
         allArticles:      [{ _id: 'do not vote me', votes: 0 }],
         articlesByTopic:  [{ _id: 'voteMe', votes: 0 }],
         oneArticle:       { _id: 'voteMe', votes: 0 }
-      }
+      };
 
       const newState = articleReducer(prevState, action);
       expect(newState.allArticles[0].votes).to.equal(0);
       expect(newState.articlesByTopic[0].votes).to.equal(1);
       expect(newState.oneArticle.votes).to.equal(1);
-    })
+    });
 
     it('Does not pass payload by reference', () => {
       const action = putVoteRequest('voteMe', 'articles', 'up' );
@@ -195,7 +195,7 @@ describe('#articles reducer', () => {
         allArticles:      [{ _id: 'voteMe', votes: 0 }],
         articlesByTopic:  [{ _id: 'do not vote me', votes: 0 }],
         oneArticle:       { _id: 'do not vote me', votes: 0 }
-      }
+      };
 
       const newState = articleReducer(prevState, action);
       expect(newState.allArticles[0].votes).to.equal(1);
@@ -205,6 +205,6 @@ describe('#articles reducer', () => {
       expect(newState.allArticles[0]).to.not.equal(prevState.allArticles[0]);
       expect(newState.articlesByTopic[0]).to.not.equal(prevState.articlesByTopic[0]);
       expect(newState.oneArticle).to.not.equal(prevState.oneArticle);
-    })
+    });
   });
 });

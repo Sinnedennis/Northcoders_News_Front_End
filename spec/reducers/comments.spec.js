@@ -1,10 +1,6 @@
 import { expect } from 'chai';
 import commentReducer, { getInitialState } from '../../src/reducers/comments';
-import {
-  deleteCommentRequest,
-  deleteCommentSuccess,
-  deleteCommentFailure
-} from '../../src/actions/deleteComment';
+import { deleteCommentRequest } from '../../src/actions/deleteComment';
 
 import {
   getCommentsRequest,
@@ -42,7 +38,7 @@ describe('#comment reducer', () => {
       const action = deleteCommentRequest('deleteMe');
       const prevState = {
         comments: [{ _id: 'foo' }, { _id: 'deleteMe' }]
-      }
+      };
       const newState = commentReducer(prevState, action);
 
       expect(newState.error).to.be.null;
@@ -54,7 +50,7 @@ describe('#comment reducer', () => {
       const action = deleteCommentRequest('deleteMe');
       const prevState = {
         comments: [{ _id: 'foo' }, { _id: 'deleteMe' }]
-      }
+      };
       const newState = commentReducer(prevState, action);
 
       expect(newState.error).to.be.null;
@@ -101,11 +97,11 @@ describe('#comment reducer', () => {
   describe('#postComment', () => {
     it('returns the appropriate state for POST_COMMENT_REQUEST action', () => {
       
-      const exampleComment = { commentText: 'hi', belongs_to: 'cars' }
+      const exampleComment = { commentText: 'hi', belongs_to: 'cars' };
       const action = postCommentRequest(exampleComment);
       const prevState = {
         comments: [{ _id: 'foo' }, { _id: 'deleteMe' }]
-      }
+      };
       const newState = commentReducer(prevState, action);
 
       expect(newState.comments.length).to.equal(prevState.comments.length + 1);

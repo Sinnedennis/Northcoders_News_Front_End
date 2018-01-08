@@ -9,8 +9,6 @@ import postComment, {
   postCommentFailure
 } from '../../src/actions/postComment';
 
-import { getCommentsRequest } from '../../src/actions/getComments';
-
 import { API_URL } from '../../src/config';
 
 const mockStore = configureMockStore([thunk]);
