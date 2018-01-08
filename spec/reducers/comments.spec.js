@@ -10,7 +10,6 @@ import {
 
 import { postCommentRequest } from '../../src/actions/postComment';
 import { putVoteRequest } from '../../src/actions/putVote';
-import { commentsPerPage } from '../../src/config/index';
 
 describe('#comment reducer', () => {
 
@@ -116,7 +115,7 @@ describe('#comment reducer', () => {
       const action = putVoteRequest('voteMe', 'comments', 'down');
       const prevState = {
         comments: [{ _id: 'voteMe', votes: 1 }, { _id: 'do not vote me', votes: 1 }]
-      }
+      };
       const newState = commentReducer(prevState, action);
 
       expect(newState.comments[0].votes).to.equal(0);
@@ -128,7 +127,7 @@ describe('#comment reducer', () => {
       const action = putVoteRequest('voteMe', 'comments', 'down');
       const prevState = {
         comments: [{ _id: 'voteMe', votes: 1 }, { _id: 'do not vote me', votes: 1 }]
-      }
+      };
       const newState = commentReducer(prevState, action);
 
       expect(newState.comments).to.not.equal(prevState.comments);
