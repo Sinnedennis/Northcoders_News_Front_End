@@ -16,16 +16,16 @@ export default (prevState = getInitialState(), action) => {
   switch (action.type) {
 
     case types.GET_ALL_ARTICLES_REQUEST:
-      var requiresLoad = prevState.allArticles.length > 0 ? false : true;
+      var requiresLoadAll = prevState.allArticles.length > 0 ? false : true;
       return Object.assign({}, prevState, {
-        loadingAll: requiresLoad,
+        loadingAll: requiresLoadAll,
         error: null,
       });
 
     case types.GET_ARTICLES_BY_TOPIC_REQUEST:
-      var requiresLoad = prevState.articlesByTopic.length > 0 ? false : true;
+      var requiresLoadTopic = prevState.articlesByTopic.length > 0 ? false : true;
       return Object.assign({}, prevState, {
-        loadingByTopic: requiresLoad,
+        loadingByTopic: requiresLoadTopic,
         error: null,
       });
 
@@ -37,24 +37,32 @@ export default (prevState = getInitialState(), action) => {
 
 
     case types.GET_ALL_ARTICLES_SUCCESS:
+      const articlesCopy = action.payload.slice().map(article => {
+        return Object.assign({}, article);
+      });
+
       return Object.assign({}, prevState, {
         loadingAll: false,
         error: null,
-        allArticles: action.payload
+        allArticles: articlesCopy
       });
 
     case types.GET_ARTICLE_BY_ID_SUCCESS:
       return Object.assign({}, prevState, {
         loadingById: false,
         error: null,
-        oneArticle: action.payload
+        oneArticle: Object.assign({}, action.payload)
       });
 
     case types.GET_ARTICLES_BY_TOPIC_SUCCESS:
+      const articlesByTopicCopy = action.payload.slice().map(article => {
+        return Object.assign({}, article);
+      });
+
       return Object.assign({}, prevState, {
         loadingByTopic: false,
         error: null,
-        articlesByTopic: action.payload
+        articlesByTopic: articlesByTopicCopy
       });
 
 
@@ -84,8 +92,14 @@ export default (prevState = getInitialState(), action) => {
 
       var allArticlesUpdated = updateListVotes(prevState.allArticles, id, vote);
       var topicArticlesUpdated = updateListVotes(prevState.articlesByTopic, id, vote);
-      var oneArticleUpdated = Object.assign({}, prevState.oneArticle);
-      oneArticleUpdated.votes += vote === 'up' ? 1 : -1;
+      var oneArticleUpdated = {};
+
+      if (Object.keys(prevState.oneArticle).length > 0) {
+        oneArticleUpdated = Object.assign({}, prevState.oneArticle);
+      } 
+      if (oneArticleUpdated._id === id ) {
+        oneArticleUpdated.votes += vote === 'up' ? 1 : -1;
+      }
 
       return Object.assign({}, prevState, {
         allArticles: allArticlesUpdated,

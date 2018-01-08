@@ -84,6 +84,8 @@ export function getTime(epochTime) {
 
 
 export function updateListVotes (list, id, vote) {
+  if (list.length <= 0) return [];
+
   return list.map(article => {
     const articleCopy = Object.assign({}, article);
     if (id === articleCopy._id) {

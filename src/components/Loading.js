@@ -8,7 +8,7 @@ class Loading extends React.Component {
     super(props);
 
     this.state = {
-      message: 'Loading, just one sec',
+      message: 'Loading',
       timer: null
     };
 

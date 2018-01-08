@@ -59,10 +59,14 @@ export default (prevState = getInitialState(), action) => {
 
 
   case types.GET_COMMENTS_SUCCESS:
+    var commentCopies = action.payload.slice().map(comment => {
+      return Object.assign({}, comment);
+    });
+    
     return Object.assign({}, prevState, {
       loading: false,
       error: null,
-      comments: action.payload
+      comments: commentCopies
     });
 
 
