@@ -52,7 +52,7 @@ class Comments extends React.Component {
   }
 
   render() {
-    const { comments, loading, error } = this.props;
+    const { comments, loading, error, articleLoading } = this.props;
     const { pageNum } = this.state;
 
     const minPageIndex = pageNum * this.pageLength;
@@ -61,6 +61,7 @@ class Comments extends React.Component {
     const cardsPerPage = [minPageIndex, maxPageIndex];
 
     if (error) return <Error error={error} />;
+    if (articleLoading) return null;
     if (loading) return <Loading />;
 
     return (
@@ -106,6 +107,8 @@ const mapStateToProps = state => ({
   comments: state.comments.comments,
   loading: state.comments.loading,
   error: state.comments.error,
+
+  articleLoading: state.articles.loadingById
 });
 const mapDispatchToProps = dispatch => ({
   getComments: (articleId) => {
@@ -122,6 +125,7 @@ Comments.propTypes = {
   error: PT.string,
 
   articleId: PT.string.isRequired,
+  articleLoading: PT.bool.isRequired,
 
   getComments: PT.func.isRequired,
   deleteComment: PT.func.isRequired
