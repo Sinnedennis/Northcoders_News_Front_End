@@ -1,6 +1,6 @@
 # Northcoders News Front-end
 
-A reddit-style (community voted content) responsive front-end to demonstate a solid understanding of *React*, *Redux*, *CSS*, and other technologies. This project retrieves data using a back-end API written to support this project found [here](https://github.com/Sinnedennis/Northcoders_News_Back_End). A deployed version of this website can be viewed by clicking [here](https://north-coding-news.herokuapp.com/).
+A reddit-style (community voted content) responsive front-end to demonstrate a solid understanding of *React*, *Redux*, *CSS*, and other technologies. This app retrieves data using a back-end API written in conjunction with this project found [here](https://github.com/Sinnedennis/Northcoders_News_Back_End). A deployed version of this website can be viewed by clicking [here](https://north-coding-news.herokuapp.com/).
 ___
 
 ## Table of contents
@@ -44,13 +44,13 @@ ___
 
 ## Usage
 
-In order to run the application run the following command
+In order to run the application run the following command:
 ```
 npm start
 ```
 Then the application will open in your default browser at http://localhost:3000.
 
-To run the testing suite, type the following terminal command:
+To run the testing suite, enter the following command:
 ```
 npm t
 ```
