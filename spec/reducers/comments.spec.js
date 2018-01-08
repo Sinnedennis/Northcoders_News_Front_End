@@ -9,7 +9,8 @@ import {
 } from '../../src/actions/getComments';
 
 import { postCommentRequest } from '../../src/actions/postComment';
-
+import { putVoteRequest } from '../../src/actions/putVote';
+import { commentsPerPage } from '../../src/config/index';
 
 describe('#comment reducer', () => {
 
@@ -96,7 +97,7 @@ describe('#comment reducer', () => {
 
   describe('#postComment', () => {
     it('returns the appropriate state for POST_COMMENT_REQUEST action', () => {
-      
+
       const exampleComment = { commentText: 'hi', belongs_to: 'cars' };
       const action = postCommentRequest(exampleComment);
       const prevState = {
@@ -106,6 +107,33 @@ describe('#comment reducer', () => {
 
       expect(newState.comments.length).to.equal(prevState.comments.length + 1);
       expect(newState.comments).to.not.equal(prevState.comments);
+    });
+  });
+
+  describe('#putVote', () => {
+    it('returns the appropriate state for POST_COMMENT_REQUEST action', () => {
+
+      const action = putVoteRequest('voteMe', 'comments', 'down');
+      const prevState = {
+        comments: [{ _id: 'voteMe', votes: 1 }, { _id: 'do not vote me', votes: 1 }]
+      }
+      const newState = commentReducer(prevState, action);
+
+      expect(newState.comments[0].votes).to.equal(0);
+      expect(newState.comments[1].votes).to.equal(prevState.comments[1].votes);
+    });
+
+    it('Does not pass payload by reference', () => {
+
+      const action = putVoteRequest('voteMe', 'comments', 'down');
+      const prevState = {
+        comments: [{ _id: 'voteMe', votes: 1 }, { _id: 'do not vote me', votes: 1 }]
+      }
+      const newState = commentReducer(prevState, action);
+
+      expect(newState.comments).to.not.equal(prevState.comments);
+      expect(newState.comments[0]).to.not.equal(prevState.comments[0]);
+      expect(newState.comments[1]).to.not.equal(prevState.comments[1]);
     });
   });
 });
