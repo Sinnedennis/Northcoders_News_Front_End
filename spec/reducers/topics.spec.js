@@ -26,17 +26,18 @@ describe('#getTopics reducer', () => {
       expect(testState).to.eql(initialState);
     });
   });
-  it('returns the appropriate state for GET_TOPICS_REQUEST action', () => {
 
-    const action = getTopicsRequest();
-    const newState = getTopicsReducer(undefined, action);
-
-    expect(newState.loading).to.be.true;
-    expect(newState.error).to.be.null;
-    expect(newState.data).to.eql([]);
-  });
-  
   describe('#getTopics', () => {
+    it('returns the appropriate state for GET_TOPICS_REQUEST action', () => {
+
+      const action = getTopicsRequest();
+      const newState = getTopicsReducer(undefined, action);
+  
+      expect(newState.loading).to.be.true;
+      expect(newState.error).to.be.null;
+      expect(newState.data).to.eql([]);
+    });
+
     it('returns the appropriate state for GET_TOPICS_SUCCESS action', () => {
       const data = [{ topic: 'football' }, { topic: 'cooking' }];
       const action = getTopicsSuccess(data);

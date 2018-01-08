@@ -13,7 +13,7 @@ import { API_URL } from '../../src/config';
 
 const mockStore = configureMockStore([thunk]);
 
-describe('#getArticlesById', () => {
+describe('#getArticlesById Action', () => {
 
   afterEach(() => {
     nock.cleanAll();

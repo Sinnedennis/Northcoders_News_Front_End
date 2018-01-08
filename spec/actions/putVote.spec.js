@@ -13,7 +13,7 @@ import { API_URL } from '../../src/config';
 
 const mockStore = configureMockStore([thunk]);
 
-describe('#putVote', () => {
+describe('#putVote Action', () => {
 
   afterEach(() => {
     nock.cleanAll();
