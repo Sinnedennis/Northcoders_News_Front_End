@@ -6,24 +6,26 @@ import {
   getTopicsFailure
 } from '../../src/actions/getTopics';
 
-describe.only('#getTopics reducer', () => {
-  it('returns the previous state if passed unknown action type', () => {
+describe('#getTopics reducer', () => {
 
-    const badAction = { type: 'banana' };
-    const initialState = getInitialState();
-    const previouState = getTopicsReducer(initialState, badAction);
+  describe('Basic behaviours', () => {
+    it('returns the previous state if passed unknown action type', () => {
 
-    expect(previouState).to.eql(initialState);
+      const badAction = { type: 'banana' };
+      const initialState = getInitialState();
+      const previouState = getTopicsReducer(initialState, badAction);
+
+      expect(previouState).to.eql(initialState);
+    });
+
+    it('returns initialState if not passed a state', () => {
+
+      const action = { type: 'action' };
+      const initialState = getInitialState();
+      const testState = getTopicsReducer(undefined, action);
+      expect(testState).to.eql(initialState);
+    });
   });
-
-  it('returns initialState if not passed a state', () => {
-
-    const action = { type: 'action' };
-    const initialState = getInitialState();
-    const testState = getTopicsReducer(undefined, action);
-    expect(testState).to.eql(initialState);
-  });
-
   it('returns the appropriate state for GET_TOPICS_REQUEST action', () => {
 
     const action = getTopicsRequest();
@@ -33,38 +35,40 @@ describe.only('#getTopics reducer', () => {
     expect(newState.error).to.be.null;
     expect(newState.data).to.eql([]);
   });
+  
+  describe('#getTopics', () => {
+    it('returns the appropriate state for GET_TOPICS_SUCCESS action', () => {
+      const data = [{ topic: 'football' }, { topic: 'cooking' }];
+      const action = getTopicsSuccess(data);
+      const newState = getTopicsReducer(undefined, action);
 
-  it('returns the appropriate state for GET_TOPICS_SUCCESS action', () => {
-    const data = [{ topic: 'football' }, { topic: 'cooking' }];
-    const action = getTopicsSuccess(data);
-    const newState = getTopicsReducer(undefined, action);
+      expect(newState.loading).to.be.false;
+      expect(newState.error).to.be.null;
+      expect(newState.data).to.eql(data);
+    });
 
-    expect(newState.loading).to.be.false;
-    expect(newState.error).to.be.null;
-    expect(newState.data).to.eql(data);
-  });
+    it('Does not pass payload by reference', () => {
+      const data = [{ topic: 'football' }, { topic: 'cooking' }];
+      const action = getTopicsSuccess(data);
+      const prevState = {
+        data
+      }
+      const newState = getTopicsReducer(prevState, action);
 
-  it.only('Does not pass payload by reference', () => {
-    const data = [{ topic: 'football' }, { topic: 'cooking' }];
-    const action = getTopicsSuccess(data);
-    const prevState = {
-      data
-    }
-    const newState = getTopicsReducer(prevState, action);
+      expect(newState.data).to.eql(prevState.data);
+      expect(newState.data).to.not.equal(prevState.data);
+      expect(newState.data[0]).to.not.equal(prevState.data[0]);
+      expect(newState.data[1]).to.not.equal(prevState.data[1]);
+    });
 
-    expect(newState.data).to.eql(prevState.data);
-    expect(newState.data).to.not.equal(prevState.data);
-    expect(newState.data[0]).to.not.equal(prevState.data[0]);
-    expect(newState.data[1]).to.not.equal(prevState.data[1]);
-  });
+    it('returns the appropriate state for GET_TOPICS_FAILURE action', () => {
+      const error = '404 page not found';
+      const action = getTopicsFailure(error);
+      const newState = getTopicsReducer(undefined, action);
 
-  it('returns the appropriate state for GET_TOPICS_FAILURE action', () => {
-    const error = '404 page not found';
-    const action = getTopicsFailure(error);
-    const newState = getTopicsReducer(undefined, action);
-
-    expect(newState.loading).to.be.false;
-    expect(newState.error).to.eql(error);
-    expect(newState.data).to.eql([]);
+      expect(newState.loading).to.be.false;
+      expect(newState.error).to.eql(error);
+      expect(newState.data).to.eql([]);
+    });
   });
 });
