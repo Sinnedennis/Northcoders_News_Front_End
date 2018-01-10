@@ -1,7 +1,7 @@
 # Northcoders News Front-end
 
 A reddit-style (community voted content) responsive front-end to demonstrate a solid understanding of *React*, *Redux*, *CSS*, and other technologies. This app retrieves data using a back-end API written in conjunction with this project found [here](https://github.com/Sinnedennis/Northcoders_News_Back_End). A deployed version of this website can be viewed by clicking 
-[here](https://north-coding-news.herokuapp.com/){:target="_blank"}
+<a href="https://north-coding-news.herokuapp.com" target="_blank">here.</a>
 ___
 
 ## Table of contents
