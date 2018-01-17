@@ -53,7 +53,7 @@ describe('#getTopics reducer', () => {
       const action = getTopicsSuccess(data);
       const prevState = {
         data
-      }
+      };
       const newState = getTopicsReducer(prevState, action);
 
       expect(newState.data).to.eql(prevState.data);
