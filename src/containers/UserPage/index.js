@@ -28,18 +28,20 @@ class UserPage extends React.Component {
       filteredArticles = articles.filter(article => article.created_by === user.username);
     }
 
+
+    if (loadingUser) return <Loading />;
+
     return (
       <div>
         {
           errorUser ? <Error error={errorUser} />
-            : loadingUser ? <Loading />
-              : <UserPageUI user={user} />
+            : <UserPageUI user={user} />
         }
 
         {
-          errorArticles || errorUser ? <Error error={errorArticles} />
-            : loadingArticles || loadingUser ? <Loading />
-              : filteredArticles.length > 0 && <UserArticles articles={filteredArticles} userName={user.username}/>
+          errorArticles ? <Error error={errorArticles} />
+            : loadingArticles ? <Loading />
+              : filteredArticles.length > 0 && <UserArticles articles={filteredArticles} userName={user.username} />
         }
       </div>
     );
@@ -74,7 +76,7 @@ UserPage.propTypes = {
   errorArticles: PT.object,
 
   match: PT.object.isRequired,
-  
+
   getUser: PT.func.isRequired,
   getAllArticles: PT.func.isRequired
 };
