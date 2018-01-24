@@ -16,7 +16,7 @@ export default (prevState = getInitialState(), action) => {
     });
 
   case types.GET_TOPICS_SUCCESS:
-    var topicsCopy = action.payload.slice().map(topic => {
+    var topicsCopy = action.payload.map(topic => {
       return Object.assign({}, topic);
     });
 

@@ -27,6 +27,7 @@ describe('#getTopics reducer', () => {
     });
   });
 
+
   describe('#getTopics', () => {
     it('returns the appropriate state for GET_TOPICS_REQUEST action', () => {
 
@@ -54,6 +55,7 @@ describe('#getTopics reducer', () => {
       const prevState = {
         data
       };
+      
       const newState = TopicsReducer(prevState, action);
 
       expect(newState.data).to.eql(prevState.data);
