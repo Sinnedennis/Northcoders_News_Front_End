@@ -87,10 +87,10 @@ export function updateListVotes (list, id, vote) {
   if (list.length <= 0) return [];
 
   return list.map(article => {
-    const articleCopy = Object.assign({}, article);
-    if (id === articleCopy._id) {
-      articleCopy.votes += vote === 'up' ? 1 : -1;
+    const listCopy = Object.assign({}, article);
+    if (id === listCopy._id) {
+      listCopy.votes += vote === 'up' ? 1 : -1;
     }
-    return articleCopy;
+    return listCopy;
   });
 }
