@@ -68,8 +68,6 @@ describe('#articles reducer', () => {
       const action = getAllArticlesSuccess(data);
       const newState = articleReducer(undefined, action);
 
-      expect(newState.loadingAll).to.be.false;
-      expect(newState.error).to.be.null;
       expect(newState.allArticles).to.eql(data);
       expect(newState.allArticles).to.not.equal(data);
       expect(newState.allArticles[0]).to.not.equal(data[0]);
@@ -113,12 +111,9 @@ describe('#articles reducer', () => {
       const action = getArticleByIdSuccess(data);
       const newState = articleReducer(undefined, action);
 
-      expect(newState.loadingById).to.be.false;
-      expect(newState.error).to.be.null;
       expect(newState.oneArticle).to.eql(data);
       expect(newState.oneArticle).to.not.equal(data);
     });
-
 
     it('returns the appropriate state for GET_ARTICLE_BY_ID_FAILURE action', () => {
       const error = '404 page not found';
@@ -130,6 +125,7 @@ describe('#articles reducer', () => {
       expect(newState.oneArticle).to.eql({});
     });
   });
+
 
   describe('#getArticlesByTopic', () => {
     it('returns the appropriate state for GET_ARTICLE_BY_TOPIC_REQUEST action', () => {
@@ -157,8 +153,6 @@ describe('#articles reducer', () => {
       const action = getArticlesByTopicSuccess(data);
       const newState = articleReducer(undefined, action);
 
-      expect(newState.loadingByTopic).to.be.false;
-      expect(newState.error).to.be.null;
       expect(newState.articlesByTopic).to.eql(data);
       expect(newState.articlesByTopic).to.not.equal(data);
     });
@@ -174,16 +168,18 @@ describe('#articles reducer', () => {
     });
   });
 
+
   describe('#putVote', () => {
     it('returns the appropriate state for PUT_VOTE_REQUEST action', () => {
       const action = putVoteRequest('voteMe', 'articles', 'up' );
       const prevState = {
         allArticles:      [{ _id: 'do not vote me', votes: 0 }],
         articlesByTopic:  [{ _id: 'voteMe', votes: 0 }],
-        oneArticle:       { _id: 'voteMe', votes: 0 }
+        oneArticle:        { _id: 'voteMe', votes: 0 }
       };
 
       const newState = articleReducer(prevState, action);
+
       expect(newState.allArticles[0].votes).to.equal(0);
       expect(newState.articlesByTopic[0].votes).to.equal(1);
       expect(newState.oneArticle.votes).to.equal(1);
@@ -198,11 +194,10 @@ describe('#articles reducer', () => {
       };
 
       const newState = articleReducer(prevState, action);
-      expect(newState.allArticles[0].votes).to.equal(1);
-      expect(newState.articlesByTopic[0].votes).to.equal(0);
-      expect(newState.oneArticle.votes).to.equal(0);
 
+      expect(newState.allArticles).to.not.equal(prevState.allArticles);
       expect(newState.allArticles[0]).to.not.equal(prevState.allArticles[0]);
+      expect(newState.articlesByTopic).to.not.equal(prevState.articlesByTopic);
       expect(newState.articlesByTopic[0]).to.not.equal(prevState.articlesByTopic[0]);
       expect(newState.oneArticle).to.not.equal(prevState.oneArticle);
     });
