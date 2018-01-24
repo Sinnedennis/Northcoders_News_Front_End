@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import voteReducer, { getInitialState } from '../../src/reducers/putVote';
+import voteReducer, { getInitialState } from '../../src/reducers/vote';
 import {
   putVoteRequest,
   putVoteSuccess,

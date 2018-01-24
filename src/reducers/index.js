@@ -3,7 +3,7 @@ import {combineReducers} from 'redux';
 import articles from './articles';
 import comments from './comments';
 import topics from './topics';
-import putVote from './putVote';
+import vote from './vote';
 import user from './user';
 
 const reducer = combineReducers({
@@ -11,7 +11,7 @@ const reducer = combineReducers({
   topics: topics,
   comments: comments,
   user: user,
-  voteData: putVote
+  voteData: vote
 });
 
 export default reducer;

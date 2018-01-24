@@ -35,7 +35,7 @@ describe('#getUser reducer', () => {
 
       expect(newState.loading).to.be.true;
       expect(newState.error).to.be.null;
-      expect(newState.data).to.eql([]);
+      expect(newState.data).to.eql({});
     });
 
     it('returns the appropriate state for GET_USER_SUCCESS action', () => {
@@ -67,7 +67,7 @@ describe('#getUser reducer', () => {
 
       expect(newState.loading).to.be.false;
       expect(newState.error).to.eql(error);
-      expect(newState.data).to.eql([]);
+      expect(newState.data).to.eql({});
     });
   });
 });
