@@ -27,6 +27,7 @@ describe('#voteReducer', () => {
     });
   });
 
+
   describe('#putVote', () => {
     it('returns the appropriate state for PUT_VOTE_REQUEST action', () => {
       const action = putVoteRequest({ vote: 'vote data' });
@@ -60,7 +61,7 @@ describe('#voteReducer', () => {
     });
 
     it('returns the appropriate state for PUT_VOTE_FAILURE action', () => {
-      const error = '404 page not found';
+      const error = 'I have no strong feelings one way or the other';
       const action = putVoteFailure(error);
       const newState = voteReducer(undefined, action);
 
