@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import getTopicsReducer, { getInitialState } from '../../src/reducers/getTopics';
+import TopicsReducer, { getInitialState } from '../../src/reducers/topics';
 import {
   getTopicsRequest,
   getTopicsSuccess,
@@ -13,7 +13,7 @@ describe('#getTopics reducer', () => {
 
       const badAction = { type: 'banana' };
       const initialState = getInitialState();
-      const previouState = getTopicsReducer(initialState, badAction);
+      const previouState = TopicsReducer(initialState, badAction);
 
       expect(previouState).to.eql(initialState);
     });
@@ -22,7 +22,7 @@ describe('#getTopics reducer', () => {
 
       const action = { type: 'action' };
       const initialState = getInitialState();
-      const testState = getTopicsReducer(undefined, action);
+      const testState = TopicsReducer(undefined, action);
       expect(testState).to.eql(initialState);
     });
   });
@@ -31,7 +31,7 @@ describe('#getTopics reducer', () => {
     it('returns the appropriate state for GET_TOPICS_REQUEST action', () => {
 
       const action = getTopicsRequest();
-      const newState = getTopicsReducer(undefined, action);
+      const newState = TopicsReducer(undefined, action);
   
       expect(newState.loading).to.be.true;
       expect(newState.error).to.be.null;
@@ -41,7 +41,7 @@ describe('#getTopics reducer', () => {
     it('returns the appropriate state for GET_TOPICS_SUCCESS action', () => {
       const data = [{ topic: 'football' }, { topic: 'cooking' }];
       const action = getTopicsSuccess(data);
-      const newState = getTopicsReducer(undefined, action);
+      const newState = TopicsReducer(undefined, action);
 
       expect(newState.loading).to.be.false;
       expect(newState.error).to.be.null;
@@ -54,7 +54,7 @@ describe('#getTopics reducer', () => {
       const prevState = {
         data
       };
-      const newState = getTopicsReducer(prevState, action);
+      const newState = TopicsReducer(prevState, action);
 
       expect(newState.data).to.eql(prevState.data);
       expect(newState.data).to.not.equal(prevState.data);
@@ -65,7 +65,7 @@ describe('#getTopics reducer', () => {
     it('returns the appropriate state for GET_TOPICS_FAILURE action', () => {
       const error = '404 page not found';
       const action = getTopicsFailure(error);
-      const newState = getTopicsReducer(undefined, action);
+      const newState = TopicsReducer(undefined, action);
 
       expect(newState.loading).to.be.false;
       expect(newState.error).to.eql(error);
