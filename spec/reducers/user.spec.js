@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import userReducer, { getInitialState } from '../../src/reducers/getUser';
+import userReducer, { getInitialState } from '../../src/reducers/user';
 import {
   getUserRequest,
   getUserSuccess,

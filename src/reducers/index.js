@@ -2,15 +2,15 @@ import {combineReducers} from 'redux';
 
 import articles from './articles';
 import comments from './comments';
-import topics from './topics.js';
+import topics from './topics';
 import putVote from './putVote';
-import getUser from './getUser';
+import user from './user';
 
 const reducer = combineReducers({
   articles: articles,
   topics: topics,
   comments: comments,
-  user: getUser,
+  user: user,
   voteData: putVote
 });
 
