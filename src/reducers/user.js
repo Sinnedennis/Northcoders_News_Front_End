@@ -3,7 +3,7 @@ import * as types from '../actions/types';
 export const getInitialState = () => ({
   loading: true,
   error: null,
-  data: []
+  data: {}
 });
 
 export default (prevState = getInitialState(), action) => {
@@ -13,7 +13,7 @@ export default (prevState = getInitialState(), action) => {
     return Object.assign({}, prevState, {
       loading: true,
       error: null,
-      data: []
+      data: {}
     });
 
   case types.GET_USER_SUCCESS:
@@ -28,7 +28,7 @@ export default (prevState = getInitialState(), action) => {
     return Object.assign({}, prevState, {
       loading: false,
       error: action.payload,
-      data: []
+      data: {}
     });
   default:
     return prevState;
