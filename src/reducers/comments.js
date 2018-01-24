@@ -21,15 +21,13 @@ export default (prevState = getInitialState(), action) => {
 
 
   case types.DELETE_COMMENT_REQUEST:
-    var undeletedComments = prevState.comments.reduce((acc, comment) => {
-      if (String(comment._id) !== String(action.payload)) acc.push(Object.assign({}, comment));
-      return acc;
-    }, []);
+    var notDeletedComments = prevState.comments.filter(comment => String(comment._id) !== String(action.payload));
+    var notDeletedCommentsCopy = notDeletedComments.map(comment => Object.assign({}, comment));
 
     return Object.assign({}, prevState, {
       loading: false,
       error: null,
-      comments: undeletedComments
+      comments: notDeletedCommentsCopy
     });
 
 

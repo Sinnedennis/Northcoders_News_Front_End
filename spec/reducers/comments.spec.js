@@ -53,9 +53,8 @@ describe('#comment reducer', () => {
       };
       const newState = commentReducer(prevState, action);
 
-      expect(newState.error).to.be.null;
-      expect(newState.comments).to.eql([{ _id: 'foo' }]);
-      expect(newState.comments).to.not.equal(prevState.comments[0]);
+      expect(newState.comments).to.not.equal(prevState.comments);
+      expect(newState.comments[0]).to.not.equal(prevState.comments[0]);
     });
 
   });
