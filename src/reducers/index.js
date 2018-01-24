@@ -7,11 +7,11 @@ import vote from './vote';
 import user from './user';
 
 const reducer = combineReducers({
-  articles: articles,
-  topics: topics,
-  comments: comments,
-  user: user,
-  voteData: vote
+  articles,
+  topics,
+  comments,
+  user,
+  vote
 });
 
 export default reducer;

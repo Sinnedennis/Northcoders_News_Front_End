@@ -25,24 +25,6 @@ class Votes extends Component {
     putVote(id, voteTarget, vote);
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //   if (this.props.parentObj._id === nextProps.voteData._id) return true;       //Update when vote changes
-  //   else if (nextProps.parentObj._id !== this.props.parentObj._id) return true; //Update when re-ordered
-  //   else return false;
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-
-  //   let newVotes;
-
-  //   if (nextProps.parentObj._id !== this.props.parentObj._id) {
-  //     newVotes = nextProps.parentObj.votes;
-  //   } else newVotes = nextProps.voteData.votes;
-
-  //   this.setState({
-  //     votes: newVotes
-  //   });
-  // }
 
   render() {
     return (
@@ -54,9 +36,9 @@ class Votes extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  voteData: state.voteData.data,
-  loading: state.voteData.loading,
-  error: state.voteData.error,
+  voteData: state.vote.data,
+  loading: state.vote.loading,
+  error: state.vote.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
