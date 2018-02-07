@@ -3,7 +3,7 @@ import { articlePreviewLength } from '../config';
 export function textPreview (text) {
   let textPreview;
   if (text.length >= articlePreviewLength) {
-    textPreview = text.slice(0, articlePreviewLength);
+    textPreview = text.slice(0, articlePreviewLength).trim();
     textPreview = textPreview + '...';
   } else textPreview = text;
 
